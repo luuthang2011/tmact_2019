@@ -6,6 +6,17 @@ class layer2DB:
         global indb
         indb = db
 
+    def import2db(self, lyr):
+        try:
+            arcpy.FeatureClassToFeatureClass_conversion(
+                lyr,  # in_features
+                indb,  # out_path
+                lyr.datasetName  # datasetName
+            )
+        except arcpy.ExecuteError, ex:
+            print "An error occurred in creating SDE Connection file: " + ex[0]
+            # exit()
+
     def execute(self, indata, mdb):
         # Set the current workspace
         arcpy.env.workspace = indb
@@ -20,10 +31,17 @@ class layer2DB:
         # out: true
         # false: exit
         print "start check database"
+        sdeList = arcpy.ListFeatureClasses()
+
+        # remove prefix: ks.sde
+        for i, magician in enumerate(sdeList):
+            sdeList[i] = sdeList[i].split(".")[-1]
+
         for lyr in arcpy.mapping.ListLayers(mxd):
-            if lyr.supports("DATASOURCE"):
+            if lyr.isFeatureLayer:
                 print lyr.name
-                if arcpy.Exists(lyr.datasetName):
+                print lyr.datasetName
+                if lyr.datasetName in sdeList:
                     print lyr.name + " already exists in geoDatabase"
                     exit()
 
@@ -32,42 +50,15 @@ class layer2DB:
         # out: update mxd variable
         mxd.findAndReplaceWorkspacePaths("", mdb, False)
 
-        mxd.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated_new.mxd")
-
-        newmxd = arcpy.mapping.MapDocument(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated_new.mxd")
-
         # export data to db
         # input:  updated mxd variable
         # output:  none
         print "start export data to database"
-        for lyr in arcpy.mapping.ListLayers(newmxd):
+        for lyr in arcpy.mapping.ListLayers(mxd):
             if lyr.isFeatureLayer:
                 print lyr.name
                 print lyr.datasetName
-                print lyr.dataSource
-                print lyr.isFeatureLayer
-                arcpy.FeatureClassToFeatureClass_conversion(
-                    lyr,                # in_features
-                    indb,               # out_path
-                    lyr.datasetName     # datasetName
-                )
-                # lyr.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated_new.lyr")
-
-        # df = arcpy.mapping.ListDataFrames(mxd)[0]
-        # layers = arcpy.mapping.ListLayers(df)
-        # main_layer = layers[0]
-        # glayers = arcpy.mapping.ListLayers(main_layer)
-        # for scanLayer in glayers:
-        #     if scanLayer.isFeatureLayer:
-        #         print scanLayer.name
-        #         print scanLayer.datasetName
-        #         print scanLayer.dataSource
-        #         print scanLayer.isFeatureLayer
-        #         arcpy.FeatureClassToFeatureClass_conversion(
-        #             scanLayer,                # in_features
-        #             indb,               # out_path
-        #             scanLayer.datasetName     # datasetName
-        #         )
+                self.import2db(lyr)
 
 
 if __name__ == '__main__':
