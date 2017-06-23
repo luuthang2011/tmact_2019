@@ -1,28 +1,3 @@
-import arcpy
-
-
-class updateDataSource:
-    def __init__(self, inMXD):
-        global mxd
-        mxd = mxd = arcpy.mapping.MapDocument(inMXD)
-
-    def execute(self, inGDB, outSDE):
-        mxd.replaceWorkspaces (inGDB, "FILEGDB_WORKSPACE", outSDE, "SDE_WORKSPACE")
-        print 'update source completed'
-        return mxd
-
-
-if __name__ == '__main__':
-    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated.mxd")
-    result = unitest.execute(
-        r"E:\SourceCode\tmact_2019\data\gdb\gdb\ks.gdb",
-        r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde"
-    )
-
-    result.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\FC_Magma_Bd132_final_local.mxd")
-    print "done"
-
-
 # findAndReplaceWorkspacePaths (find_workspace_path, replace_workspace_path, {validate})
 # Parameter	Explanation	Data Type
 # find_workspace_path
@@ -39,3 +14,33 @@ if __name__ == '__main__':
 # (The default value is True)
 #
 # Boolean
+
+import arcpy
+
+
+class updateDataSource:
+    def __init__(self, inMXD):
+        global mxd
+        mxd = mxd = arcpy.mapping.MapDocument(inMXD)
+
+    def execute(self, inGDB, outSDE):
+        mxd.replaceWorkspaces (inGDB, "ACCESS_WORKSPACE", outSDE, "SDE_WORKSPACE")
+        print 'update source completed'
+        return mxd
+
+    def mdb2sde(self, outSDE):
+        mxd.replaceWorkspaces ("", "", outSDE, "SDE_WORKSPACE", False)
+        print 'update source completed'
+        return mxd
+
+
+if __name__ == '__main__':
+    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated.mxd")
+    # result = unitest.execute(
+    #     r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132.mdb",
+    #     r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde"
+    # )
+
+    result = unitest.mdb2sde(r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde")
+    result.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated_new.mxd")
+    print "done"

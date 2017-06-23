@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/tmact_2019.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tmact_2019.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/feature2geodatabase.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/feature2geodatabase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/updateDataSource.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/updateDataSource.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.feature2geodatabase">
+  <component name="RunManager" selected="Python.tmact">
     <configuration name="SQLServer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,27 +171,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tmact_2019" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="E:\SourceCode\tmact_2019\Libs\main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="postgre_server" type="PythonConfigurationType" factoryName="Python">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,6 +184,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="E:\SourceCode\tmact_2019\Libs\PostgresServer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tmact" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tmact_2019" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Libs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Libs/tmact.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -239,17 +239,17 @@
       <item itemvalue="Python.postgre_server" />
       <item itemvalue="Python.delete" />
       <item itemvalue="Python.feature2geodatabase" />
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.updateDataSource" />
       <item itemvalue="Python.feature-class-to-geodatabase" />
+      <item itemvalue="Python.tmact" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.tmact" />
+        <item itemvalue="Python.updateDataSource" />
         <item itemvalue="Python.feature2geodatabase" />
         <item itemvalue="Python.feature-class-to-geodatabase" />
-        <item itemvalue="Python.updateDataSource" />
         <item itemvalue="Python.delete" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -407,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571749541614</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="release feature2geodatabase">
+      <created>1498188068105</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1498188068105</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -473,6 +480,7 @@
     <MESSAGE value="fix import db by datasource" />
     <MESSAGE value="change servername format + add params for delete" />
     <MESSAGE value="bak" />
-    <option name="LAST_COMMIT_MESSAGE" value="bak" />
+    <MESSAGE value="release feature2geodatabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="release feature2geodatabase" />
   </component>
 </project>
