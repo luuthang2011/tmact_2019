@@ -3,6 +3,7 @@
 import pika, os, logging
 # import re
 import constant
+import json
 
 logging.basicConfig()
 
@@ -68,6 +69,7 @@ class Rabbit:
     def modify_array_pg(self, pg_columns, pg_rows, ms_table, service, layerid, user, action):
         print 'Modify array'
         arr_modify = []
+        arr_str = '['
         indexOfObjectID = pg_columns.index("objectid")
         print 'Start build str for Rabbit'
         for arr in pg_rows:
@@ -95,13 +97,19 @@ class Rabbit:
                 tupleObject['CreatedBy'] = user
                 tupleObject['UpdatedBy'] = user
                 tmp['data'] = tupleObject
-
-                print tmp
+                # print tmp
+                arr_str += json.dumps(tmp).decode('utf-8') + ","
             arr_modify.append(tmp)
+        if action == 'CREATE':
+            arr_str = arr_str[:-1]
+            arr_str += "]"
+            print "arr_str: ", arr_str
+            return arr_str
         # Array to string
         strArr = """%s""" % arr_modify
         # Replace single quote to double quote
-        newStrArr = strArr.replace("'", '"').replace('\\', "/")
+        # newStrArr = strArr.replace("'", '"').replace('\\', "/")
+        newStrArr = strArr.replace("'", '"')
 
         # print newStrArr
         #
@@ -111,13 +119,6 @@ class Rabbit:
         #     self.delete_json('''%s''' % newStrArr)
 
         return newStrArr
-
-    # def convert_case(self, case):
-    #     for c in constant.MATCHING_CASE:
-    #
-
-    # def __del__(self):
-    #     self.connection.close()
 
 #
 # if __name__ == '__main__':

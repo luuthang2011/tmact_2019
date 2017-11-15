@@ -64,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.flowProcess">
+  <component name="RunManager" selected="Python.tmact">
     <configuration name="PostgresServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -223,9 +223,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.flowProcess" />
         <item itemvalue="Python.tmact" />
         <item itemvalue="Python.tmact_delete (1)" />
+        <item itemvalue="Python.flowProcess" />
         <item itemvalue="Python.PostgresServer" />
         <item itemvalue="Python.delete" />
       </list>
