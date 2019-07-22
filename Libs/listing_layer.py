@@ -17,9 +17,11 @@ class listing_layer:
         # print main_layer.name
 
         glayers = arcpy.mapping.ListLayers(main_layer)
-        for gl in glayers:
-            if not gl.isGroupLayer:
-                print gl.name + " " + gl.dataSource
+        # for gl in glayers:
+        #     if not gl.isGroupLayer:
+        #         print gl.name + " " + gl.dataSource
+
+        return glayers
 
         # for l in layers:
         #     if l.isGroupLayer:
