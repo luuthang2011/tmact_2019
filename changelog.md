@@ -19,3 +19,15 @@
 
 #### change
 - change data source in example data
+
+### 2019-07-22-version0.2
+#### add
+- add libs
+    - updateDataSource
+        - switch from one workspace type to another
+    - setDataSource
+        - don't use: Requires Defense Mapping
+
+#### remove
+
+#### change

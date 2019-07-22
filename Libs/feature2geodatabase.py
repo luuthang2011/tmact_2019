@@ -30,6 +30,10 @@ class layer2DB:
                     gl,
                     indb
                 )
+                self.setDataSource(gl)
+
+    def setDataSource (self, gl):
+        print gl.name + " " + gl.dataSource
 
 
 if __name__ == '__main__':
