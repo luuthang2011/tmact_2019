@@ -61,3 +61,8 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 - Libs/feature2geodatabase.py
 - Libs/updateDataSource.py
 - Libs/publish_mapService_from_mapDocument.py
+#### publish
+- test
+    - server mamager
+    - System/PublishingTools service
+    - upload sd file

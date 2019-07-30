@@ -19,11 +19,11 @@ class publish_mapService_from_mapDocument:
 
     def execute(self):
         # Provide other service details
-        service = in_mxd
+        service = "demo_ahihi"
         sddraft = wrkspc + "\\service\\" + service + '.sddraft'
         sd = wrkspc + "\\service\\" + service + '.sd'
         summary = 'General reference map of the ' + in_mxd
-        tags = in_mxd
+        tags = "demo_ahihi"
 
         # Create service definition draft
         arcpy.mapping.CreateMapSDDraft(mapDoc, sddraft, service, 'ARCGIS_SERVER', con, True, None, summary, tags)
@@ -49,7 +49,7 @@ class publish_mapService_from_mapDocument:
             arcpy.StageService_server(sddraft, sd)
 
             # Execute UploadServiceDefinition. This uploads the service definition and publishes the service.
-            # arcpy.UploadServiceDefinition_server(sd, con)
+            arcpy.UploadServiceDefinition_server(sd, con)
             print "Service successfully published"
         else:
             print "Service could not be published because errors were found during analysis."

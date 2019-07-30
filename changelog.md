@@ -50,3 +50,20 @@
 #### release
 - 2019-07-30: single test with dia_tang: all passed
 - release version 0.2
+
+#### bug
+- bug #001: can not publish service: 
+
+`ERROR 001369: Failed to create the service. Failed to execute (Publish Service Definition).ERROR: the server's publishing job didn't succeed. Failed to execute (UploadServiceDefinition)`
+
+### 2019-07-30-version0.3
+#### add
+- fix: #001
+
+#### remove
+
+#### change
+- publish_mapService_from_mapDocument: 
+    - set static "service" name
+    
+`The name can only contain alphanumeric characters and underscores. No spaces or special characters are allowed. The name cannot be more than 120 characters in length.`
