@@ -7,22 +7,23 @@ import arcpy
 class publish_mapService_from_mapDocument:
     # Define local variables
     def __init__(self, in_pool, in_data, in_connect):
-        global wrkspc, mapDoc, con
+        global wrkspc, mapDoc, con, in_mxd
+        in_mxd = in_data
         wrkspc = in_pool
-        mapDoc = in_data
+        mapDoc = in_pool + "\\gdb\\" + in_data
 
         # Provide path to connection file
         # To create this file, right-click a folder in the Catalog window and
         #  click New > ArcGIS Server Connection
-        con = wrkspc + in_connect
+        con = wrkspc + "\\connect_information\\" + in_connect
 
     def execute(self):
         # Provide other service details
-        service = 'USA'
-        sddraft = wrkspc + service + '.sddraft'
-        sd = wrkspc + service + '.sd'
-        summary = 'General reference map of the USA'
-        tags = 'USA'
+        service = in_mxd
+        sddraft = wrkspc + "\\service\\" + service + '.sddraft'
+        sd = wrkspc + "\\service\\" + service + '.sd'
+        summary = 'General reference map of the ' + in_mxd
+        tags = in_mxd
 
         # Create service definition draft
         arcpy.mapping.CreateMapSDDraft(mapDoc, sddraft, service, 'ARCGIS_SERVER', con, True, None, summary, tags)
@@ -48,7 +49,7 @@ class publish_mapService_from_mapDocument:
             arcpy.StageService_server(sddraft, sd)
 
             # Execute UploadServiceDefinition. This uploads the service definition and publishes the service.
-            arcpy.UploadServiceDefinition_server(sd, con)
+            # arcpy.UploadServiceDefinition_server(sd, con)
             print "Service successfully published"
         else:
             print "Service could not be published because errors were found during analysis."
@@ -57,4 +58,10 @@ class publish_mapService_from_mapDocument:
 
 
 if __name__ == '__main__':
-    print "run"
+    # print "run"
+    unitest = publish_mapService_from_mapDocument(
+        r"E:\SourceCode\tmact_2019\data",
+        r"dia_tang_sde.mxd",
+        r"ArcgisPublishServer.ags"
+    )
+    unitest.execute()

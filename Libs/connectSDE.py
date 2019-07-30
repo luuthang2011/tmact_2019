@@ -3,15 +3,16 @@ import os, arcpy
 
 class ConnectDatabase:
     def __init__(self, pool_input):
-        self.out_folder_path = pool_input
+        global out_folder_path
+        out_folder_path = pool_input
 
     def create(self, database):
         # fix file exits
         out_name = database + "_connection.sde"
+        conneting = out_folder_path + '\\' + out_name
+        print conneting
 
-        self.conneting = self.out_folder_path + '\\' + out_name
-        print self.conneting
-        if os.path.exists(self.conneting):
+        if os.path.exists(conneting):
             # print "SDE Connection file already exists, delete it"
             # os.remove(self.conneting)
             print "SDE Connection file already exists, If it is changer, please contact system admin"
@@ -25,7 +26,8 @@ class ConnectDatabase:
             # out_name = "whCode.sde"
             database_platform = "POSTGRESQL"
             # instance = "192.168.0.168,5432"
-            instance = "10.101.3.204,5432"
+            # check instance by manual publish with Arcmap
+            instance = "10.101.3.204"
             account_authentication = "DATABASE_AUTH"
             username = "sde"
             password = "1"
@@ -38,7 +40,7 @@ class ConnectDatabase:
             # execute function
             try:
                 arcpy.CreateDatabaseConnection_management(
-                    self.out_folder_path,
+                    out_folder_path,
                     out_name,
                     database_platform,
                     instance,
@@ -46,10 +48,7 @@ class ConnectDatabase:
                     username,
                     password,
                     save_user_pass,
-                    database,
-                    schema,
-                    version_type,
-                    version)
+                    database)
                 return True
             except arcpy.ExecuteError, ex:
                 print "An error occurred in creating SDE Connection file: " + ex[0]

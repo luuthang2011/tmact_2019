@@ -50,3 +50,14 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
     - Đổi link source db
         - Libs/updateDataSource.py
 - publish
+
+
+### run code
+#### prepare
+- Libs/connectSDE.py
+    - make register database with Arcmap 
+- Libs/createGISServerConnectionFile.py
+#### execute
+- Libs/feature2geodatabase.py
+- Libs/updateDataSource.py
+- Libs/publish_mapService_from_mapDocument.py

@@ -27,7 +27,26 @@
         - switch from one workspace type to another
     - setDataSource
         - don't use: Requires Defense Mapping
+    - publish_mapService_from_mapDocument.py
+        - connect and publish default service
+        - must install certificate
+        - url: machine name (vd:server_url)
+    - createGISServerConnectionFile.py
+        - no class, no function
+        
+- gitignore
+    - *.ags
+    - *.sddraft
+    - *.sd
 
 #### remove
 
 #### change
+- Libs\publish_mapService_from_mapDocument.py
+    - execute function with new folder structure
+- Libs/connectSDE.py
+    - change instance parameter
+
+#### release
+- 2019-07-30: single test with dia_tang: all passed
+- release version 0.2
