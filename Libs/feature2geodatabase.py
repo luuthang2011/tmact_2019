@@ -26,7 +26,7 @@ class layer2DB:
         glayers = unitest.listGroupLayer()
         for gl in glayers:
             if gl.isFeatureLayer:
-                print gl.name + " " + gl.dataSource
+                print 'Name: ' + gl.name + ", Data Source: " + gl.dataSource
                 self.import2db(
                     gl,
                     indb

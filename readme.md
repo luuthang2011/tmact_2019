@@ -71,4 +71,6 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 ### Install Libs
 #### Windows
 - Visual C++: `https://www.microsoft.com/en-us/download/details.aspx?id=44266`
-- Open CMD: `python -m pip install pyodbc`
+#### Libs
+- Pyodbc: `python -m pip install pyodbc`
+- psycopg2: `python -m pip install psycopg2`

@@ -29,6 +29,8 @@ class SQLServer:
         self.execute(insert_script)
         self.connection.commit()
 
+    # def bulk_insert(self, table, fields, va):
+
 
 # Test Insert
 if __name__ == '__main__':
