@@ -1,0 +1,5 @@
+DRIVER_SQL = '{SQL Server Native Client 11.0};'
+SERVER_SQL = '113.190.253.193,1433\\AZETSRV;'
+DATABASE_SQL = 'CSDLTayBac;'
+USER_SQL = 'taybac;'
+PASSWORD_SQL = 'techvify@123;'

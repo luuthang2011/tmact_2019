@@ -2,6 +2,7 @@ import arcpy, sys
 
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 import listing_layer
+# import file
 
 
 class layer2DB:
@@ -30,6 +31,14 @@ class layer2DB:
                     gl,
                     indb
                 )
+
+                # import data to db for CMS
+                    # code file import db cho tung table
+                    # call
+
+
+                # end import data to db for CMS
+
                 self.setDataSource(gl)
 
     def setDataSource (self, gl):
