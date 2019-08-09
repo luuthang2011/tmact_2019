@@ -38,6 +38,11 @@ class DB:
         self.execute(insert_script)
         self.connection.commit()
 
+    def update_value_null(self, table, field, value):
+        scritp = '''UPDATE %s SET %s = '%s' WHERE %s IS NULL''' % (table, field, value, field)
+        print scritp
+        self.execute(scritp)
+        self.connection.commit()
 
 # Test Insert
 if __name__ == '__main__':
