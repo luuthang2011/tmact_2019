@@ -3,6 +3,12 @@ import arcpy, sys
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 import listing_layer
 # import file
+import SQLServer
+import PostgresServer
+
+
+pgServer = PostgresServer.DB('')
+msServer = SQLServer.DB('')
 
 
 class layer2DB:
@@ -33,9 +39,21 @@ class layer2DB:
                 )
 
                 # import data to db for CMS
-                    # code file import db cho tung table
-                    # call
 
+                # Lower table name
+                table = gl.name.lower()
+                # Get Columns form PostgreSQL
+                columns = pgServer.select_schema(table)
+                # Builder Query for PostgreSQL
+                pq_query = pgServer.query_builder(columns, table)
+                # Select Data with pg_query
+                pg_rows = pgServer.select(pq_query)
+                # Validate null data
+                pg_results = pgServer.validate_data(pg_rows)
+                # MS SQL table name
+                ms_table = 'CSDLTayBac.dbo.Tbl_fc_magma'
+                # Insert Multiple database to MS SQL
+                msServer.multiple_insert(ms_table, columns, pg_results)
 
                 # end import data to db for CMS
 

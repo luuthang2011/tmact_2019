@@ -4,9 +4,9 @@ import pyodbc
 import constant
 
 
-class SQLServer:
+class DB:
     def __init__(self, database):
-        self.database = database
+        self.database = constant.DATABASE_SQL
         self.connection = \
             pyodbc.connect(r'''Driver=%s;
                                Server=%s;
@@ -20,29 +20,36 @@ class SQLServer:
     def execute(self, query):
         self.cursor.execute(query)
 
-    def insert(self, table, fields, values):
-        f = ', '.join(map(str, fields))
+    def insert(self, table, columns, values):
+        f = ', '.join(map(str, columns))
         v = str(values).strip('[]')
 
         insert_script = r'''INSERT INTO %s ( %s ) VALUES ( %s )''' % (table, f, v)
-        print insert_script
+        # print insert_script
         self.execute(insert_script)
         self.connection.commit()
 
-    # def bulk_insert(self, table, fields, va):
+    def multiple_insert(self, table, fields, values):
+        f = ', '.join(map(str, fields))
+        v = str(values).strip('[]')
+
+        insert_script = r'''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, v)
+        # print insert_script
+        self.execute(insert_script)
+        self.connection.commit()
 
 
 # Test Insert
 if __name__ == '__main__':
-    db = SQLServer(r'CSDLTayBac')
+    db = DB(r'CSDLTayBac')
     # query = 'SELECT * FROM CSDLTayBac.dbo.Tbl_DVTC'
     # db.execute(query)
     # db.execute(INSERT_SCRIPT)
     table = 'CSDLTayBac.dbo.Tbl_FC_Magma'
-    fields = ["ID_Magma", "TenPhucHe", "TuoiDC", "Gioi", "He", "Thong",
+    columns = ["ID_Magma", "TenPhucHe", "TuoiDC", "Gioi", "He", "Thong",
               "Lop", "ThanhPhanTH", "NhomToBD", "TenTo", "ID_DanhPhap", "ID_TyLe", "KHLT", "ChuBien", "NamNopLT",
               "LayerName", "LayerID", "ObjectID"]
     values = [2, 'TenPhucHe', 'TuoiDC', 'Gioi', 'He', 'Thong',
               'Lop', 'ThanhPhanTH', 'NhomToBD',
               'TenTo', 'ID_DanhPhap', 'ID_TyLe', 'KHLT', 'ChuBien', 'NamNopLT', 'LayerName', 114, 15]
-    db.insert(table, fields, values)
+    db.insert(table, columns, values)
