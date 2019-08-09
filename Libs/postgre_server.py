@@ -1,5 +1,6 @@
 import psycopg2
 import constant
+import itertools
 
 
 # con = psycopg2.connect(
@@ -30,23 +31,51 @@ class PostgresServer:
         # print results
 
     def select(self, query):
-        # query = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
-        self.execute(query)
+        # q = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
+        # q = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
+        # self.cursor.execute(q)
+        self.cursor.execute(query)
         rows = self.cursor.fetchall()
         print rows
-        for row in rows:
-            print "   ", row
+        # for row in rows:
+        #     print "   ", row
 
     def select_schema(self, table):
         query = """SELECT column_name from information_schema.columns where table_name='%s'""" % table
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
-        print rows
-        return rows
+
+        # Convert tuple to array
+        lists = list(itertools.chain.from_iterable(rows))
+
+        # Get subset or list
+        subset_of_list = {'shape', 'id'}
+        result = [l for l in lists if l not in subset_of_list]
+        print lists
+        print result
+        return result
+
+    def query_builder(self, columns):
+        columns_strip = str(columns).strip('[]')
+        columns_replace = columns_strip.replace("'", "").replace('"', '')
+        # query = r'''SELECT %s FROM sde.%s LIMIT 10''' % (columns_replace, table)
+        query = r'''SELECT %s FROM sde.%s''' % (columns_replace, table)
+
+        return query
 
 
 # Test Insert
 if __name__ == '__main__':
     db = PostgresServer(r'ks')
-    table = 'f_48_66_a_tt_dt_region'
-    db.select_schema(table)
+    # table = 'f_48_66_a_tt_dt_region'
+    table = 'fc_magma'
+    columns = db.select_schema(table)
+    # print columns
+    # columns_strip = str(columns).strip('[]')
+    # columns_replace = columns_strip.replace("'", "").replace('"', '')
+    # query = r'''SELECT %s FROM sde.%s LIMIT 10''' % (columns_replace, table)
+    # query = r'''SELECT objectid, id, tenphuche, tuoidc, gioi, he, thong, lop, thanhphanth, nhomtobd FROM sde.%s LIMIT 10''' % table
+
+    query = db.query_builder(columns)
+    print query
+    db.select(query)
