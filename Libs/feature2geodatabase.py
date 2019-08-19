@@ -2,11 +2,6 @@ import arcpy
 
 # sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 import listing_layer
-import SQLServer
-import PostgresServer
-
-pgServer = PostgresServer.DB('')
-msServer = SQLServer.DB('')
 
 
 class layer2DB:
@@ -61,28 +56,10 @@ class layer2DB:
         for gl in glayers:
             if gl.isFeatureLayer:
                 try:
-                    # Lower table name
-                    table = gl.name.lower()
-                    # Get Columns form PostgreSQL
-                    columns = pgServer.select_schema(table)
-                    # Builder Query for PostgreSQL
-                    pq_query = pgServer.query_builder(columns, table)
-                    # Select Data with pg_query
-                    pg_rows = pgServer.select(pq_query)
-                    # Validate null data
-                    pg_results = pgServer.validate_data(pg_rows)
-                    # MS SQL table name
-                    # ms_table = 'CSDLTayBac.dbo.Tbl_fc_magma'
-                    ms_table = objectType
-                    # Insert Multiple database to MS SQL
-                    msServer.multiple_insert(ms_table, columns, pg_results)
-                    # Add layername and layerid column | ten service khi publish
-                    msServer.update_value_null(ms_table, 'layername', 'layer_name_them_o_day')
-                    # value = 'layer_id_them_o_day' | id cua layer
-                    msServer.update_value_null(ms_table, 'layerid', 'layer_id_them_o_day')
+                    # Flow process ???
+                    print 'Start Flow Process???'
 
                     # end import data to db for CMS
-
                 except:
                     print("Something went wrong when import data to CSM's database")
 
