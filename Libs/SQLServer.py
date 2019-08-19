@@ -6,6 +6,7 @@ import constant
 
 class DB:
     def __init__(self, database):
+        print 'Start connect SQL Server'
         self.database = constant.DATABASE_SQL
         self.connection = \
             pyodbc.connect(r'''Driver=%s;
@@ -16,6 +17,7 @@ class DB:
                                ''' % (constant.DRIVER_SQL, constant.SERVER_SQL,
                                       self.database, constant.USER_SQL, constant.PASSWORD_SQL))
         self.cursor = self.connection.cursor()
+        print 'Connected success!'
 
     def execute(self, query):
         self.cursor.execute(query)
@@ -39,10 +41,12 @@ class DB:
         self.connection.commit()
 
     def update_value_null(self, table, field, value):
+        print 'Update layerName and layerID'
         scritp = '''UPDATE %s SET %s = '%s' WHERE %s IS NULL''' % (table, field, value, field)
         print scritp
         self.execute(scritp)
         self.connection.commit()
+
 
 # Test Insert
 if __name__ == '__main__':
@@ -51,10 +55,11 @@ if __name__ == '__main__':
     # db.execute(query)
     # db.execute(INSERT_SCRIPT)
     table = 'CSDLTayBac.dbo.Tbl_FC_Magma'
-    columns = ["ID_Magma", "TenPhucHe", "TuoiDC", "Gioi", "He", "Thong",
-              "Lop", "ThanhPhanTH", "NhomToBD", "TenTo", "ID_DanhPhap", "ID_TyLe", "KHLT", "ChuBien", "NamNopLT",
-              "LayerName", "LayerID", "ObjectID"]
+    columns = ["ObjectID", "TenPhucHe", "TuoiDC", "Gioi", "He", "Thong",
+               "Lop", "ThanhPhanTH", "NhomToBD", "TenTo", "ID_DanhPhap",
+               "ID_TyLe", "KHLT", "ChuBien", "NamNopLT"]
+
     values = [2, 'TenPhucHe', 'TuoiDC', 'Gioi', 'He', 'Thong',
-              'Lop', 'ThanhPhanTH', 'NhomToBD',
-              'TenTo', 'ID_DanhPhap', 'ID_TyLe', 'KHLT', 'ChuBien', 'NamNopLT', 'LayerName', 114, 15]
+              'Lop', 'ThanhPhanTH', 'NhomToBD', 'TenTo', 'ID_DanhPhap',
+              'ID_TyLe', 'KHLT', 'ChuBien', 'NamNopLT']
     db.insert(table, columns, values)
