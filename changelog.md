@@ -67,3 +67,17 @@
     - set static "service" name
     
 `The name can only contain alphanumeric characters and underscores. No spaces or special characters are allowed. The name cannot be more than 120 characters in length.`
+
+
+### 2019-08-14-version0.4
+#### add
+- main 
+
+#### remove
+- Libs/feature2geodatabase.py
+    - remove try catch without mssql
+
+#### change
+- Libs/feature2geodatabase.py
+    - init(objectType)
+
