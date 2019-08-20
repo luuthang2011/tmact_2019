@@ -8,14 +8,15 @@ class updateDataSource:
 
     def execute(self, inGDB, outSDE):
         mxd.replaceWorkspaces (inGDB, "FILEGDB_WORKSPACE", outSDE, "SDE_WORKSPACE")
+        print 'update source completed'
         return mxd
 
 
 if __name__ == '__main__':
-    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\gdb\dia_tang_gdb.mxd")
+    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\gdb\gdb\dia_tang_gdb.mxd")
     result = unitest.execute(
-        r"E:\SourceCode\tmact_2019\data\gdb\ks.gdb",
+        r"E:\SourceCode\tmact_2019\data\gdb\gdb\ks.gdb",
         r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde"
     )
-    result.saveACopy(r"E:\SourceCode\tmact_2019\data\gdb\dia_tang_sde.mxd")
+    result.saveACopy(r"E:\SourceCode\tmact_2019\data\gdb\gdb\sde_dia_tang_gdb.mxd")
     print "done"

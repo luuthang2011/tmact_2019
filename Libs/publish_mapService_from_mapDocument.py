@@ -6,24 +6,25 @@ import arcpy
 
 class publish_mapService_from_mapDocument:
     # Define local variables
-    def __init__(self, in_pool, in_data, in_connect):
-        global wrkspc, mapDoc, con, in_mxd
-        in_mxd = in_data
+    def __init__(self, in_pool, in_data, in_connect, sv):
+        global wrkspc, mapDoc, con, service
+        # in_mxd = in_data
         wrkspc = in_pool
-        mapDoc = in_pool + "\\gdb\\" + in_data
+        mapDoc = in_data
+        service = sv
 
         # Provide path to connection file
         # To create this file, right-click a folder in the Catalog window and
         #  click New > ArcGIS Server Connection
-        con = wrkspc + "\\connect_information\\" + in_connect
+        con = in_connect
 
     def execute(self):
         # Provide other service details
-        service = "demo_ahihi"
-        sddraft = wrkspc + "\\service\\" + service + '.sddraft'
-        sd = wrkspc + "\\service\\" + service + '.sd'
-        summary = 'General reference map of the ' + in_mxd
-        tags = "demo_ahihi"
+        # service = "demo_ahihi"
+        sddraft = wrkspc + "\\" + service + '.sddraft'
+        sd = wrkspc + "\\" + service + '.sd'
+        summary = 'General reference map of the ' + mapDoc
+        tags = "created by TMACT"
 
         # Create service definition draft
         arcpy.mapping.CreateMapSDDraft(mapDoc, sddraft, service, 'ARCGIS_SERVER', con, True, None, summary, tags)
@@ -59,9 +60,11 @@ class publish_mapService_from_mapDocument:
 
 if __name__ == '__main__':
     # print "run"
+    service = "ahihi"
     unitest = publish_mapService_from_mapDocument(
-        r"E:\SourceCode\tmact_2019\data",
-        r"dia_tang_sde.mxd",
-        r"ArcgisPublishServer.ags"
+        r"E:\SourceCode\tmact_2019\data\gdb\gdb",
+        r"E:\SourceCode\tmact_2019\data\gdb\gdb\sde_dia_tang_gdb.mxd",
+        r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags",
+        service
     )
     unitest.execute()

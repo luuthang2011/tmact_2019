@@ -52,25 +52,25 @@ class layer2DB:
                     indb
                 )
 
-        # import data to db for CMS after import2db all completed
-        for gl in glayers:
-            if gl.isFeatureLayer:
-                try:
-                    # Flow process ???
-                    print 'Start Flow Process???'
-
-                    # end import data to db for CMS
-                except:
-                    print("Something went wrong when import data to CSM's database")
-
-                # self.setDataSource(gl)
+        # # import data to db for CMS after import2db all completed
+        # for gl in glayers:
+        #     if gl.isFeatureLayer:
+        #         try:
+        #             # Flow process ???
+        #             print 'Start Flow Process???'
+        #
+        #             # end import data to db for CMS
+        #         except:
+        #             print("Something went wrong when import data to CSM's database")
+        #
+        #         # self.setDataSource(gl)
 
     def setDataSource(self, gl):
         print gl.name + " " + gl.dataSource
 
 
 if __name__ == '__main__':
-    objectType = 'CSDLTayBac.dbo.Tbl_fc_magma'
+    # objectType = 'CSDLTayBac.dbo.Tbl_fc_magma'
     # dataName = 'dia_tang'
     data = r"E:\SourceCode\tmact_2019\data\gdb\dia_tang_gdb.mxd"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
