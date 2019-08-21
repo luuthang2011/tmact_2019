@@ -5,30 +5,31 @@ import listing_layer
 
 
 class layer2DB:
-    def __init__(self, o):
-        global objectType, dataName
+    def __init__(self):
+        # global objectType, dataName
         # objectType: loai doi tuong ban do = mssql table name
         # dataName: mxd file name
-        objectType = o
+        # objectType = o
         # dataName = d
-        # print "inited"
+        print "inited"
 
     def import2db(self, lyr, db):
         # arcpy.FeatureClassToGeodatabase_conversion(lyr, db)
         # The name contains must not invalid characters (cd: -)
-        # try:
-        #     arcpy.FeatureClassToFeatureClass_conversion(
-        #         lyr,  # in_features
-        #         db,  # out_path
-        #         lyr.name  # out_name
-        #     )
-        # except arcpy.ExecuteError, ex:
-        #     print "An error occurred in creating SDE Connection file: " + ex[0]
-        arcpy.FeatureClassToFeatureClass_conversion(
-            lyr,  # in_features
-            db,  # out_path
-            lyr.name  # out_name
-        )
+        try:
+            arcpy.FeatureClassToFeatureClass_conversion(
+                lyr,  # in_features
+                db,  # out_path
+                lyr.name  # out_name
+            )
+        except arcpy.ExecuteError, ex:
+            print "An error occurred in creating SDE Connection file: " + ex[0]
+            exit()
+        # arcpy.FeatureClassToFeatureClass_conversion(
+        #     lyr,  # in_features
+        #     db,  # out_path
+        #     lyr.name  # out_name
+        # )
 
     def execute(self, indata, indb):
         unitest = listing_layer.listing_layer(indata)
@@ -70,8 +71,8 @@ class layer2DB:
 
 
 if __name__ == '__main__':
-    # objectType = 'CSDLTayBac.dbo.Tbl_fc_magma'
+    # objectType = 'dbo.Tbl_fc_magma'
     # dataName = 'dia_tang'
-    data = r"E:\SourceCode\tmact_2019\data\gdb\dia_tang_gdb.mxd"
+    data = r"E:\SourceCode\tmact_2019\data\gdb\chanqua\dia_tang_gdb.mxd"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
-    layer2DB(objectType).execute(data, db)
+    layer2DB().execute(data, db)

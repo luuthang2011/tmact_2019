@@ -1,10 +1,14 @@
+# encoding=utf8
 import sys, os
-cwd = os.getcwd()
-sys.path.append(cwd + r'\Libs')
+sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 import feature2geodatabase
 import updateDataSource
 import publish_mapService_from_mapDocument
+import listing_layer
+import flowProcess
 
 class Ks:
     def __init__(self, db, o, staticAgs):
@@ -42,7 +46,7 @@ class Ks:
         # - import sde to mssql
         # output:
         # - data in sde + mssql
-        feature2db = feature2geodatabase.layer2DB(objectType)
+        feature2db = feature2geodatabase.layer2DB()
         feature2db.execute(mxd_print, sde)
 
         # update layer source from gdb to sde: Libs/updateDataSource.py
@@ -55,14 +59,32 @@ class Ks:
 
         # publish service to map server
         # rewritable: true
+        serviceName = objectType + '_sde_' + mxd[:-4]
+        print 'serviceName:' + serviceName
         publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
             folder,
             newmxd,
             ags,
-            objectType + '_sde_' + mxd[:-4]
+            serviceName
             # "ahihi"
         )
         publisher.execute()
+
+        # insert db to MS SQL
+        # listing layer from sde mxd file
+        listLayer = listing_layer.listing_layer(newmxd)
+        glayers = listLayer.listGroupLayer()
+        # check isFeatureLayer and insert
+        FL = flowProcess.FlowProcess()
+
+        for i in range(len(glayers)):
+            if glayers[i].isFeatureLayer:
+                print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
+                print glayers[i].dataSource.split('.')[-1]
+                print objectType
+                print serviceName
+                print i
+                # FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i)
 
 
 if __name__ == '__main__':
@@ -74,9 +96,9 @@ if __name__ == '__main__':
     print 'Argument List:', str(sys.argv)
 
     # objectType = 'Tbl_fc_magma'
-    objectType = sys.argv[0]
-    # folder = r'E:\SourceCode\tmact_2019\data\gdb\gdb'
-    folder = sys.argv[1]
+    objectType = sys.argv[1]
+    # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    folder = sys.argv[2]
 
     unitest = Ks(db, objectType, staticAgs)
     unitest.execute(folder)

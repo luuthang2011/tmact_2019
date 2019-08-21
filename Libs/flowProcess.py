@@ -32,9 +32,9 @@ class FlowProcess:
 if __name__ == '__main__':
     print 'Flow Processing...'
     FL = FlowProcess()
-    pg_table = 'f_48_94_c_chu_dt_region'
-    ms_table = 'CSDLTayBac.dbo.Tbl_fc_magma'
-    layername = 'gia_tri_cua_layer_name'
-    layerid = 'gia_tri_cua_layer_id'
+    pg_table = 'phuonghx_magma3'
+    ms_table = 'Tbl_fc_magma'
+    layername = 'fc_magma_1'
+    layerid = 4
 
     FL.excec(pg_table, ms_table, layername, layerid)

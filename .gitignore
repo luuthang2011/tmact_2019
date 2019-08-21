@@ -110,3 +110,5 @@ venv.bak/
 *.sddraft
 data/gdb/
 data/gdb_/
+.data/gdb/
+.data/gdb_/
