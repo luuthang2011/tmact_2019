@@ -9,6 +9,7 @@ import updateDataSource
 import publish_mapService_from_mapDocument
 import listing_layer
 import flowProcess
+import delete
 
 class Ks:
     def __init__(self, db, o, staticAgs):
@@ -68,23 +69,28 @@ class Ks:
             serviceName
             # "ahihi"
         )
-        publisher.execute()
+        iscompleted = publisher.execute()
 
         # insert db to MS SQL
         # listing layer from sde mxd file
         listLayer = listing_layer.listing_layer(newmxd)
         glayers = listLayer.listGroupLayer()
-        # check isFeatureLayer and insert
-        FL = flowProcess.FlowProcess()
 
-        for i in range(len(glayers)):
-            if glayers[i].isFeatureLayer:
-                print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
-                print glayers[i].dataSource.split('.')[-1]
-                print objectType
-                print serviceName
-                print i
-                # FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i)
+        if iscompleted:
+            # check isFeatureLayer and insert
+            FL = flowProcess.FlowProcess()
+
+            for i in range(len(glayers)):
+                if glayers[i].isFeatureLayer:
+                    print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
+                    print glayers[i].dataSource.split('.')[-1]
+                    print objectType
+                    print serviceName
+                    print i
+                    # FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i)
+        else:
+            deleter = delete.Delete()
+            deleter.deleteDB(newmxd)
 
 
 if __name__ == '__main__':
@@ -95,10 +101,10 @@ if __name__ == '__main__':
     # folder
     print 'Argument List:', str(sys.argv)
 
-    # objectType = 'Tbl_fc_magma'
-    objectType = sys.argv[1]
-    # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
-    folder = sys.argv[2]
+    objectType = 'Tbl_fc_magma'
+    # objectType = sys.argv[1]
+    folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    # folder = sys.argv[2]
 
     unitest = Ks(db, objectType, staticAgs)
     unitest.execute(folder)

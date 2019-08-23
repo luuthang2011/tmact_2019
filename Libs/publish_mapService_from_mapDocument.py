@@ -50,12 +50,17 @@ class publish_mapService_from_mapDocument:
             arcpy.StageService_server(sddraft, sd)
 
             # Execute UploadServiceDefinition. This uploads the service definition and publishes the service.
-            arcpy.UploadServiceDefinition_server(sd, con)
-            print "Service successfully published"
+            try:
+                arcpy.UploadServiceDefinition_server(sd, con)
+                print "Service successfully published"
+                return True
+            except Exception, e:
+                print e.message
+                return False
         else:
             print "Service could not be published because errors were found during analysis."
-
-        print arcpy.GetMessages()
+            print arcpy.GetMessages()
+            return False
 
 
 if __name__ == '__main__':

@@ -1,12 +1,12 @@
 import SQLServer
 import PostgresServer
 
-pgServer = PostgresServer.DB('')
-msServer = SQLServer.DB('')
-
 
 class FlowProcess:
     def __init__(self):
+        global  pgServer, msServer
+        pgServer = PostgresServer.DB('')
+        msServer = SQLServer.DB('')
         print 'Init Process'
 
     def excec(self, pg_table, ms_table, layername, layerid):

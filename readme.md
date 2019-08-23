@@ -51,6 +51,8 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
         - Libs/updateDataSource.py
 - publish
 
+#### Delete
+- delete.py
 
 ### run code
 #### prepare
