@@ -31,13 +31,15 @@ class Ks:
             print "Please check mxd + gdb!"
             exit()
 
-    def importMongo(self, url, ms_table, de_an):
+    def importMongo(self, url, ms_table, de_an, folder, mxd):
         client = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
         db = client['ks']
         post = {
             "url": url,
             "ms_table": ms_table,
             "de_an": de_an,
+            "folder": folder,
+            "mxd": mxd,
             "visible": 0,
             "opacity": 0.7
         }
@@ -68,7 +70,7 @@ class Ks:
 
         # update layer source from gdb to sde: Libs/updateDataSource.py
         updateSource = updateDataSource.updateDataSource(mxd_print)
-        newmxd = folder + '\\sde_' + mxd
+        newmxd = folder + 'sde_' + mxd
 
         # print "mxd_print" + mxd_print + "gdb_print" + gdb_print + "newmxd" + newmxd
         result = updateSource.execute(gdb_print,sde)
@@ -88,7 +90,7 @@ class Ks:
         iscompleted = publisher.execute()
 
         # import to mongodb: def importMongo(self, url, ms_table, de_an):
-        self.importMongo(serviceName, objectType, de_an)
+        self.importMongo(serviceName, objectType, de_an, folder, newmxd)
 
         if iscompleted:
             # insert db to MS SQL

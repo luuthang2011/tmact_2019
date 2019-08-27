@@ -56,9 +56,9 @@ class Delete:
                 print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
                 # arcpy.Delete_management(layer.dataSource)
 
-    def deleteDir(self, root, folder):
+    def deleteDir(self, folder):
         # os.chmod(folder, 0777)
-        os.rename(root + folder, root + 'deleted_' + folder + '_' + str(int(time.time())))
+        os.rename(folder, folder[:-1] + '_deleted_' + str(int(time.time())))
 
 
 if __name__ == '__main__':
@@ -68,15 +68,16 @@ if __name__ == '__main__':
     admin = "fimo"  # fixed
     password = "Mrvm3CVEvr8JGet9"  # fixed
 
-    root = r'E:\SourceCode\tmact_2019\data\gdb\\'
+    root = r'E:\SourceCode\tmact_2019\data\gdb\\' # fixed
     service = "Tbl_fc_magma_sde_dia_tang_gdb"  # from DB
-    folder = r'chanqua'
-    mxd = r'E:\SourceCode\tmact_2019\data\gdb\chanqua\sde_dia_tang_gdb.mxd'
+    folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    # mxd = r'E:\SourceCode\tmact_2019\data\gdb\chanqua\sde_dia_tang_gdb.mxd'
+    mxd = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
 
     # if you need a token, execute this line:
     unitest.deleteservice(server, service + ".MapServer", admin, password)
     unitest.deleteDB(mxd)
-    unitest.deleteDir(root, folder)
     unitest.deleteMongo(service)
+    unitest.deleteDir(folder)
     # unitest.deleteMQSQL()
     # unitest.deleteElastic()
