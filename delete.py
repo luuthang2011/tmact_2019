@@ -4,6 +4,8 @@ import json
 import urllib
 import urllib2
 import arcpy
+import time
+from pymongo import MongoClient
 
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 import listing_layer
@@ -12,6 +14,13 @@ import listing_layer
 class Delete:
     def __init__(self):
         print "inited"
+
+    def deleteMongo(self, url):
+        myclient = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
+        mydb = myclient["ks"]
+        mycol = mydb["map_services"]        # map_services: collection in database
+        myquery = {"url": url}
+        mycol.delete_one(myquery)
 
     def gentoken(self, url, username, password, expiration=60):
         query_dict = {'username': username,
@@ -49,7 +58,7 @@ class Delete:
 
     def deleteDir(self, root, folder):
         # os.chmod(folder, 0777)
-        os.rename(root + folder, root + 'deleted_' + folder)
+        os.rename(root + folder, root + 'deleted_' + folder + '_' + str(int(time.time())))
 
 
 if __name__ == '__main__':
@@ -68,3 +77,6 @@ if __name__ == '__main__':
     unitest.deleteservice(server, service + ".MapServer", admin, password)
     unitest.deleteDB(mxd)
     unitest.deleteDir(root, folder)
+    unitest.deleteMongo(service)
+    # unitest.deleteMQSQL()
+    # unitest.deleteElastic()

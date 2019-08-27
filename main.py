@@ -1,5 +1,6 @@
 # encoding=utf8
 import sys, os
+from pymongo import MongoClient
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -30,7 +31,22 @@ class Ks:
             print "Please check mxd + gdb!"
             exit()
 
-    def execute(self, folder):
+    def importMongo(self, url, ms_table, de_an):
+        client = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
+        db = client['ks']
+        post = {
+            "url": url,
+            "ms_table": ms_table,
+            "de_an": de_an,
+            "visible": 0,
+            "opacity": 0.7
+        }
+
+        posts = db.map_services     # map_services: collection in database
+        post_id = posts.insert_one(post).inserted_id
+        print post_id
+
+    def execute(self, folder, de_an):
         # getInput(folder) -> check structure + get mxd
         mxd, gdb = self.getinput(folder)
         mxd_print = folder + '\\' + mxd
@@ -71,12 +87,15 @@ class Ks:
         )
         iscompleted = publisher.execute()
 
-        # insert db to MS SQL
-        # listing layer from sde mxd file
-        listLayer = listing_layer.listing_layer(newmxd)
-        glayers = listLayer.listGroupLayer()
+        # import to mongodb: def importMongo(self, url, ms_table, de_an):
+        self.importMongo(serviceName, objectType, de_an)
 
         if iscompleted:
+            # insert db to MS SQL
+            # listing layer from sde mxd file
+            listLayer = listing_layer.listing_layer(newmxd)
+            glayers = listLayer.listGroupLayer()
+
             # check isFeatureLayer and insert
             FL = flowProcess.FlowProcess()
 
@@ -101,10 +120,11 @@ if __name__ == '__main__':
     # folder
     print 'Argument List:', str(sys.argv)
 
-    objectType = 'Tbl_fc_magma'
-    # objectType = sys.argv[1]
-    folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
-    # folder = sys.argv[2]
+    # objectType = 'Tbl_fc_magma'
+    objectType = sys.argv[1]
+    # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    folder = sys.argv[2]
+    de_an = 'KhoangSan'
 
     unitest = Ks(db, objectType, staticAgs)
-    unitest.execute(folder)
+    unitest.execute(folder, de_an)
