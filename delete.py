@@ -69,10 +69,19 @@ if __name__ == '__main__':
     password = "Mrvm3CVEvr8JGet9"  # fixed
 
     root = r'E:\SourceCode\tmact_2019\data\gdb\\' # fixed
-    service = "Tbl_fc_magma_sde_dia_tang_gdb"  # from DB
-    folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
-    # mxd = r'E:\SourceCode\tmact_2019\data\gdb\chanqua\sde_dia_tang_gdb.mxd'
-    mxd = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
+
+    print 'Argument List:', str(sys.argv)
+    # sys.argv[1] "Tbl_fc_magma_sde_dia_tang_gdb"
+    # sys.argv[2] r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    # sys.argv[3] r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
+
+    # service = "Tbl_fc_magma_sde_dia_tang_gdb"  # from DB
+    # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
+
+    service = sys.argv[1]  # from DB
+    folder = sys.argv[2]
+    mxd = sys.argv[3]
 
     # if you need a token, execute this line:
     unitest.deleteservice(server, service + ".MapServer", admin, password)

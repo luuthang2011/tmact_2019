@@ -2,7 +2,7 @@
 # A connection to ArcGIS Server must be established in the
 #  Catalog window of ArcMap before running this script
 import arcpy
-
+import xml.dom.minidom as DOM
 
 class publish_mapService_from_mapDocument:
     # Define local variables
@@ -22,6 +22,7 @@ class publish_mapService_from_mapDocument:
         # Provide other service details
         # service = "demo_ahihi"
         sddraft = wrkspc + "\\" + service + '.sddraft'
+        sddraft_new = wrkspc + "\\" + service + '_new.sddraft'
         sd = wrkspc + "\\" + service + '.sd'
         summary = 'General reference map of the ' + mapDoc
         tags = "created by TMACT"
@@ -29,8 +30,33 @@ class publish_mapService_from_mapDocument:
         # Create service definition draft
         arcpy.mapping.CreateMapSDDraft(mapDoc, sddraft, service, 'ARCGIS_SERVER', con, True, None, summary, tags)
 
+        # The Server Object Extension (SOE) to disable.
+        soe = 'FeatureServer'
+
+        # Read the sddraft xml.
+        doc = DOM.parse(sddraft)
+        # Find all elements named TypeName. This is where the server object extension (SOE) names are defined.
+        typeNames = doc.getElementsByTagName('TypeName')
+        for typeName in typeNames:
+            # Get the TypeName we want to disable.
+            if typeName.firstChild.data == soe:
+                extension = typeName.parentNode
+                for extElement in extension.childNodes:
+                    # Disabled SOE.
+                    # if extElement.tagName == 'Enabled':
+                    #     extElement.firstChild.data = 'false'
+                    print extElement.tagName
+                    if extElement.tagName == 'Enabled':
+                        extElement.firstChild.data = 'true'
+
+        # Output to a new sddraft.
+        outXml = sddraft_new
+        f = open(outXml, 'w')
+        doc.writexml(f)
+        f.close()
+
         # Analyze the service definition draft
-        analysis = arcpy.mapping.AnalyzeForSD(sddraft)
+        analysis = arcpy.mapping.AnalyzeForSD(sddraft_new)
 
         # Print errors, warnings, and messages returned from the analysis
         print "The following information was returned during analysis of the MXD:"
@@ -47,7 +73,7 @@ class publish_mapService_from_mapDocument:
         # Stage and upload the service if the sddraft analysis did not contain errors
         if analysis['errors'] == {}:
             # Execute StageService. This creates the service definition.
-            arcpy.StageService_server(sddraft, sd)
+            arcpy.StageService_server(sddraft_new, sd)
 
             # Execute UploadServiceDefinition. This uploads the service definition and publishes the service.
             try:
@@ -67,8 +93,8 @@ if __name__ == '__main__':
     # print "run"
     service = "ahihi"
     unitest = publish_mapService_from_mapDocument(
-        r"E:\SourceCode\tmact_2019\data\gdb\gdb",
-        r"E:\SourceCode\tmact_2019\data\gdb\gdb\sde_dia_tang_gdb.mxd",
+        r"E:\SourceCode\tmact_2019\data\gdb\chanqua",
+        r"E:\SourceCode\tmact_2019\data\gdb\chanqua\sde_dia_tang_gdb.mxd",
         r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags",
         service
     )
