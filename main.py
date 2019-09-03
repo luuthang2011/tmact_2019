@@ -108,7 +108,7 @@ class Ks:
                     print objectType
                     print serviceName
                     print i
-                    # FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i)
+                    FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i)
         else:
             deleter = delete.Delete()
             deleter.deleteDB(newmxd)

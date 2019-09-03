@@ -42,11 +42,17 @@ class DB:
 
     def update_value_null(self, table, field, value):
         print 'Update layerName and layerID'
-        scritp = '''UPDATE %s SET %s = '%s' WHERE %s IS NULL''' % (table, field, value, field)
-        print scritp
-        self.execute(scritp)
+        script = '''UPDATE %s SET %s = '%s' WHERE %s IS NULL''' % (table, field, value, field)
+        print script
+        self.execute(script)
         self.connection.commit()
 
+    def delete_row_service(self, table, column, service):
+        print 'Start delete Service'
+        script = '''DELETE FROM %s WHERE %s='%s' ''' % (table, column, service)
+        print script
+        self.cursor.execute(script)
+        self.connection.commit()
 
 # Test Insert
 if __name__ == '__main__':
@@ -62,4 +68,10 @@ if __name__ == '__main__':
     values = [2, 'TenPhucHe', 'TuoiDC', 'Gioi', 'He', 'Thong',
               'Lop', 'ThanhPhanTH', 'NhomToBD', 'TenTo', 'ID_DanhPhap',
               'ID_TyLe', 'KHLT', 'ChuBien', 'NamNopLT']
-    db.insert(table, columns, values)
+    # db.insert(table, columns, values)
+
+    column = 'LayerName'
+    service = 'aaaaa'
+
+    db.delete_row_service(table, column,  service)
+

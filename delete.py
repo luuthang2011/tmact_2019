@@ -6,14 +6,17 @@ import urllib2
 import arcpy
 import time
 from pymongo import MongoClient
-
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
+reload(sys)
+import SQLServer
 import listing_layer
 
 
 class Delete:
     def __init__(self):
         print "inited"
+        global msServer
+        msServer = SQLServer.DB('')
 
     def deleteMongo(self, url):
         myclient = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
@@ -47,14 +50,17 @@ class Delete:
                 print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
                 arcpy.Delete_management(layer.dataSource)
 
-    def deleteMSSQL(self, mxd):
-        listLayer = listing_layer.listing_layer(mxd)
-        glayers = listLayer.listGroupLayer()
-        # check isFeatureLayer and insert
-        for layer in glayers:
-            if layer.isFeatureLayer:
-                print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
-                # arcpy.Delete_management(layer.dataSource)
+    # def deleteMSSQL(self, mxd):
+    #     listLayer = listing_layer.listing_layer(mxd)
+    #     glayers = listLayer.listGroupLayer()
+    #     # check isFeatureLayer and insert
+    #     for layer in glayers:
+    #         if layer.isFeatureLayer:
+    #             print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
+    #             # arcpy.Delete_management(layer.dataSource)
+
+    def deleteMSSQL(self, ms_table, service):
+        msServer.delete_row_service(ms_table, 'LayerName', service)
 
     def deleteDir(self, folder):
         # os.chmod(folder, 0777)
@@ -82,11 +88,15 @@ if __name__ == '__main__':
     service = sys.argv[1]  # from DB
     folder = sys.argv[2]
     mxd = sys.argv[3]
+    # ms_table = 'Tbl_FC_Magma'
+    ms_table = sys.argv[4]
 
     # if you need a token, execute this line:
     unitest.deleteservice(server, service + ".MapServer", admin, password)
     unitest.deleteDB(mxd)
     unitest.deleteMongo(service)
     unitest.deleteDir(folder)
-    # unitest.deleteMQSQL()
+
+    unitest.deleteMSSQL(ms_table, service)
+
     # unitest.deleteElastic()
