@@ -59,6 +59,7 @@ class Rabbit:
     def modify_array(self, arrs, ms_table, service, layerid):
         print 'Modify array'
         arr_modify = []
+        # @Todo: modify array
         for arr in arrs:
             tmp = {}
             tmp.index = ms_table
@@ -75,36 +76,26 @@ if __name__ == '__main__':
     rb = Rabbit()
 
     insertStr = '''[{
-                "index": "tbl_dean",
-                "id": "11",
-                "data": {
-                    "ID": "11",
-                    "chuBien": "ThangLQ"
-                }
-            },{
-                "index": "tbl_dean",
-                "id": "12",
-                "data": {
-                    "ID": "12",
-                    "chuBien": "ThangLQ"
-                }
-            }]'''
+                        "index": "tbl_dean",
+                        "id": "11",
+                        "chuBien": "ThangLQ",
+                        "tacgia": "PhuongHX"
+                    },{
+                        "index": "tbl_dean",
+                        "id": "12",
+                        "chuBien": "ThangLQ",
+                        "tacgia": "PhuongHX"
+                    }]'''
 
     updateStr = '''[{
-                    "index": "tbl_dean",
-                    "id": "11",
-                    "data": {
-                        "ID": "11",
+                        "index": "tbl_dean",
+                        "id": "11",
                         "chuBien": "PhuongHX"
-                    }
-                },{
-                    "index": "tbl_dean",
-                    "id": "12",
-                    "data": {
-                        "ID": "12",
+                    },{
+                        "index": "tbl_dean",
+                        "id": "12",
                         "chuBien": "PhuongHX"
-                    }
-                }]'''
+                    }]'''
 
     deleteStr = '''[{
                         "index": "tbl_dean",
@@ -117,6 +108,6 @@ if __name__ == '__main__':
                         "id": "987654"
                     }]'''
 
-    rb.create_json(insertStr)
+    # rb.create_json(insertStr)
     # rb.delete_json(deleteStr)
-    # rb.update_json(updateStr)
+    rb.update_json(updateStr)
