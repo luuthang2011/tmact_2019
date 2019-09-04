@@ -56,49 +56,31 @@ class Rabbit:
 
         # self.connection.close()
 
-    def modify_array_pg(self, pg_columns, arrs, ms_table, service, layerid):
+    # Modify pg_rows value
+    def modify_array_pg(self, pg_columns, pg_rows, ms_table, service, layerid, action):
         print 'Modify array'
         arr_modify = []
         indexOfObjectID = pg_columns.index("objectid")
-        # @Todo: modify array
-        print pg_columns
-        for arr in arrs:
+        for arr in pg_rows:
             tmp = {
-                # 'index': ms_table.lower(),
-                'index': 'tbl_magma',
+                'index': ms_table.lower(),
+                # 'index': 'tbl_magma',
                    'id': service + '_' + str(layerid) + '_' + str(arr[indexOfObjectID])}
-            tupeObject = {}
-            for column in pg_columns:
-                if column not in ['objectid', 'tuoidc', 'gioi', 'he', 'thong', 'lop', 'thanhphanth', 'nhomtobd', 'tento', 'id_danhphap', 'id_tyle', 'khlt', 'chubien', 'namnoplt']:
+            # Add tuple data if action equal CREATE
+            if action == 'CREATE':
+                tupleObject = {}
+                for column in pg_columns:
                     indexTupe = pg_columns.index(column)
-                    tupeObject[column] = arr[indexTupe]
+                    tupleObject[column] = arr[indexTupe]
+                tmp['data'] = tupleObject
 
-            tmp['data'] = tupeObject
             arr_modify.append(tmp)
-        # print arr_modify
+        # Array to string
         strArr = """%s""" % arr_modify
-        # print strArr
+        # Replace single quote to double quote
+        strArr = strArr.replace("'", '"')
 
-
-        ars = '''[
-                {"index": "tbl_magma",
-                    "id": "fc_magma_1_10"
-                    "data": {
-                        "tenPhucHe": "dasd"
-                    }
-                },
-                {"index": "tbl_magma",
-                    "id": "fc_magma_1_11"
-                    "data": {
-                        "tenPhucHe": "Hsadsa"
-                    }
-                }
-                ]'''
-
-        # self.create_json(strArr)
-        self.create_json(ars)
-
-        return arr_modify
+        return strArr
 
     def __del__(self):
         self.connection.close()

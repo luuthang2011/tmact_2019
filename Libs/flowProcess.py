@@ -20,19 +20,19 @@ class FlowProcess:
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
-        pg_results = pgServer.validate_data(pg_rows)
+        pg_validate_rows = pgServer.validate_data(pg_rows)
 
         ## MS SQL table name
         # Insert Multiple database to MS SQL
-        # msServer.multiple_insert(ms_table, columns, pg_results)
+        msServer.multiple_insert(ms_table, columns, pg_validate_rows)
         # Add layername and layerid column | ten service khi publish
-        # msServer.update_value_null(ms_table, 'layername', service)
+        msServer.update_value_null(ms_table, 'layername', service)
         # value = 'layer_id_them_o_day' | id cua layer
-        # msServer.update_value_null(ms_table, 'layerid', layerid)
+        msServer.update_value_null(ms_table, 'layerid', layerid)
 
-        ## Rabbit
-        Rabbit.modify_array_pg(columns, pg_results, ms_table, service, layerid)
-
+        ## Rabbit create json
+        strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
+        Rabbit.create_json(strRabbit)
 
 
 if __name__ == '__main__':

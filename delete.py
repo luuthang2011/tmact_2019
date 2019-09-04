@@ -9,14 +9,17 @@ from pymongo import MongoClient
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 reload(sys)
 import SQLServer
+import rabbitmq
 import listing_layer
 
 
 class Delete:
     def __init__(self):
         print "inited"
-        global msServer
+        global msServer, Rabbit
+
         msServer = SQLServer.DB('')
+        Rabbit = rabbitmq.Rabbit()
 
     def deleteMongo(self, url):
         myclient = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
@@ -50,17 +53,21 @@ class Delete:
                 print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
                 arcpy.Delete_management(layer.dataSource)
 
-    # def deleteMSSQL(self, mxd):
-    #     listLayer = listing_layer.listing_layer(mxd)
-    #     glayers = listLayer.listGroupLayer()
-    #     # check isFeatureLayer and insert
-    #     for layer in glayers:
-    #         if layer.isFeatureLayer:
-    #             print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
-    #             # arcpy.Delete_management(layer.dataSource)
+    def deleteMSSQLLL(self, mxd):
+        listLayer = listing_layer.listing_layer(mxd)
+        glayers = listLayer.listGroupLayer()
+        # check isFeatureLayer and insert
+
+        for i in range(len(glayers)):
+            if glayers[i].isFeatureLayer:
+                print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
+
 
     def deleteMSSQL(self, ms_table, service):
         msServer.delete_row_service(ms_table, 'LayerName', service)
+
+    def deleteRabbit(self, ms_table, service):
+        print "Start Delete"
 
     def deleteDir(self, folder):
         # os.chmod(folder, 0777)
