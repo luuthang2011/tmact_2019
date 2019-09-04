@@ -28,7 +28,7 @@ class Rabbit:
                                    body=str)
         print(" [x] Created!'")
 
-        self.connection.close()
+        # self.connection.close()
 
     def update_json(self, str):
         print 'Start Update json'
@@ -41,7 +41,7 @@ class Rabbit:
                                    body=str)
         print(" [x] Updated!'")
 
-        self.connection.close()
+        # self.connection.close()
 
     def delete_json(self, str):
         print 'Start Delete json'
@@ -54,21 +54,54 @@ class Rabbit:
                                    body=str)
         print(" [x] Deleted!'")
 
-        self.connection.close()
+        # self.connection.close()
 
-    def modify_array(self, arrs, ms_table, service, layerid):
+    def modify_array_pg(self, pg_columns, arrs, ms_table, service, layerid):
         print 'Modify array'
         arr_modify = []
+        indexOfObjectID = pg_columns.index("objectid")
         # @Todo: modify array
+        print pg_columns
         for arr in arrs:
-            tmp = {}
-            tmp.index = ms_table
-            tmp.id = service + '_' + layerid + '_' + arr.objectID
-            tmp.data = arr
-            tmp.data.ID = service + '_' + layerid + '_' + arr.objectID
+            tmp = {
+                # 'index': ms_table.lower(),
+                'index': 'tbl_magma',
+                   'id': service + '_' + str(layerid) + '_' + str(arr[indexOfObjectID])}
+            tupeObject = {}
+            for column in pg_columns:
+                if column not in ['objectid', 'tuoidc', 'gioi', 'he', 'thong', 'lop', 'thanhphanth', 'nhomtobd', 'tento', 'id_danhphap', 'id_tyle', 'khlt', 'chubien', 'namnoplt']:
+                    indexTupe = pg_columns.index(column)
+                    tupeObject[column] = arr[indexTupe]
+
+            tmp['data'] = tupeObject
             arr_modify.append(tmp)
+        # print arr_modify
+        strArr = """%s""" % arr_modify
+        # print strArr
+
+
+        ars = '''[
+                {"index": "tbl_magma",
+                    "id": "fc_magma_1_10"
+                    "data": {
+                        "tenPhucHe": "dasd"
+                    }
+                },
+                {"index": "tbl_magma",
+                    "id": "fc_magma_1_11"
+                    "data": {
+                        "tenPhucHe": "Hsadsa"
+                    }
+                }
+                ]'''
+
+        # self.create_json(strArr)
+        self.create_json(ars)
 
         return arr_modify
+
+    def __del__(self):
+        self.connection.close()
 
 
 if __name__ == '__main__':
@@ -77,24 +110,32 @@ if __name__ == '__main__':
 
     insertStr = '''[{
                         "index": "tbl_dean",
-                        "id": "11",
-                        "chuBien": "ThangLQ",
-                        "tacgia": "PhuongHX"
+                        "id": "service_layerid_11",
+                        "data": {
+                           "chuBien": "ThangLQ",
+                            "tacgia": "PhuongHX"
+                        }
                     },{
                         "index": "tbl_dean",
-                        "id": "12",
-                        "chuBien": "ThangLQ",
-                        "tacgia": "PhuongHX"
+                        "id": "service_layerid_12",
+                        "data": {
+                            "chuBien": "ThangLQ",
+                            "tacgia": "PhuongHX"
+                        }
                     }]'''
 
     updateStr = '''[{
                         "index": "tbl_dean",
                         "id": "11",
-                        "chuBien": "PhuongHX"
+                        "data": {
+                            "chuBien": "PhuongHX"
+                        }
                     },{
                         "index": "tbl_dean",
                         "id": "12",
-                        "chuBien": "PhuongHX"
+                        "data": {
+                           "chuBien": "PhuongHX" 
+                        }
                     }]'''
 
     deleteStr = '''[{
@@ -108,6 +149,8 @@ if __name__ == '__main__':
                         "id": "987654"
                     }]'''
 
-    # rb.create_json(insertStr)
+    rb.create_json(insertStr)
     # rb.delete_json(deleteStr)
-    rb.update_json(updateStr)
+    # rb.update_json(updateStr)
+
+
