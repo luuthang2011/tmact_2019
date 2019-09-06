@@ -11,7 +11,7 @@ class FlowProcess:
         msServer = SQLServer.DB('')
         Rabbit = rabbitmq.Rabbit()
 
-    def excec(self, pg_table, ms_table, service, layerid):
+    def excec(self, pg_table, ms_table, service, layerid, action):
         table = pg_table.lower()
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
@@ -30,17 +30,33 @@ class FlowProcess:
         # value = 'layer_id_them_o_day' | id cua layer
         msServer.update_value_null(ms_table, 'layerid', layerid)
 
-        ## Rabbit create json
-        strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
-        Rabbit.create_json(strRabbit)
+        if action == 'CREATE':
+            ## Rabbit create json
+            print 'Create FLow'
+            strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')
+            Rabbit.create_json(strRabbit)
+        elif action == 'DELETE':
+            strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
+            Rabbit.delete_json(strRabbit)
+
+
+    # def delete(self, pg_table, ms_table, service, layerid):
+        # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
+        # Rabbit.delete_json(strRabbit)
 
 
 if __name__ == '__main__':
     print 'Flow Processing...'
     FL = FlowProcess()
-    pg_table = 'phuonghx_magma3'
-    ms_table = 'Tbl_fc_magma'
-    service = 'fc_magma_1'
-    layerid = 4
+    # pg_table = 'phuonghx_magma3'
+    # ms_table = 'Tbl_fc_magma'
+    # service = 'fc_magma_1'
+    # layerid = 4
 
-    FL.excec(pg_table, ms_table, service, layerid)
+    pg_table = 'F_48_94_C_Chu_DT_region'
+    ms_table = 'Tbl_fc_magma'
+    service = 'Tbl_fc_magma_sde_dia_tang_gdb'
+    layerid = 2
+
+    FL.excec(pg_table, ms_table, service, layerid, "CREATE")
+

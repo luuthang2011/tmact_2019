@@ -9,6 +9,7 @@ from pymongo import MongoClient
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 reload(sys)
 import SQLServer
+import flowProcess
 import rabbitmq
 import listing_layer
 
@@ -53,7 +54,7 @@ class Delete:
                 print 'Name: ' + layer.name + ", Data Source: " + layer.dataSource
                 arcpy.Delete_management(layer.dataSource)
 
-    def deleteMSSQLLL(self, mxd):
+    def deleteRabbit(self, mxd, ms_table, serviceName):
         listLayer = listing_layer.listing_layer(mxd)
         glayers = listLayer.listGroupLayer()
         # check isFeatureLayer and insert
@@ -61,13 +62,22 @@ class Delete:
         for i in range(len(glayers)):
             if glayers[i].isFeatureLayer:
                 print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
+                print "Start Delete Rabbit"
+                # check isFeatureLayer and insert
+                FL = flowProcess.FlowProcess()
+                FL.excec(glayers[i].dataSource.split('.')[-1], ms_table, serviceName, i, 'DELETE')
 
 
     def deleteMSSQL(self, ms_table, service):
         msServer.delete_row_service(ms_table, 'LayerName', service)
 
-    def deleteRabbit(self, ms_table, service):
-        print "Start Delete"
+    # def deleteRabbit(self, ms_table, service):
+    #     print "Start Delete Rabbit"
+    #     # check isFeatureLayer and insert
+    #     FL = flowProcess.FlowProcess()
+    #     FL.excec(pg_table, ms_table, service, layerid, action)
+
+
 
     def deleteDir(self, folder):
         # os.chmod(folder, 0777)
@@ -95,15 +105,20 @@ if __name__ == '__main__':
     service = sys.argv[1]  # from DB
     folder = sys.argv[2]
     mxd = sys.argv[3]
-    # ms_table = 'Tbl_FC_Magma'
-    ms_table = sys.argv[4]
+    ms_table = 'Tbl_FC_Magma'
+    # ms_table = sys.argv[4]
+
+    print 'Start delete Rabbit!'
+    # unitest.deleteRabbit(mxd, ms_table, service)
 
     # if you need a token, execute this line:
+    print 'Start delete Service!'
     unitest.deleteservice(server, service + ".MapServer", admin, password)
+    print 'Start delete PostgreDB!'
     unitest.deleteDB(mxd)
+    print 'Start delete MongoDB!'
     unitest.deleteMongo(service)
+    print 'Start delete Directory!'
     unitest.deleteDir(folder)
-
+    print 'Start delete MSSQL!'
     unitest.deleteMSSQL(ms_table, service)
-
-    # unitest.deleteElastic()
