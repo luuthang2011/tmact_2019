@@ -109,6 +109,9 @@ class Ks:
                     print serviceName
                     print i
                     FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i, 'CREATE')
+                    print "----------------------------------------------"
+                    print "-------------All Done!------------------------"
+                    print "----------------------------------------------"
         else:
             deleter = delete.Delete()
             deleter.deleteDB(newmxd)

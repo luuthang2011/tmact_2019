@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/PostgresServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/PostgresServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/SQLServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/SQLServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/flowProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/flowProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/rabbitmq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/delete.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="66" selection-start-line="66" selection-end-line="66" selection-end-column="46" />
+            <state relative-caret-position="421">
+              <caret line="119" selection-start-line="119" selection-end-line="119" selection-end-column="42" />
+              <folding>
+                <element signature="e#16#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="458">
+              <caret line="112" column="73" selection-start-line="112" selection-start-column="73" selection-end-line="112" selection-end-column="73" />
               <folding>
                 <element signature="e#16#30#0" expanded="true" />
               </folding>
@@ -32,22 +40,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Libs/flowProcess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="542">
+              <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Libs/feature2geodatabase.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,12 +179,12 @@
         <option value="$PROJECT_DIR$/Libs/test_rabbitmq.py" />
         <option value="$PROJECT_DIR$/Libs/abc.py" />
         <option value="$PROJECT_DIR$/Libs/constant.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Libs/SQLServer.py" />
-        <option value="$PROJECT_DIR$/delete.py" />
         <option value="$PROJECT_DIR$/Libs/rabbitmq.py" />
         <option value="$PROJECT_DIR$/Libs/PostgresServer.py" />
         <option value="$PROJECT_DIR$/Libs/flowProcess.py" />
+        <option value="$PROJECT_DIR$/delete.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -516,7 +512,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567477247739</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="release function delete">
+      <created>1568166352320</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1568166352320</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -562,7 +565,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Run" order="3" visible="true" weight="0.24530831" />
+      <window_info anchor="right" id="Run" order="3" visible="true" weight="0.20978552" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1282552" />
@@ -608,7 +611,8 @@
     <MESSAGE value="python for handsome man" />
     <MESSAGE value="add enable feature layer" />
     <MESSAGE value="add delete ms db" />
-    <option name="LAST_COMMIT_MESSAGE" value="add delete ms db" />
+    <MESSAGE value="release function delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="release function delete" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/Program Files/ArcGIS/Server/arcpy/arcpy/mapping.py">
@@ -729,16 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
-          <folding>
-            <element signature="e#16#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Libs/createGISServerConnectionFile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -814,20 +808,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/delete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="119" selection-start-line="119" selection-end-line="119" selection-end-column="42" />
+          <folding>
+            <element signature="e#16#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Libs/flowProcess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="542">
+          <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/delete.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="66" selection-start-line="66" selection-end-line="66" selection-end-column="46" />
+        <state relative-caret-position="458">
+          <caret line="112" column="73" selection-start-line="112" selection-start-column="73" selection-end-line="112" selection-end-column="73" />
           <folding>
             <element signature="e#16#30#0" expanded="true" />
           </folding>
