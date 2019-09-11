@@ -18,13 +18,14 @@ class DB:
         self.cursor = self.connection.cursor()
         print 'Connected success!'
 
-    def execute(self, query):
-        results = self.cursor.execute(query)
-        # print results
+    # def execute(self, query):
+    #     results = self.cursor.execute(query)
+    #     # print results
 
     def select(self, query):
         # q = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
         # self.cursor.execute(q)
+        print 'Query: %s' % query
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
         # print rows
@@ -71,25 +72,24 @@ class DB:
         return results
 
 
-# Test Insert
-if __name__ == '__main__':
-    db = DB(r'ks')
-    # table = 'f_48_66_a_tt_dt_region'
-    # table = 'fc_magma'
-    table = 'f_48_94_c_chu_dt_region'
-    columns = db.select_schema(table)
-    print columns
-    # columns_strip = str(columns).strip('[]')
-    # columns_replace = columns_strip.replace("'", "").replace('"', '')
-    # query = r'''SELECT %s FROM sde.%s LIMIT 10''' % (columns_replace, table)
-    # query = r'''SELECT objectid, id, tenphuche, tuoidc, gioi, he, thong, lop, thanhphanth, nhomtobd FROM sde.%s LIMIT 10''' % table
-
-    query = db.query_builder(columns, table)
-    # print query
-    results = db.select(query)
-    # print results
-    new_results = []
-    for row in results:
-        new_results.append(db.replace_none_value(row))
-
-    print new_results
+# # Test Insert
+# if __name__ == '__main__':
+#     db = DB(r'ks')
+#     # table = 'fc_magma'
+#     table = 'f_48_94_c_chu_dt_region'
+#     columns = db.select_schema(table)
+#     print columns
+#     # columns_strip = str(columns).strip('[]')
+#     # columns_replace = columns_strip.replace("'", "").replace('"', '')
+#     # query = r'''SELECT %s FROM sde.%s LIMIT 10''' % (columns_replace, table)
+#     # query = r'''SELECT objectid, id, tenphuche, tuoidc, gioi, he, thong, lop, thanhphanth, nhomtobd FROM sde.%s LIMIT 10''' % table
+#
+#     query = db.query_builder(columns, table)
+#     # print query
+#     results = db.select(query)
+#     # print results
+#     new_results = []
+#     for row in results:
+#         new_results.append(db.replace_none_value(row))
+#
+#     print new_results

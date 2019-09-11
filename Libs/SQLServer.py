@@ -54,24 +54,24 @@ class DB:
         self.cursor.execute(script)
         self.connection.commit()
 
-# Test Insert
-if __name__ == '__main__':
-    db = DB(r'CSDLTayBac')
-    # query = 'SELECT * FROM CSDLTayBac.dbo.Tbl_DVTC'
-    # db.execute(query)
-    # db.execute(INSERT_SCRIPT)
-    table = 'CSDLTayBac.dbo.Tbl_FC_Magma'
-    columns = ["ObjectID", "TenPhucHe", "TuoiDC", "Gioi", "He", "Thong",
-               "Lop", "ThanhPhanTH", "NhomToBD", "TenTo", "ID_DanhPhap",
-               "ID_TyLe", "KHLT", "ChuBien", "NamNopLT"]
-
-    values = [2, 'TenPhucHe', 'TuoiDC', 'Gioi', 'He', 'Thong',
-              'Lop', 'ThanhPhanTH', 'NhomToBD', 'TenTo', 'ID_DanhPhap',
-              'ID_TyLe', 'KHLT', 'ChuBien', 'NamNopLT']
-    # db.insert(table, columns, values)
-
-    column = 'LayerName'
-    service = 'aaaaa'
-
-    db.delete_row_service(table, column,  service)
+# # Test Insert
+# if __name__ == '__main__':
+#     db = DB(r'CSDLTayBac')
+#     # query = 'SELECT * FROM CSDLTayBac.dbo.Tbl_DVTC'
+#     # db.execute(query)
+#     # db.execute(INSERT_SCRIPT)
+#     table = 'CSDLTayBac.dbo.Tbl_FC_Magma'
+#     columns = ["ObjectID", "TenPhucHe", "TuoiDC", "Gioi", "He", "Thong",
+#                "Lop", "ThanhPhanTH", "NhomToBD", "TenTo", "ID_DanhPhap",
+#                "ID_TyLe", "KHLT", "ChuBien", "NamNopLT"]
+#
+#     values = [2, 'TenPhucHe', 'TuoiDC', 'Gioi', 'He', 'Thong',
+#               'Lop', 'ThanhPhanTH', 'NhomToBD', 'TenTo', 'ID_DanhPhap',
+#               'ID_TyLe', 'KHLT', 'ChuBien', 'NamNopLT']
+#     # db.insert(table, columns, values)
+#
+#     column = 'LayerName'
+#     service = 'aaaaa'
+#
+#     db.delete_row_service(table, column,  service)
 

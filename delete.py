@@ -99,9 +99,10 @@ if __name__ == '__main__':
     # sys.argv[3] r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
 
     # service = "Tbl_fc_magma_sde_dia_tang_gdb"  # from DB
+    # service = "Tbl_FC_Magma_sde_dia_tang_gdb"  # from DB
     # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
     # mxd = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
-
+    #
     service = sys.argv[1]  # from DB
     folder = sys.argv[2]
     mxd = sys.argv[3]
@@ -109,16 +110,18 @@ if __name__ == '__main__':
     # ms_table = sys.argv[4]
 
     print 'Start delete Rabbit!'
-    # unitest.deleteRabbit(mxd, ms_table, service)
+    unitest.deleteRabbit(mxd, ms_table, service)
 
     # if you need a token, execute this line:
+
+    print 'Start delete MongoDB!'
+    unitest.deleteMongo(service)
+    print 'Start delete MSSQL!'
+    unitest.deleteMSSQL(ms_table, service)
+
     print 'Start delete Service!'
     unitest.deleteservice(server, service + ".MapServer", admin, password)
     print 'Start delete PostgreDB!'
     unitest.deleteDB(mxd)
-    print 'Start delete MongoDB!'
-    unitest.deleteMongo(service)
     print 'Start delete Directory!'
     unitest.deleteDir(folder)
-    print 'Start delete MSSQL!'
-    unitest.deleteMSSQL(ms_table, service)
