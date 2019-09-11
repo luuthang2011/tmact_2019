@@ -8,6 +8,21 @@ class DB:
         print 'Start connect PostgreSQL'
         global input_data
         input_data = in_data
+        # # self.database = constant.DATABASE_POSTGRES
+        # self.connection = psycopg2.connect(
+        #     database=constant.DATABASE_POSTGRES,
+        #     user=constant.USER_POSTGRES,
+        #     password=constant.PASSWORD_POSTGRES,
+        #     host=constant.HOST_POSTGRES,
+        #     port=constant.PORT_POSTGRES)
+        # self.cursor = self.connection.cursor()
+        # print 'Connected success!'
+
+    # def execute(self, query):
+    #     results = self.cursor.execute(query)
+    #     # print results
+
+    def init_connect(self):
         # self.database = constant.DATABASE_POSTGRES
         self.connection = psycopg2.connect(
             database=constant.DATABASE_POSTGRES,
@@ -18,22 +33,25 @@ class DB:
         self.cursor = self.connection.cursor()
         print 'Connected success!'
 
-    # def execute(self, query):
-    #     results = self.cursor.execute(query)
-    #     # print results
 
     def select(self, query):
         # q = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
         # self.cursor.execute(q)
+        self.init_connect()
         print 'Query: %s' % query
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
+
+        self.cursor.close()
+        self.connection.close()
+
         # print rows
         # for row in rows:
         #     print "   ", row
         return rows
 
     def select_schema(self, table):
+        self.init_connect()
         print 'SELECT table schema'
         query = r"""SELECT column_name from information_schema.columns where table_name='%s'""" % table
         # query = r"""SELECT column_name from information_schema.columns where table_name='%s'""" % input_data
@@ -46,6 +64,9 @@ class DB:
         # Get subset or list
         subset_of_list = {'shape', 'id'}
         result = [l for l in lists if l not in subset_of_list]
+
+        self.cursor.close()
+        self.connection.close()
 
         return result
 

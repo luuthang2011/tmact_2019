@@ -10,17 +10,19 @@ logging.basicConfig()
 class Rabbit:
     def __init__(self):
         print 'Start init Rabbit connection'
-
         # Parse CLODUAMQP_URL (fallback to localhost)
         self.url = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@34.87.22.131:5672/%2f')
         self.params = pika.URLParameters(self.url)
         self.params.socket_timeout = 30
 
+    def init_connect(self):
         self.connection = pika.BlockingConnection(self.params)  # Connect to CloudAMQP
         self.channel = self.connection.channel()  # start a channel
 
     def create_json(self, str):
         print 'Start Create json'
+        self.init_connect()
+
         self.channel.queue_declare(queue='CREATE_JSON', durable=True, arguments={
             'x-dead-letter-exchange': 'CREATE_JSONdead'
         })
@@ -34,6 +36,8 @@ class Rabbit:
 
     def update_json(self, str):
         print 'Start Update json'
+        self.init_connect()
+
         self.channel.queue_declare(queue='UPDATE_JSON', durable=True, arguments={
             'x-dead-letter-exchange': 'UPDATE_JSONdead'
         })
@@ -47,6 +51,8 @@ class Rabbit:
 
     def delete_json(self, str):
         print 'Start Delete json'
+        self.init_connect()
+
         self.channel.queue_declare(queue='DELETE_JSON', durable=True, arguments={
             'x-dead-letter-exchange': 'DELETE_JSONdead'
         })
@@ -87,7 +93,7 @@ class Rabbit:
         # Replace single quote to double quote
         newStrArr = strArr.replace("'", '"').replace('\\', "/")
 
-        print newStrArr
+        # print newStrArr
         #
         # if action == "CREATE":
         #     self.create_json('''%s''' % newStrArr)

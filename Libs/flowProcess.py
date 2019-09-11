@@ -23,8 +23,8 @@ class FlowProcess:
         # Validate null data
         pg_validate_rows = pgServer.validate_data(pg_rows)
         # disconnect DB
-        pgServer.cursor.close()
-        pgServer.connection.close()
+        # pgServer.cursor.close()
+        # pgServer.connection.close()
 
         if action == 'CREATE':
             ## MS SQL table name
