@@ -1,5 +1,5 @@
 # encoding=utf8
-import sys, os
+import sys, os, time
 from pymongo import MongoClient
 sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 reload(sys)
@@ -85,7 +85,7 @@ class Ks:
         print "start publish service to map server"
         # publish service to map server
         # rewritable: true
-        serviceName = objectType + '_sde_' + mxd[:-4]
+        serviceName = objectType + '_sde_' + mxd[:-4] + '_' + str(int(time.time()))
         # print 'serviceName:' + serviceName
         publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
             folder,
