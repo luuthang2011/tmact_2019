@@ -65,9 +65,15 @@ class Ks:
         # - import sde to mssql
         # output:
         # - data in sde + mssql
+        print "start import geodatabase"
         feature2db = feature2geodatabase.layer2DB()
-        feature2db.execute(mxd_print, sde)
+        checkimport = feature2db.execute(mxd_print, sde)
+        if not checkimport:
+            deleter = delete.Delete()
+            deleter.deleteDir(folder)
+            exit()
 
+        print "start update layer source"
         # update layer source from gdb to sde: Libs/updateDataSource.py
         updateSource = updateDataSource.updateDataSource(mxd_print)
         newmxd = folder + 'sde_' + mxd
@@ -76,10 +82,11 @@ class Ks:
         result = updateSource.execute(gdb_print,sde)
         result.saveACopy(newmxd)
 
+        print "start publish service to map server"
         # publish service to map server
         # rewritable: true
         serviceName = objectType + '_sde_' + mxd[:-4]
-        print 'serviceName:' + serviceName
+        # print 'serviceName:' + serviceName
         publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
             folder,
             newmxd,
@@ -89,10 +96,13 @@ class Ks:
         )
         iscompleted = publisher.execute()
 
-        # import to mongodb: def importMongo(self, url, ms_table, de_an):
-        self.importMongo(serviceName, objectType, de_an, folder, newmxd)
-
+        print "publish service to map server status"
+        print iscompleted
         if iscompleted:
+
+            # import to mongodb: def importMongo(self, url, ms_table, de_an):
+            self.importMongo(serviceName, objectType, de_an, folder, newmxd)
+
             # insert db to MS SQL
             # listing layer from sde mxd file
             listLayer = listing_layer.listing_layer(newmxd)
@@ -115,6 +125,7 @@ class Ks:
         else:
             deleter = delete.Delete()
             deleter.deleteDB(newmxd)
+            deleter.deleteDir(folder)
 
 
 if __name__ == '__main__':

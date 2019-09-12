@@ -20,7 +20,7 @@ class layer2DB:
             arcpy.FeatureClassToFeatureClass_conversion(
                 lyr,  # in_features
                 db,  # out_path
-                lyr.name  # out_name
+                lyr.dataSource.split("\\")[-1]  # out_name
             )
         except arcpy.ExecuteError, ex:
             print "An error occurred in creating SDE Connection file: " + ex[0]
@@ -39,10 +39,10 @@ class layer2DB:
         arcpy.env.workspace = indb
         for gl in glayers:
             if gl.isFeatureLayer:
-                print 'Name: ' + gl.name + ", Data Source: " + gl.dataSource
-                if arcpy.Exists(gl.name):
-                    print gl.name + " already exists in geoDatabase"
-                    exit()
+                print 'Name: ' + gl.name + ", Data Source: " + gl.dataSource.split("\\")[-1]
+                if arcpy.Exists(gl.dataSource.split("\\")[-1]):
+                    print gl.dataSource.split("\\")[-1] + " already exists in geoDatabase"
+                    return False
 
         for gl in glayers:
             if gl.isFeatureLayer:
@@ -52,6 +52,8 @@ class layer2DB:
                     gl,
                     indb
                 )
+
+        return True
 
         # # import data to db for CMS after import2db all completed
         # for gl in glayers:
