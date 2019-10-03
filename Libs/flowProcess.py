@@ -17,7 +17,13 @@ class FlowProcess:
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
         # Builder Query for PostgreSQL
-        pq_query = pgServer.query_builder(columns, table)
+
+        pg_dean = pgServer.query_get_id_dean(table)
+        ms_dean = msServer.select_id_dean(pg_dean)
+
+        # pq_query = pgServer.query_builder(columns, table)
+        # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field
+        pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table) # Added isDean Field
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
@@ -26,20 +32,34 @@ class FlowProcess:
         # pgServer.cursor.close()
         # pgServer.connection.close()
 
+        columns_custom = columns[:]
+        # print columns
+        columns_custom.append('ID_DA')
+        columns_custom.append('CreatedDate')
+        columns_custom.append('UpdatedDate')
+        # columns_custom.append('CreatedBy')
+        # columns_custom.append('UpdatedBy')
+        columns_custom.append('isDean')
+
+
         if action == 'CREATE':
             ## MS SQL table name
             # Insert Multiple database to MS SQL
-            msServer.multiple_insert(ms_table, columns, pg_validate_rows)
+
+            # msServer.multiple_insert(ms_table, columns, pg_validate_rows)
+            msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows)
             # Add layername and layerid column | ten service khi publish
             msServer.update_value_null(ms_table, 'layername', service)
             # value = 'layer_id_them_o_day' | id cua layer
             msServer.update_value_null(ms_table, 'layerid', layerid)
             ## Rabbit create json
             print 'Create FLow'
-            strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')
+            # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')
+            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, 'CREATE')
             Rabbit.create_json(strRabbit)
         elif action == 'DELETE':
-            strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
+            # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
+            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, 'DELETE')
             Rabbit.delete_json(strRabbit)
 
 

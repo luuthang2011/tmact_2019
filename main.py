@@ -123,6 +123,7 @@ class Ks:
                     print "-------------All Done!------------------------"
                     print "----------------------------------------------"
         else:
+            print "-------------Error!------------------------"
             deleter = delete.Delete()
             deleter.deleteDB(newmxd)
             deleter.deleteDir(folder)

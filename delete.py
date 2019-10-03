@@ -95,9 +95,9 @@ if __name__ == '__main__':
 
     print 'Argument List:', str(sys.argv)
 
-    # service = "Tbl_FC_BienChat_sde_dia_tang_gdb_1568306655"  # from DB
-    # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
-    # mxd = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/sde_dia_tang_gdb.mxd'
+    # service = "Tbl_FC_BienChat_sde_bienchat2019_1568344386"  # from DB
+    # folder = r'E:/SourceCode/tmact_2019/data/gdb/bienchat/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/gdb/bienchat/sde_bienchat2019.mxd'
     # ms_table = 'Tbl_FC_BienChat'
 
     service = sys.argv[1]  # from DB
