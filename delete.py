@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
     print 'Argument List:', str(sys.argv)
 
-    # service = "Tbl_FC_BienChat_sde_bienchat2019_1568344386"  # from DB
+    # service = "Tbl_FC_BienChat_sde_bienchat2019_1570097697"  # from DB
     # folder = r'E:/SourceCode/tmact_2019/data/gdb/bienchat/'
     # mxd = r'E:/SourceCode/tmact_2019/data/gdb/bienchat/sde_bienchat2019.mxd'
     # ms_table = 'Tbl_FC_BienChat'

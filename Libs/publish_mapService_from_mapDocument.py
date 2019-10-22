@@ -4,6 +4,7 @@
 import arcpy
 import xml.dom.minidom as DOM
 
+
 class publish_mapService_from_mapDocument:
     # Define local variables
     def __init__(self, in_pool, in_data, in_connect, sv):
@@ -72,11 +73,16 @@ class publish_mapService_from_mapDocument:
 
         # Stage and upload the service if the sddraft analysis did not contain errors
         if analysis['errors'] == {}:
-            # Execute StageService. This creates the service definition.
-            arcpy.StageService_server(sddraft_new, sd)
+            try:
+                # Execute StageService. This creates the service definition.
+                print "Execute StageService. This creates the service definition."
+                arcpy.StageService_server(sddraft_new, sd)
+            except Exception, e:
+                print e.message
 
             # Execute UploadServiceDefinition. This uploads the service definition and publishes the service.
             try:
+                print "publishing..."
                 arcpy.UploadServiceDefinition_server(sd, con)
                 print "Service successfully published"
                 return True
@@ -93,8 +99,8 @@ if __name__ == '__main__':
     # print "run"
     service = "ahihi"
     unitest = publish_mapService_from_mapDocument(
-        r"E:\SourceCode\tmact_2019\data\gdb\chanqua",
-        r"E:\SourceCode\tmact_2019\data\gdb\chanqua\sde_dia_tang_gdb.mxd",
+        r"E:\SourceCode\tmact_2019\data\gdb\magma3layer - Copy",
+        r"E:\SourceCode\tmact_2019\data\gdb\magma3layer - Copy\sde_main.mxd",
         r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags",
         service
     )

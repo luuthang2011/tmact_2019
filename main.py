@@ -68,6 +68,7 @@ class Ks:
         print "start import geodatabase"
         feature2db = feature2geodatabase.layer2DB()
         checkimport = feature2db.execute(mxd_print, sde)
+        print "check import geodatabase" + checkimport
         if not checkimport:
             deleter = delete.Delete()
             deleter.deleteDir(folder)
@@ -78,14 +79,15 @@ class Ks:
         updateSource = updateDataSource.updateDataSource(mxd_print)
         newmxd = folder + 'sde_' + mxd
 
-        # print "mxd_print" + mxd_print + "gdb_print" + gdb_print + "newmxd" + newmxd
-        result = updateSource.execute(gdb_print,sde)
+        print "mxd_print" + mxd_print + "gdb_print" + checkimport + "newmxd" + newmxd
+        result = updateSource.execute(checkimport,sde)
         result.saveACopy(newmxd)
 
         print "start publish service to map server"
         # publish service to map server
         # rewritable: true
         serviceName = objectType + '_sde_' + mxd[:-4] + '_' + str(int(time.time()))
+        print "serviceName: " + serviceName
         # print 'serviceName:' + serviceName
         publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
             folder,
@@ -139,7 +141,7 @@ if __name__ == '__main__':
 
     # objectType = 'Tbl_fc_magma'
     objectType = sys.argv[1]
-    # folder = r'E:/SourceCode/tmact_2019/data/gdb/chanqua/'
+    # folder = r'E:/SourceCode/tmact_2019/data/gdb/magma3layer - Copy/'
     folder = sys.argv[2]
     de_an = 'KhoangSan'
 

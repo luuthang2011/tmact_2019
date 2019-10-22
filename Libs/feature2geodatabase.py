@@ -1,16 +1,10 @@
 import arcpy
-
-# sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
 import listing_layer
+from pathlib import *
 
 
 class layer2DB:
     def __init__(self):
-        # global objectType, dataName
-        # objectType: loai doi tuong ban do = mssql table name
-        # dataName: mxd file name
-        # objectType = o
-        # dataName = d
         print "inited"
 
     def import2db(self, lyr, db):
@@ -25,24 +19,31 @@ class layer2DB:
         except arcpy.ExecuteError, ex:
             print "An error occurred in creating SDE Connection file: " + ex[0]
             exit()
-        # arcpy.FeatureClassToFeatureClass_conversion(
-        #     lyr,  # in_features
-        #     db,  # out_path
-        #     lyr.name  # out_name
-        # )
 
     def execute(self, indata, indb):
         unitest = listing_layer.listing_layer(indata)
         glayers = unitest.listGroupLayer()
+        pIndata = Path(indata)
+        allsource = ""
 
         # Set the current workspace
         arcpy.env.workspace = indb
         for gl in glayers:
             if gl.isFeatureLayer:
-                print 'Name: ' + gl.name + ", Data Source: " + gl.dataSource.split("\\")[-1]
-                if arcpy.Exists(gl.dataSource.split("\\")[-1]):
-                    print gl.dataSource.split("\\")[-1] + " already exists in geoDatabase"
+                p = Path(gl.dataSource)
+
+                print gl.dataSource
+                allsource = str(p.parent)
+                if arcpy.Exists(p.name):
+                    print p.name + " already exists in geoDatabase"
                     return False
+                else:
+                    print "change database source"
+                    gl.replaceDataSource(
+                        str(pIndata.parent) + "\\" + gl.dataSource.split("\\")[-2],
+                        "FILEGDB_WORKSPACE"
+                    )
+                    print gl.dataSource
 
         for gl in glayers:
             if gl.isFeatureLayer:
@@ -53,28 +54,13 @@ class layer2DB:
                     indb
                 )
 
-        return True
-
-        # # import data to db for CMS after import2db all completed
-        # for gl in glayers:
-        #     if gl.isFeatureLayer:
-        #         try:
-        #             # Flow process ???
-        #             print 'Start Flow Process???'
-        #
-        #             # end import data to db for CMS
-        #         except:
-        #             print("Something went wrong when import data to CSM's database")
-        #
-        #         # self.setDataSource(gl)
+        return allsource
 
     def setDataSource(self, gl):
         print gl.name + " " + gl.dataSource
 
 
 if __name__ == '__main__':
-    # objectType = 'dbo.Tbl_fc_magma'
-    # dataName = 'dia_tang'
-    data = r"E:\SourceCode\tmact_2019\data\gdb\chanqua\dia_tang_gdb.mxd"
+    data = r"E:\SourceCode\tmact_2019\data\gdb\magma3layer - Copy\sde_main.mxd"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
     layer2DB().execute(data, db)
