@@ -13,10 +13,29 @@ class updateDataSource:
 
 
 if __name__ == '__main__':
-    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\gdb\gdb\dia_tang_gdb.mxd")
+    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated.mxd")
     result = unitest.execute(
         r"E:\SourceCode\tmact_2019\data\gdb\gdb\ks.gdb",
         r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde"
     )
-    result.saveACopy(r"E:\SourceCode\tmact_2019\data\gdb\gdb\sde_dia_tang_gdb.mxd")
+
+    result.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\FC_Magma_Bd132_final_local.mxd")
     print "done"
+
+
+# findAndReplaceWorkspacePaths (find_workspace_path, replace_workspace_path, {validate})
+# Parameter	Explanation	Data Type
+# find_workspace_path
+# A string that represents the workspace path or connection file you want to find. If an empty string is passed, then all workspace paths will be replaced with the replace_workspace_path, depending on the value of the validate parameter.
+#
+# String
+# replace_workspace_path
+# A string that represents the workspace path or connection file you want to use to replace.
+#
+# String
+# validate
+# If set to True, a workspace will only be updated if the replace_workspace_path value is a valid workspace. If it is not valid, the workspace will not be replaced. If set to False, the method will set all workspaces to match the replace_workspace_path, regardless of a valid match. In this case, if a match does not exist, then the layer and table's data sources would be broken.
+#
+# (The default value is True)
+#
+# Boolean

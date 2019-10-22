@@ -17,25 +17,8 @@ class listing_layer:
         # print main_layer.name
 
         glayers = arcpy.mapping.ListLayers(main_layer)
-        # for gl in glayers:
-        #     if not gl.isGroupLayer:
-        #         print gl.name + " " + gl.dataSource
 
         return glayers
-
-        # for l in layers:
-        #     if l.isGroupLayer:
-        #         print "isGroupLayer: " + l.name
-        #
-        #         glayers = arcpy.mapping.ListLayers(l)
-        #         for gl in glayers:
-        #             if gl.isGroupLayer != True:
-        #                 print gl.name
-        #                 # apply symbology
-        #                 # arcpy.ApplySymbologyFromLayer_management(gl, r"C:\GIS\lyrfiles\mylayersymbology.lyr")
-        #
-        #         # use as
-        #         print "end"
 
 
 if __name__ == '__main__':
