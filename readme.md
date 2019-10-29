@@ -77,3 +77,4 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 - Pyodbc: `python -m pip install pyodbc`
 - psycopg2: `python -m pip install psycopg2`
 - mongodb: `python -m pip install pymongo`
+- pika: `python -m pip install pika`

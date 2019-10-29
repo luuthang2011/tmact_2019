@@ -20,8 +20,7 @@ class publish_mapService_from_mapDocument:
         con = in_connect
 
     def execute(self):
-        # Provide other service details
-        # service = "demo_ahihi"
+        # init variable
         sddraft = wrkspc + "\\" + service + '.sddraft'
         sddraft_new = wrkspc + "\\" + service + '_new.sddraft'
         sd = wrkspc + "\\" + service + '.sd'
@@ -44,13 +43,12 @@ class publish_mapService_from_mapDocument:
                 extension = typeName.parentNode
                 for extElement in extension.childNodes:
                     # Disabled SOE.
-                    # if extElement.tagName == 'Enabled':
-                    #     extElement.firstChild.data = 'false'
                     print extElement.tagName
                     if extElement.tagName == 'Enabled':
                         extElement.firstChild.data = 'true'
 
         # Output to a new sddraft.
+        print "enable WFS and save to new ssdraft"
         outXml = sddraft_new
         f = open(outXml, 'w')
         doc.writexml(f)
@@ -99,8 +97,8 @@ if __name__ == '__main__':
     # print "run"
     service = "ahihi"
     unitest = publish_mapService_from_mapDocument(
-        r"E:\SourceCode\tmact_2019\data\gdb\magma3layer - Copy",
-        r"E:\SourceCode\tmact_2019\data\gdb\magma3layer - Copy\sde_main.mxd",
+        r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22",
+        r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\prepare.mxd",
         r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags",
         service
     )

@@ -68,18 +68,18 @@ class FlowProcess:
         # Rabbit.delete_json(strRabbit)
 
 
-# if __name__ == '__main__':
-#     print 'Flow Processing...'
-#     FL = FlowProcess()
-#     # pg_table = 'phuonghx_magma3'
-#     # ms_table = 'Tbl_fc_magma'
-#     # service = 'fc_magma_1'
-#     # layerid = 4
-#
-#     pg_table = 'F_48_94_C_Chu_DT_region'
-#     ms_table = 'Tbl_fc_magma'
-#     service = 'Tbl_fc_magma_sde_dia_tang_gdb'
-#     layerid = 2
-#
-#     FL.excec(pg_table, ms_table, service, layerid, "CREATE")
+if __name__ == '__main__':
+    print 'Flow Processing...'
+    FL = FlowProcess()
+    # pg_table = 'phuonghx_magma3'
+    # ms_table = 'Tbl_fc_magma'
+    # service = 'fc_magma_1'
+    # layerid = 4
+
+    pg_table = 'fc_magma_bd132'
+    ms_table = 'Tbl_FC_Magma'
+    service = 'Magma'
+    layerid = 1
+
+    FL.excec(pg_table, ms_table, service, layerid, "CREATE")
 

@@ -34,7 +34,7 @@ class DB:
             host=constant.HOST_POSTGRES,
             port=constant.PORT_POSTGRES)
         self.cursor = self.connection.cursor()
-        print 'Connected success!'
+        print 'Connected PostgreSQL success!'
 
 
     def select(self, query):

@@ -87,23 +87,23 @@ class Delete:
 if __name__ == '__main__':
     unitest = Delete()
     # ex: http://<server name>:6080/arcgis/admin
-    server = 'localhost'  # fixed
+    server = '10.101.3.204'  # fixed
     admin = "fimo"  # fixed
     password = "Mrvm3CVEvr8JGet9"  # fixed
 
-    root = r'E:\SourceCode\tmact_2019\data\gdb\\' # fixed
+    root = r'E:\SourceCode\tmact_2019\data\mdb\\' # fixed
 
     print 'Argument List:', str(sys.argv)
 
-    # service = "Tbl_FC_BienChat_sde_bienchat2019_1570097697"  # from DB
-    # folder = r'E:/SourceCode/tmact_2019/data/gdb/bienchat/'
-    # mxd = r'E:/SourceCode/tmact_2019/data/gdb/bienchat/sde_bienchat2019.mxd'
-    # ms_table = 'Tbl_FC_BienChat'
+    service = "Magma"  # from DB
+    folder = r'E:/SourceCode/tmact_2019/data/mdb/123123123123/'
+    mxd = r'E:/SourceCode/tmact_2019/data/mdb/123123123123/prepare.mxd'
+    ms_table = 'Tbl_FC_Magma'
 
-    service = sys.argv[1]  # from DB
-    folder = sys.argv[2]
-    mxd = sys.argv[3]
-    ms_table = sys.argv[4]
+    # service = sys.argv[1]  # from DB
+    # folder = sys.argv[2]
+    # mxd = sys.argv[3]
+    # ms_table = sys.argv[4]
 
     print 'Start delete Rabbit!'
     unitest.deleteRabbit(mxd, ms_table, service)
@@ -119,5 +119,6 @@ if __name__ == '__main__':
     unitest.deleteservice(server, service + ".MapServer", admin, password)
     print 'Start delete PostgreDB!'
     unitest.deleteDB(mxd)
-    print 'Start delete Directory!'
-    unitest.deleteDir(folder)
+    # print 'Start delete Directory!'
+    # unitest.deleteDir(folder)
+    print 'All done'

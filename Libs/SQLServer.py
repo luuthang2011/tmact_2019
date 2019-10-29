@@ -8,7 +8,6 @@ class DB:
     def __init__(self, database):
         print 'Start connect SQL Server'
 
-
     def init_connect(self):
         self.database = constant.DATABASE_SQL
         self.connection = \
@@ -20,13 +19,14 @@ class DB:
                                        ''' % (constant.DRIVER_SQL, constant.SERVER_SQL,
                                               self.database, constant.USER_SQL, constant.PASSWORD_SQL))
         self.cursor = self.connection.cursor()
-        print 'Connected success!'
+        print 'Connected SQL success!'
 
 
     def execute(self, query):
         self.cursor.execute(query)
 
     def insert(self, table, columns, values):
+        print 'Start insert'
         f = ', '.join(map(str, columns))
         v = str(values).strip('[]')
 
@@ -38,11 +38,12 @@ class DB:
         self.cursor.close()
 
     def multiple_insert(self, table, fields, values):
+        print 'Start multiple_insert'
         f = ', '.join(map(str, fields))
         v = str(values).strip('[]')
 
         insert_script = r'''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, v)
-        # print insert_script
+        print 'multiple_insert script: %s' % insert_script
         self.init_connect()
         self.cursor.execute(insert_script)
         self.connection.commit()
@@ -83,6 +84,8 @@ class DB:
 # Test Insert
 if __name__ == '__main__':
     db = DB(r'CSDLTayBacUAT')
+
+    db.init_connect()
     # query = 'SELECT * FROM CSDLTayBacUAT.dbo.Tbl_QLDA'
     # db.execute(INSERT_SCRIPT)
 

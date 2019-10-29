@@ -1,12 +1,12 @@
 # encoding=utf8
-import sys, os, time
-
+import os, time
+from pymongo import MongoClient
 import feature2geodatabase
 import updateDataSource
-# import publish_mapService_from_mapDocument
-# import listing_layer
-# import flowProcess
-# import delete
+import publish_mapService_from_mapDocument
+import listing_layer
+import flowProcess
+import delete
 
 
 class Ks:
@@ -31,7 +31,24 @@ class Ks:
             print "Please check mxd + mdb!"
             exit()
 
-    def publish(self, folder, sde):
+    def importMongo(self, url, ms_table, de_an, folder, mxd):
+        client = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
+        db = client['ks']
+        post = {
+            "url": url,
+            "ms_table": ms_table,
+            "de_an": de_an,
+            "folder": folder,
+            "mxd": mxd,
+            "visible": 0,
+            "opacity": 0.7
+        }
+
+        posts = db.map_services  # map_services: collection in database
+        post_id = posts.insert_one(post).inserted_id
+        print post_id
+
+    def publish(self, folder, sde, staticAgs, objectType):
         # get name and join path
         mxdPath, mdbPath = self.getinput(folder)
         mxdPath = folder + mxdPath
@@ -52,125 +69,56 @@ class Ks:
         newMxdData = updateSource.mdb2sde(sde)
         newMxdData.saveACopy(newMxdPath)
 
-
-    # def importMongo(self, url, ms_table, de_an, folder, mxd):
-    #     client = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
-    #     db = client['ks']
-    #     post = {
-    #         "url": url,
-    #         "ms_table": ms_table,
-    #         "de_an": de_an,
-    #         "folder": folder,
-    #         "mxd": mxd,
-    #         "visible": 0,
-    #         "opacity": 0.7
-    #     }
-    #
-    #     posts = db.map_services  # map_services: collection in database
-    #     post_id = posts.insert_one(post).inserted_id
-    #     print post_id
-    #
-    # def execute(self, folder, de_an):
-    #     # getInput(folder) -> check structure + get mxd
-    #     mxd, gdb = self.getinput(folder)
-    #     mxd_print = folder + '\\' + mxd
-    #     gdb_print = folder + '\\' + gdb
-    #     print mxd_print, gdb_print
-    #
-    #     # feature2geodatabase
-    #     # input: mxd + sde
-    #     # process:
-    #     # - isting_layer: get list layer in mxd
-    #     # - get list feature layer
-    #     # - check all dataSource already exists in Postgres -> if all no:
-    #     # - import gdb to sde: sde.'objectType + dataName + lyr.name' -> if all done
-    #     # - import sde to mssql
-    #     # output:
-    #     # - data in sde + mssql
-    #     print "start import geodatabase"
-    #     feature2db = feature2geodatabase.layer2DB()
-    #     checkimport = feature2db.execute(mxd_print, sde)
-    #     print "check import geodatabase" + checkimport
-    #     if not checkimport:
-    #         deleter = delete.Delete()
-    #         deleter.deleteDir(folder)
-    #         exit()
-    #
-    #     print "start update layer source"
-    #     # update layer source from gdb to sde: Libs/updateDataSource.py
-    #     updateSource = updateDataSource.updateDataSource(mxd_print)
-    #     newmxd = folder + 'sde_' + mxd
-    #
-    #     print "mxd_print" + mxd_print + "gdb_print" + checkimport + "newmxd" + newmxd
-    #     result = updateSource.execute(checkimport, sde)
-    #     result.saveACopy(newmxd)
-    #
-    #     print "start publish service to map server"
-    #     # publish service to map server
-    #     # rewritable: true
-    #     serviceName = objectType + '_sde_' + mxd[:-4] + '_' + str(int(time.time()))
-    #     print "serviceName: " + serviceName
-    #     # print 'serviceName:' + serviceName
-    #     publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
-    #         folder,
-    #         newmxd,
-    #         ags,
-    #         serviceName
-    #         # "ahihi"
-    #     )
-    #     iscompleted = publisher.execute()
-    #
-    #     print "publish service to map server status"
-    #     print iscompleted
-    #     if iscompleted:
-    #
-    #         # import to mongodb: def importMongo(self, url, ms_table, de_an):
-    #         self.importMongo(serviceName, objectType, de_an, folder, newmxd)
-    #
-    #         # insert db to MS SQL
-    #         # listing layer from sde mxd file
-    #         listLayer = listing_layer.listing_layer(newmxd)
-    #         glayers = listLayer.listGroupLayer()
-    #
-    #         # check isFeatureLayer and insert
-    #         FL = flowProcess.FlowProcess()
-    #
-    #         for i in range(len(glayers)):
-    #             if glayers[i].isFeatureLayer:
-    #                 print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
-    #                 print glayers[i].dataSource.split('.')[-1]
-    #                 print objectType
-    #                 print serviceName
-    #                 print i
-    #                 FL.excec(glayers[i].dataSource.split('.')[-1], objectType, serviceName, i, 'CREATE')
-    #                 print "----------------------------------------------"
-    #                 print "-------------All Done!------------------------"
-    #                 print "----------------------------------------------"
-    #     else:
-    #         print "-------------Error!------------------------"
-    #         deleter = delete.Delete()
-    #         deleter.deleteDB(newmxd)
-    #         deleter.deleteDir(folder)
+        # publish service
+        # input: newMxdPath, AGS file
+        # true: done
+        # false: delete geodatabase
+        serviceName = objectType
+        publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
+            folder,
+            newMxdPath,
+            staticAgs,
+            serviceName
+        )
+        return publisher.execute()
 
 
 if __name__ == '__main__':
     staticAgs = r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags"
-
-
-    # python main.py [arg]
-    # folder
-    # print 'Argument List:', str(sys.argv)
-
-    objectType = 'Tbl_fc_magma'
-    # objectType = sys.argv[1]
-
-    # folder = sys.argv[2]
-    de_an = 'KhoangSan'
-
-    # unitest = Ks(db, objectType, staticAgs)
-    # unitest.execute(folder, de_an)
-
-    folder = r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\\"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
-    unitest = Ks()
-    unitest.publish(folder, db)
+
+    folder = r"E:/SourceCode/tmact_2019/data/mdb/123123123123/"
+    table = "Tbl_FC_Magma"
+    objectType = table.split("_")[-1]       # magma
+
+    try:
+        unitest = Ks()
+        result = unitest.publish(folder, db, staticAgs, objectType)
+        if result:
+            print "Published map service!!!!"
+            unitest.importMongo(objectType, table, "de_an", folder, folder + 'prepare.mxd')
+
+            # insert db to MS SQL
+            # listing layer from sde mxd file
+            listLayer = listing_layer.listing_layer(folder + 'prepare.mxd')
+            glayers = listLayer.listGroupLayer()
+
+            # check isFeatureLayer and insert
+            FL = flowProcess.FlowProcess()
+
+            for i in range(len(glayers)):
+                if glayers[i].isFeatureLayer:
+                    print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
+                    print glayers[i].dataSource.split('.')[-1]
+                    print objectType
+                    print table
+                    print i
+                    FL.excec(glayers[i].dataSource.split('.')[-1], table, objectType, i, 'CREATE')
+                    print "----------------------------------------------"
+                    print "-------------All Done!------------------------"
+                    print "----------------------------------------------"
+        else:
+            print "error"
+    except Exception, e:
+        print("An exception occurred")
+        print e.message
