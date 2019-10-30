@@ -90,7 +90,12 @@ class DB:
         now = datetime.datetime.now()
         now_fs = now.strftime(fs)
 
-        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
+        # query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
+
+        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate FROM sde.%s''' % (
+        columns_replace, id_dean, now_fs, now_fs, table)
+
+        print 'Custom query: %s' % query
 
         self.query_get_id_dean(table)
         return query

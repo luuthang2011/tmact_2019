@@ -10,7 +10,8 @@ import updateDataSource
 import publish_mapService_from_mapDocument
 import listing_layer
 import flowProcess
-import delete
+from Libs import delete
+
 
 class Ks:
     def __init__(self, db, o, staticAgs):

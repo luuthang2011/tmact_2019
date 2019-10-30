@@ -6,8 +6,6 @@ import urllib2
 import arcpy
 import time
 from pymongo import MongoClient
-sys.path.append(r'E:\SourceCode\tmact_2019\Libs')
-reload(sys)
 import SQLServer
 import flowProcess
 import rabbitmq
@@ -96,8 +94,8 @@ if __name__ == '__main__':
     print 'Argument List:', str(sys.argv)
 
     service = "Magma"  # from DB
-    folder = r'E:/SourceCode/tmact_2019/data/mdb/123123123123/'
-    mxd = r'E:/SourceCode/tmact_2019/data/mdb/123123123123/prepare.mxd'
+    folder = r'E:/SourceCode/tmact_2019/data/mdb/1572371062527/'
+    mxd = r'E:/SourceCode/tmact_2019/data/mdb/1572371062527/prepare.mxd'
     ms_table = 'Tbl_FC_Magma'
 
     # service = sys.argv[1]  # from DB

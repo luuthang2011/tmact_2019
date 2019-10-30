@@ -39,7 +39,8 @@ class FlowProcess:
         columns_custom.append('UpdatedDate')
         # columns_custom.append('CreatedBy')
         # columns_custom.append('UpdatedBy')
-        columns_custom.append('isDean')
+
+        # columns_custom.append('isDean')
 
 
         if action == 'CREATE':

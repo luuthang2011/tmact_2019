@@ -1,5 +1,5 @@
 # encoding=utf8
-import os, time
+import sys, os
 from pymongo import MongoClient
 import feature2geodatabase
 import updateDataSource
@@ -87,7 +87,10 @@ if __name__ == '__main__':
     staticAgs = r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
 
-    folder = r"E:/SourceCode/tmact_2019/data/mdb/123123123123/"
+    # table = sys.argv[1]
+    # folder = sys.argv[2]
+
+    folder = r"E:/SourceCode/tmact_2019/data/mdb/1572371062527/"
     table = "Tbl_FC_Magma"
     objectType = table.split("_")[-1]       # magma
 
@@ -106,6 +109,8 @@ if __name__ == '__main__':
             # check isFeatureLayer and insert
             FL = flowProcess.FlowProcess()
 
+            print "--------Publish end!-----------"
+
             for i in range(len(glayers)):
                 if glayers[i].isFeatureLayer:
                     print 'Name: ' + glayers[i].name + ", Data Source: " + glayers[i].dataSource
@@ -122,3 +127,8 @@ if __name__ == '__main__':
     except Exception, e:
         print("An exception occurred")
         print e.message
+        deleter = delete.Delete()
+        deleter.deleteDB(folder + 'prepare.mxd')
+        print "----------------------------------------------"
+        print "--------Flow end. Pls check errors!-----------"
+        print "----------------------------------------------"
