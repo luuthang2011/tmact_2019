@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Libs/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/PostgresServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/PostgresServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/flowProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/flowProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -194,9 +188,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Python27\ArcGIS10.5\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Libs" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Libs/tmact.py" />
@@ -402,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572366845062</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="run only with pycharm">
+      <created>1572397448668</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1572397448668</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -473,6 +474,7 @@
     <MESSAGE value="release feature2geodatabase" />
     <MESSAGE value="release updateDataSource" />
     <MESSAGE value="after update database" />
-    <option name="LAST_COMMIT_MESSAGE" value="after update database" />
+    <MESSAGE value="run only with pycharm" />
+    <option name="LAST_COMMIT_MESSAGE" value="run only with pycharm" />
   </component>
 </project>
