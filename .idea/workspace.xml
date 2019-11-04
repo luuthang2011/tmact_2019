@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/publish_mapService_from_mapDocument.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/publish_mapService_from_mapDocument.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -1,6 +1,4 @@
-# Publishes a service to machine myserver using USA.mxd
-# A connection to ArcGIS Server must be established in the
-#  Catalog window of ArcMap before running this script
+# encoding=utf8
 import arcpy
 import xml.dom.minidom as DOM
 
@@ -66,7 +64,7 @@ class publish_mapService_from_mapDocument:
                 print '    ', message, ' (CODE %i)' % code
                 print '       applies to:',
                 for layer in layerlist:
-                    print layer.name,
+                    print layer.name.encode('utf8'),
                 print
 
         # Stage and upload the service if the sddraft analysis did not contain errors
