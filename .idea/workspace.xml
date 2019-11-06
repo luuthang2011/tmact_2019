@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Libs/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/publish_mapService_from_mapDocument.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/publish_mapService_from_mapDocument.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,7 +55,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact">
+  <component name="RunManager" selected="Python.delete (1)">
     <configuration name="SQLServer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -215,8 +214,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tmact" />
         <item itemvalue="Python.delete (1)" />
+        <item itemvalue="Python.tmact" />
         <item itemvalue="Python.delete" />
         <item itemvalue="Python.SQLServer (1)" />
         <item itemvalue="Python.flowProcess" />
@@ -405,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572397448668</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="release with cmd call">
+      <created>1572885310138</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1572885310138</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -477,6 +483,7 @@
     <MESSAGE value="release updateDataSource" />
     <MESSAGE value="after update database" />
     <MESSAGE value="run only with pycharm" />
-    <option name="LAST_COMMIT_MESSAGE" value="run only with pycharm" />
+    <MESSAGE value="release with cmd call" />
+    <option name="LAST_COMMIT_MESSAGE" value="release with cmd call" />
   </component>
 </project>

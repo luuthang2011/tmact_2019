@@ -124,6 +124,11 @@ if __name__ == '__main__':
                     print "----------------------------------------------"
         else:
             print "error"
+            deleter = delete.Delete()
+            deleter.deleteDB(folder + 'prepare.mxd')
+            print "----------------------------------------------"
+            print "--------Flow end. Pls check errors!-----------"
+            print "----------------------------------------------"
     except Exception, e:
         print("An exception occurred")
         print e.message
