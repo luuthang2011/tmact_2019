@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -411,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572885310138</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="add fixed error server timeout">
+      <created>1573003207563</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1573003207563</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -484,6 +491,7 @@
     <MESSAGE value="after update database" />
     <MESSAGE value="run only with pycharm" />
     <MESSAGE value="release with cmd call" />
-    <option name="LAST_COMMIT_MESSAGE" value="release with cmd call" />
+    <MESSAGE value="add fixed error server timeout" />
+    <option name="LAST_COMMIT_MESSAGE" value="add fixed error server timeout" />
   </component>
 </project>

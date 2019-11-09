@@ -78,3 +78,27 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 - psycopg2: `python -m pip install psycopg2`
 - mongodb: `python -m pip install pymongo`
 - pika: `python -m pip install pika`
+
+
+### full installation
+- install windows
+- install arcgis license
+- install arcgis desktop
+- install arcgis server
+- install postgre
+- config db + server
+- new gdb
+- make db authen file
+- make server authen file
+- install mongodb
+- compile + install tmact client
+```buildoutcfg
+npm install pm2 -g
+npm install pm2-windows-startup -g
+pm2-startup install
+pm2 start myApp.js --name mySuperApp
+pm2 save
+reboot
+pm2 ls
+```
+- install webgis
