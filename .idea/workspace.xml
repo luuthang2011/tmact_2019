@@ -106,8 +106,13 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -343,10 +348,10 @@
     </configuration>
     <list>
       <item itemvalue="Python.SQLServer" />
+      <item itemvalue="Python.postgre_server" />
       <item itemvalue="Python.delete" />
       <item itemvalue="Python.feature2geodatabase" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.postgre_server" />
       <item itemvalue="Python.publish_mapService_from_mapDocument" />
       <item itemvalue="Python.updateDataSource" />
     </list>
