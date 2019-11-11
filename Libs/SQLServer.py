@@ -21,7 +21,6 @@ class DB:
         self.cursor = self.connection.cursor()
         print 'Connected SQL success!'
 
-
     def execute(self, query):
         self.cursor.execute(query)
 
@@ -81,6 +80,7 @@ class DB:
         self.connection.commit()
         self.cursor.close()
 
+
 # Test Insert
 if __name__ == '__main__':
     db = DB(r'CSDLTayBacUAT')
@@ -106,4 +106,3 @@ if __name__ == '__main__':
     #
     # db.delete_row_service(table, column,  service)
     db.select_id_dean('DOVEDIACHAT_LTD11')
-

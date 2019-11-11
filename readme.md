@@ -80,16 +80,40 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 - pika: `python -m pip install pika`
 
 
+### compile code
+link: https://vinasupport.com/su-dung-cython-de-bao-ve-compile-source-code-python/
+install Microsoft Visual Studio 2008 Express edition
+set path windows: C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin
+run cmd
+    "vcvarsall.bat" x86 & set
+    C:\Python27\ArcGIS10.5\python.exe E:/SourceCode/tmact_2019/Libs/compile.py build_ext --inplace
+
+```
+python -m pip install cython
+```
+
+```
+feature2geodatabase.py
+updateDataSource.py
+publish_mapService_from_mapDocument.py
+listing_layer.py
+flowProcess.py
+SQLServer.py
+PostgresServer.py
+rabbitmq.py
+delete.py
+```
+
+
 ### full installation
-- install windows
-- install arcgis license
-- install arcgis desktop
-- install arcgis server
-- install postgre
-- config db + server
-- new gdb
-- make db authen file
-- make server authen file
+- install windows: oki
+- install arcgis license: oki
+- install arcgis desktop: oki
+- install arcgis server: oki
+- install postgre + dll: oki
+- create db + config db connect with server: oki
+- make db authen file: oki
+- make server authen file: oki
 - install mongodb
 - compile + install tmact client
 ```buildoutcfg

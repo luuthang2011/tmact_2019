@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pika, os, logging
-import re
+# import re
 import constant
 
 logging.basicConfig()
@@ -11,7 +11,7 @@ class Rabbit:
     def __init__(self):
         print 'Start init Rabbit connection'
         # Parse CLODUAMQP_URL (fallback to localhost)
-        self.url = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@52.220.224.131:5672/%2f')
+        self.url = os.environ.get('CLOUDAMQP_URL', constant.Rabbit)
         self.params = pika.URLParameters(self.url)
         self.params.socket_timeout = 30
 

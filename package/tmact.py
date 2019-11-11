@@ -88,11 +88,11 @@ if __name__ == '__main__':
     staticAgs = constant.staticAgs
     db = constant.db
 
-    table = sys.argv[1]
-    folder = sys.argv[2]
+    # table = sys.argv[1]
+    # folder = sys.argv[2]
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/1572371062527/"
-    # table = "Tbl_FC_Magma"
+    folder = r"E:/SourceCode/tmact_2019/data/mdb/1572371062527/"
+    table = "Tbl_FC_Magma"
     objectType = table.split("_")[-1]       # magma
 
     try:

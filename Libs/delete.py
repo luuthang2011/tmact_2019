@@ -10,6 +10,7 @@ import SQLServer
 import flowProcess
 import rabbitmq
 import listing_layer
+import constant
 
 
 class Delete:
@@ -21,9 +22,9 @@ class Delete:
         Rabbit = rabbitmq.Rabbit()
 
     def deleteMongo(self, url):
-        myclient = MongoClient('mongodb://fimo:fimo!54321@10.101.3.204:27017/ks')
-        mydb = myclient["ks"]
-        mycol = mydb["map_services"]        # map_services: collection in database
+        myclient = MongoClient(constant.Mongo)
+        mydb = myclient[constant.Mongo_db]
+        mycol = mydb[constant.Mongo_collection]        # map_services: collection in database
         myquery = {"url": url}
         mycol.delete_one(myquery)
 
@@ -85,11 +86,11 @@ class Delete:
 if __name__ == '__main__':
     unitest = Delete()
     # ex: http://<server name>:6080/arcgis/admin
-    server = '10.101.3.204'  # fixed
-    admin = "fimo"  # fixed
-    password = "Mrvm3CVEvr8JGet9"  # fixed
+    server = constant.server  # fixed
+    admin = constant.admin  # fixed
+    password = constant.password  # fixed
 
-    root = r'E:\SourceCode\tmact_2019\data\mdb\\' # fixed
+    # root = r'E:\SourceCode\tmact_2019\data\mdb\\' # fixed
 
     print 'Argument List:', str(sys.argv)
 
