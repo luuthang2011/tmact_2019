@@ -2,39 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Libs/PostgresServer.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/SQLServer.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/compile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/delete.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/feature2geodatabase.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/flowProcess.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/listing_layer.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/publish_mapService_from_mapDocument.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/rabbitmq.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/updateDataSource.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bak/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package/constant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package/tmact.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package/tmact_delete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/SQLServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/SQLServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/constant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/rabbitmq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572369726144/FC_Magma_Bd132.mdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572369726144/FC_Magma_Bd132_final_formated.mxd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572369833309/FC_Magma_Bd132.mdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572369833309/FC_Magma_Bd132_final_formated.mxd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572369884503/FC_Magma_Bd132.mdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572369884503/FC_Magma_Bd132_final_formated.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/1572371062527/prepare.mxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572370106000/FC_Magma_Bd132.mdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572370106000/FC_Magma_Bd132_final_formated.mxd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572370181751/FC_Magma_Bd132.mdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572370181751/FC_Magma_Bd132_final_formated.mxd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/bak/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/tmact_delete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,7 +57,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact (1)">
+  <component name="RunManager" selected="Python.tmact_delete">
     <configuration name="SQLServer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -247,8 +216,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tmact (1)" />
         <item itemvalue="Python.tmact_delete" />
+        <item itemvalue="Python.tmact (1)" />
         <item itemvalue="Python.tmact" />
         <item itemvalue="Python.compile" />
         <item itemvalue="Python.delete (1)" />
@@ -460,29 +429,6 @@
     </task>
     <option name="localTasksCounter" value="27" />
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="Nosetests_in_test_rabbitmq_py - 2019.09.03 at 19h 35m 17s.xml">
-      <configuration name="Nosetests in test_rabbitmq.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_test_rabbitmq_py - 2019.09.03 at 19h 35m 35s.xml">
-      <configuration name="Nosetests in test_rabbitmq.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_test_rabbitmq_py - 2019.09.03 at 19h 36m 36s.xml">
-      <configuration name="Nosetests in test_rabbitmq.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_test_rabbitmq_py - 2019.09.03 at 19h 37m 04s.xml">
-      <configuration name="Nosetests in test_rabbitmq.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_test_rabbitmq_py - 2019.09.03 at 19h 37m 21s.xml">
-      <configuration name="Nosetests in test_rabbitmq.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_test_rabbitmq_py - 2019.09.03 at 19h 37m 50s.xml">
-      <configuration name="Nosetests in test_rabbitmq.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_rabbitmq_2_py - 2019.09.03 at 19h 38m 13s.xml">
-      <configuration name="Nosetests in rabbitmq_2.py" configurationId="tests" />
-    </history-entry>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">

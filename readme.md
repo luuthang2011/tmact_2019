@@ -72,10 +72,11 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
     
 ### Install Libs
 #### Windows
+- Pip: `python -m pip install --upgrade pip`
 - Visual C++: `https://www.microsoft.com/en-us/download/details.aspx?id=44266`
 #### Libs
 - Pyodbc: `python -m pip install pyodbc`
-- psycopg2: `python -m pip install psycopg2`
+- psycopg2: `python -m pip install psycopg2-binary`
 - mongodb: `python -m pip install pymongo`
 - pika: `python -m pip install pika`
 
