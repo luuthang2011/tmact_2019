@@ -1,4 +1,7 @@
 import sys, delete, constant
+# sys.setdefaultencoding() does not exist, here!
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 if __name__ == '__main__':
     unitest = delete.Delete()

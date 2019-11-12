@@ -41,7 +41,7 @@ class DB:
         # q = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
         # self.cursor.execute(q)
         self.init_connect()
-        print 'Query: %s' % query
+        # print 'Query: %s' % query
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
 
@@ -95,14 +95,14 @@ class DB:
         query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate FROM sde.%s''' % (
         columns_replace, id_dean, now_fs, now_fs, table)
 
-        print 'Custom query: %s' % query
+        # print 'Custom query: %s' % query
 
         self.query_get_id_dean(table)
         return query
 
     def query_get_id_dean(self, table):
         query = r'''SELECT "id_da" FROM sde.%s LIMIT 1''' % ( table )
-        print 'Query select: %s' % query
+        # print 'Query select: %s' % query
         self.init_connect()
         row = self.select(query)
         self.cursor.close()
