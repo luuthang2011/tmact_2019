@@ -11,7 +11,7 @@ class FlowProcess:
         msServer = SQLServer.DB('')
         Rabbit = rabbitmq.Rabbit()
 
-    def excec(self, pg_table, ms_table, service, layerid, action):
+    def excec(self, pg_table, ms_table, service, layerid, user, action):
         table = pg_table.lower()
         # table = pg_table
         # Get Columns form PostgreSQL
@@ -58,14 +58,17 @@ class FlowProcess:
             msServer.update_value_null(ms_table, 'layername', service)
             # value = 'layer_id_them_o_day' | id cua layer
             msServer.update_value_null(ms_table, 'layerid', layerid)
+            # User: [CreatedBy], [UpdatedBy]
+            msServer.update_value_null(ms_table, 'createdby', user)
+            msServer.update_value_null(ms_table, 'updatedby', user)
             ## Rabbit create json
             print 'Create FLow'
             # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')
-            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, 'CREATE')
+            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'CREATE')
             Rabbit.create_json(strRabbit)
         elif action == 'DELETE':
             # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
-            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, 'DELETE')
+            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'DELETE')
             Rabbit.delete_json(strRabbit)
 
 
@@ -87,6 +90,7 @@ if __name__ == '__main__':
     ms_table = 'Tbl_FC_TramTich'
     service = 'TramTich'
     layerid = 0
+    user = 'PhuongHX'
 
-    FL.excec(pg_table, ms_table, service, layerid, "CREATE")
+    FL.excec(pg_table, ms_table, service, layerid, user, "CREATE")
 

@@ -65,7 +65,7 @@ class Rabbit:
         self.connection.close()
 
     # Modify pg_rows value
-    def modify_array_pg(self, pg_columns, pg_rows, ms_table, service, layerid, action):
+    def modify_array_pg(self, pg_columns, pg_rows, ms_table, service, layerid, user, action):
         print 'Modify array'
         arr_modify = []
         indexOfObjectID = pg_columns.index("objectid")
@@ -90,10 +90,13 @@ class Rabbit:
                         indexTuple = pg_columns.index(column)
                         # tupleObject[column] = arr[indexTuple]
                         tupleObject[column_match_case] = arr[indexTuple]
+
+                # CreatedBy and UpdatedBy
+                tupleObject['CreatedBy'] = user
+                tupleObject['UpdatedBy'] = user
                 tmp['data'] = tupleObject
 
-                # print tmp
-
+                print tmp
             arr_modify.append(tmp)
         # Array to string
         strArr = """%s""" % arr_modify

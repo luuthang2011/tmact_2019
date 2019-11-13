@@ -128,7 +128,7 @@ if __name__ == '__main__':
                     print "----------------------------------------------"
                     print "Exec Flow Process"
                     print "----------------------------------------------"
-                    FL.excec(glayers[i].dataSource.split('.')[-1], table, objectType, i, 'CREATE')
+                    FL.excec(glayers[i].dataSource.split('.')[-1], table, objectType, i, user, 'CREATE')
                     print "----------------------------------------------"
                     print "-------------All Done!------------------------"
                     print "----------------------------------------------"

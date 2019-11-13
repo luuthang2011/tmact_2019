@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/constant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/delete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/flowProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/flowProcess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/rabbitmq.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/TramTich.mxd" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +81,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="delete" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tmact_2019" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Libs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Libs/delete.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="flowProcess" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,27 +136,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="E:\SourceCode\tmact_2019\Libs\PostgresServer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tmact (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tmact_2019" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/package" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/package/tmact.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -213,17 +212,17 @@
       <item itemvalue="Python.postgre_server" />
       <item itemvalue="Python.tmact" />
       <item itemvalue="Python.tmact_delete" />
-      <item itemvalue="Python.tmact (1)" />
       <item itemvalue="Python.tmact_delete (1)" />
       <item itemvalue="Python.flowProcess" />
+      <item itemvalue="Python.delete" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.tmact" />
-        <item itemvalue="Python.tmact_delete (1)" />
+        <item itemvalue="Python.delete" />
         <item itemvalue="Python.flowProcess" />
+        <item itemvalue="Python.tmact_delete (1)" />
         <item itemvalue="Python.tmact_delete" />
-        <item itemvalue="Python.tmact (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -465,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573627998052</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fix field case">
+      <created>1573649569649</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1573649569649</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +498,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="release version 0.3 - all passed" />
     <MESSAGE value="Added flow process - PhuongHX" />
     <MESSAGE value="all done v1 TMACT 2019" />
     <MESSAGE value="Checkpoint 19/08/21" />
@@ -517,6 +522,7 @@
     <MESSAGE value="change delete mongodb" />
     <MESSAGE value="release v1.1" />
     <MESSAGE value="release v1.1.1 - get params" />
-    <option name="LAST_COMMIT_MESSAGE" value="release v1.1.1 - get params" />
+    <MESSAGE value="Fix field case" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix field case" />
   </component>
 </project>

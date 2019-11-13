@@ -64,7 +64,7 @@ class Delete:
                 print "Start Delete Rabbit"
                 # check isFeatureLayer and insert
                 FL = flowProcess.FlowProcess()
-                FL.excec(glayers[i].dataSource.split('.')[-1], ms_table, serviceName, i, 'DELETE')
+                FL.excec(glayers[i].dataSource.split('.')[-1], ms_table, serviceName, i, '', 'DELETE')
 
 
     def deleteMSSQL(self, ms_table, service):
@@ -94,15 +94,15 @@ if __name__ == '__main__':
 
     print 'Argument List:', str(sys.argv)
 
-    # service = "Magma"  # from DB
-    # folder = r'E:/SourceCode/tmact_2019/data/mdb/1572371062527/'
-    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/1572371062527/prepare.mxd'
-    # ms_table = 'Tbl_FC_Magma'
+    service = "Magma"  # from DB
+    folder = r'E:/SourceCode/tmact_2019/data/mdb/1572371062527/'
+    mxd = r'E:/SourceCode/tmact_2019/data/mdb/1572371062527/prepare.mxd'
+    ms_table = 'Tbl_FC_Magma'
 
-    service = sys.argv[1]  # from DB
-    folder = sys.argv[2]
-    mxd = sys.argv[3]
-    ms_table = sys.argv[4]
+    # service = sys.argv[1]  # from DB
+    # folder = sys.argv[2]
+    # mxd = sys.argv[3]
+    # ms_table = sys.argv[4]
 
     print 'Start delete Rabbit!'
     unitest.deleteRabbit(mxd, ms_table, service)
