@@ -14,15 +14,15 @@ if __name__ == '__main__':
 
     print 'Argument List:', str(sys.argv)
 
-    service = "TramTich"  # from DB
-    folder = r'E:/SourceCode/tmact_2019/data/mdb/tramtich/'
-    mxd = r'E:/SourceCode/tmact_2019/data/mdb/tramtich/prepare.mxd'
-    ms_table = 'Tbl_FC_TramTich'
+    # service = "TramTich"  # from DB
+    # folder = r'E:/SourceCode/tmact_2019/data/mdb/tramtich/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/tramtich/prepare.mxd'
+    # ms_table = 'Tbl_FC_TramTich'
 
-    # service = sys.argv[1]  # from DB
-    # folder = sys.argv[2]
-    # mxd = sys.argv[3]
-    # ms_table = sys.argv[4]
+    service = sys.argv[1]  # from DB
+    folder = sys.argv[2]
+    mxd = sys.argv[3]
+    ms_table = sys.argv[4]
 
     print 'Start delete Rabbit!'
     unitest.deleteRabbit(mxd, ms_table, service)
