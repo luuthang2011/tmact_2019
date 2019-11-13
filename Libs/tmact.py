@@ -123,6 +123,9 @@ if __name__ == '__main__':
                     print objectType
                     print table
                     print i
+                    print "----------------------------------------------"
+                    print "Exec Flow Process"
+                    print "----------------------------------------------"
                     FL.excec(glayers[i].dataSource.split('.')[-1], table, objectType, i, 'CREATE')
                     print "----------------------------------------------"
                     print "-------------All Done!------------------------"

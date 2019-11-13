@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/PostgresServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/PostgresServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/1572371062527/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/1572371062527/prepare.mxd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -429,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573261206611</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="add utf8">
+      <created>1573575853138</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1573575853138</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -480,6 +484,7 @@
     <MESSAGE value="run only with pycharm" />
     <MESSAGE value="release with cmd call" />
     <MESSAGE value="add fixed error server timeout" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fixed error server timeout" />
+    <MESSAGE value="add utf8" />
+    <option name="LAST_COMMIT_MESSAGE" value="add utf8" />
   </component>
 </project>
