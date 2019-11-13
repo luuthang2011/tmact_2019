@@ -1,5 +1,9 @@
 # encoding=utf8
 import sys, os
+# sys.setdefaultencoding() does not exist, here!
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
+
 from pymongo import MongoClient
 import feature2geodatabase
 import updateDataSource
@@ -91,8 +95,8 @@ if __name__ == '__main__':
     # table = sys.argv[1]
     # folder = sys.argv[2]
 
-    folder = r"E:/SourceCode/tmact_2019/data/mdb/1572371062527/"
-    table = "Tbl_FC_Magma"
+    folder = r"E:/SourceCode/tmact_2019/data/mdb/tramtich/"
+    table = "Tbl_FC_TramTich"
     objectType = table.split("_")[-1]       # magma
 
     try:
@@ -119,6 +123,9 @@ if __name__ == '__main__':
                     print objectType
                     print table
                     print i
+                    print "----------------------------------------------"
+                    print "Exec Flow Process"
+                    print "----------------------------------------------"
                     FL.excec(glayers[i].dataSource.split('.')[-1], table, objectType, i, 'CREATE')
                     print "----------------------------------------------"
                     print "-------------All Done!------------------------"
@@ -128,7 +135,7 @@ if __name__ == '__main__':
             deleter = delete.Delete()
             deleter.deleteDB(folder + 'prepare.mxd')
             print "----------------------------------------------"
-            print "--------Flow end. Pls check errors!-----------"
+            print "--Flow end. Publish false. Pls check errors!--"
             print "----------------------------------------------"
     except Exception, e:
         print("An exception occurred")
@@ -136,5 +143,5 @@ if __name__ == '__main__':
         deleter = delete.Delete()
         deleter.deleteDB(folder + 'prepare.mxd')
         print "----------------------------------------------"
-        print "--------Flow end. Pls check errors!-----------"
+        print "----Flow end. Exception. Pls check errors!----"
         print "----------------------------------------------"

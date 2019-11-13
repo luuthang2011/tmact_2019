@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/PostgresServer.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/SQLServer.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/delete.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/feature2geodatabase.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/flowProcess.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/listing_layer.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/publish_mapService_from_mapDocument.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/rabbitmq.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/updateDataSource.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/tmact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/tmact_delete.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact">
+  <component name="RunManager" selected="Python.tmact_delete (1)">
     <configuration name="SQLServer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -215,8 +226,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tmact" />
         <item itemvalue="Python.tmact_delete (1)" />
+        <item itemvalue="Python.tmact" />
         <item itemvalue="Python.tmact_delete" />
         <item itemvalue="Python.tmact (1)" />
         <item itemvalue="Python.compile" />
@@ -433,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573575853138</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="release 1.1">
+      <created>1573608088086</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1573608088086</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -460,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add listing layer in mxd" />
     <MESSAGE value="add feature2database" />
     <MESSAGE value="add change data source" />
     <MESSAGE value="release version 0.2 - all passed" />
@@ -485,6 +502,7 @@
     <MESSAGE value="release with cmd call" />
     <MESSAGE value="add fixed error server timeout" />
     <MESSAGE value="add utf8" />
-    <option name="LAST_COMMIT_MESSAGE" value="add utf8" />
+    <MESSAGE value="release 1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="release 1.1" />
   </component>
 </project>
