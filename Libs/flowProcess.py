@@ -37,6 +37,11 @@ class FlowProcess:
         columns_custom.append('ID_DA')
         columns_custom.append('CreatedDate')
         columns_custom.append('UpdatedDate')
+
+        if 'rgb_color' in columns_custom: columns_custom.remove('rgb_color')
+        if 'red' in columns_custom: columns_custom.remove('red')
+        if 'green' in columns_custom: columns_custom.remove('green')
+        if 'blue' in columns_custom: columns_custom.remove('blue')
         # columns_custom.append('CreatedBy')
         # columns_custom.append('UpdatedBy')
 
@@ -77,10 +82,11 @@ if __name__ == '__main__':
     # service = 'fc_magma_1'
     # layerid = 4
 
-    pg_table = 'fc_magma_bd132'
-    ms_table = 'Tbl_FC_Magma'
-    service = 'Magma'
-    layerid = 1
+    # pg_table = 'fc_magma_bd132'
+    pg_table = 'Bd153'
+    ms_table = 'Tbl_FC_TramTich'
+    service = 'TramTich'
+    layerid = 0
 
     FL.excec(pg_table, ms_table, service, layerid, "CREATE")
 

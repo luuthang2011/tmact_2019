@@ -69,6 +69,7 @@ class Rabbit:
         print 'Modify array'
         arr_modify = []
         indexOfObjectID = pg_columns.index("objectid")
+        print 'Start build str for Rabbit'
         for arr in pg_rows:
             tmp = {
                 # 'index': ms_table.lower(),
@@ -80,9 +81,15 @@ class Rabbit:
                 tupleObject = {}
                 for column in pg_columns:
                     # @Todo: Need change lower case key in Rabbit
-                    if column not in ['id_danhphap', 'id_tyle', 'namnoplt']:
+                    if column not in ['rbg_color', 'red', 'green', 'blue']:
+                        OBJ_UPPERCASE = constant.OBJ_CASE
+                        column_match_case = column
+                        if column in OBJ_UPPERCASE:
+                            column_match_case = OBJ_UPPERCASE[column]
+
                         indexTuple = pg_columns.index(column)
-                        tupleObject[column] = arr[indexTuple]
+                        # tupleObject[column] = arr[indexTuple]
+                        tupleObject[column_match_case] = arr[indexTuple]
                 tmp['data'] = tupleObject
 
                 # print tmp
