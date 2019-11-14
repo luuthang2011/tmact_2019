@@ -29,7 +29,7 @@ class FlowProcess:
 
         # pq_query = pgServer.query_builder(columns, table)
         # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field
-        pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user) # Added isDean Field
+        pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
@@ -46,6 +46,8 @@ class FlowProcess:
 
         columns_custom.append('CreatedBy')
         columns_custom.append('UpdatedBy')
+        columns_custom.append('LayerName')
+        columns_custom.append('LayerID')
 
         if 'rgb_color' in columns_custom: columns_custom.remove('rgb_color')
         if 'red' in columns_custom: columns_custom.remove('red')
@@ -56,7 +58,6 @@ class FlowProcess:
 
         # columns_custom.append('isDean')
 
-
         if action == 'CREATE':
             ## MS SQL table name
             # Insert Multiple database to MS SQL
@@ -64,9 +65,9 @@ class FlowProcess:
             # msServer.multiple_insert(ms_table, columns, pg_validate_rows)
             msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows)
             # Add layername and layerid column | ten service khi publish
-            msServer.update_value_null(ms_table, 'layername', service)
+            # msServer.update_value_null(ms_table, 'layername', service)
             # value = 'layer_id_them_o_day' | id cua layer
-            msServer.update_value_null(ms_table, 'layerid', layerid)
+            # msServer.update_value_null(ms_table, 'layerid', layerid)
             # User: [CreatedBy], [UpdatedBy]
             # msServer.update_value_null(ms_table, 'createdby', user)
             # msServer.update_value_null(ms_table, 'updatedby', user)

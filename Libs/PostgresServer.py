@@ -83,7 +83,7 @@ class DB:
 
         return query
 
-    def query_builder_with_custom_field(self, id_dean, columns, table, user):
+    def query_builder_with_custom_field(self, id_dean, columns, table, user, layername, layerid):
         print "Ma De an MS %s" % id_dean
         columns_strip = str(columns).strip('[]')
         columns_replace = columns_strip.replace("'", "").replace('"', '')
@@ -92,8 +92,8 @@ class DB:
 
         # query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
 
-        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy FROM sde.%s''' % (
-        columns_replace, id_dean, now_fs, now_fs, user, user, table)
+        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
+        columns_replace, id_dean, now_fs, now_fs, user, user, layername, layerid, table)
 
         # print 'Custom query: %s' % query
 
