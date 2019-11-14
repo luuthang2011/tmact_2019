@@ -1,3 +1,9 @@
+# encoding=utf8
+import sys, os
+# sys.setdefaultencoding() does not exist, here!
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
+
 import SQLServer
 import PostgresServer
 import rabbitmq
@@ -23,7 +29,7 @@ class FlowProcess:
 
         # pq_query = pgServer.query_builder(columns, table)
         # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field
-        pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table) # Added isDean Field
+        pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user) # Added isDean Field
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
@@ -37,6 +43,9 @@ class FlowProcess:
         columns_custom.append('ID_DA')
         columns_custom.append('CreatedDate')
         columns_custom.append('UpdatedDate')
+
+        columns_custom.append('CreatedBy')
+        columns_custom.append('UpdatedBy')
 
         if 'rgb_color' in columns_custom: columns_custom.remove('rgb_color')
         if 'red' in columns_custom: columns_custom.remove('red')
@@ -59,8 +68,8 @@ class FlowProcess:
             # value = 'layer_id_them_o_day' | id cua layer
             msServer.update_value_null(ms_table, 'layerid', layerid)
             # User: [CreatedBy], [UpdatedBy]
-            msServer.update_value_null(ms_table, 'createdby', user)
-            msServer.update_value_null(ms_table, 'updatedby', user)
+            # msServer.update_value_null(ms_table, 'createdby', user)
+            # msServer.update_value_null(ms_table, 'updatedby', user)
             ## Rabbit create json
             print 'Create FLow'
             # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')

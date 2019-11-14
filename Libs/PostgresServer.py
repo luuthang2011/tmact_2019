@@ -83,7 +83,7 @@ class DB:
 
         return query
 
-    def query_builder_with_custom_field(self, id_dean, columns, table):
+    def query_builder_with_custom_field(self, id_dean, columns, table, user):
         print "Ma De an MS %s" % id_dean
         columns_strip = str(columns).strip('[]')
         columns_replace = columns_strip.replace("'", "").replace('"', '')
@@ -92,8 +92,8 @@ class DB:
 
         # query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
 
-        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate FROM sde.%s''' % (
-        columns_replace, id_dean, now_fs, now_fs, table)
+        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy FROM sde.%s''' % (
+        columns_replace, id_dean, now_fs, now_fs, user, user, table)
 
         # print 'Custom query: %s' % query
 
@@ -140,6 +140,7 @@ if __name__ == '__main__':
     # table = 'phuonghx_magma1'
     table = 'magmaadcsawsfaw'
     columns = db.select_schema(table)
+    user = ''
     tmp = columns[:]
     # print columns
     tmp.append('isDean')
@@ -150,7 +151,7 @@ if __name__ == '__main__':
     # query = r'''SELECT objectid, id, tenphuche, tuoidc, gioi, he, thong, lop, thanhphanth, nhomtobd FROM sde.%s LIMIT 10''' % table
 
     # query = db.query_builder(columns, table)
-    query = db.query_builder_with_custom_field(1, columns, table)
+    query = db.query_builder_with_custom_field(1, columns, table, user)
     # print query
     # results = db.select(query)
     # print results

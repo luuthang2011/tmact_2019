@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/package/RGB.bas" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package/RGB_1field.bas" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/flowProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/flowProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/rabbitmq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bak/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bak/main.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +38,13 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libs/postgre_server.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/package" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\SourceCode\tmact_2019\package" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\SourceCode\tmact_2019\bak" />
       <recent name="E:\SourceCode\tmact_2019\Libs" />
@@ -471,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573649569649</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="bak PhuongHX">
+      <created>1573654481417</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1573654481417</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +508,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added flow process - PhuongHX" />
     <MESSAGE value="all done v1 TMACT 2019" />
     <MESSAGE value="Checkpoint 19/08/21" />
     <MESSAGE value="tft 9.16" />
@@ -523,6 +532,7 @@
     <MESSAGE value="release v1.1" />
     <MESSAGE value="release v1.1.1 - get params" />
     <MESSAGE value="Fix field case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix field case" />
+    <MESSAGE value="bak PhuongHX" />
+    <option name="LAST_COMMIT_MESSAGE" value="bak PhuongHX" />
   </component>
 </project>
