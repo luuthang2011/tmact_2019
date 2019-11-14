@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/package/RGB.bas" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package/RGB_1field.bas" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bak/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bak/main.py" beforeDir="false" />
-    </list>
+    <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact">
+  <component name="RunManager" selected="Python.flowProcess">
     <configuration name="SQLServer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -221,9 +215,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.flowProcess" />
         <item itemvalue="Python.tmact" />
         <item itemvalue="Python.delete" />
-        <item itemvalue="Python.flowProcess" />
         <item itemvalue="Python.tmact_delete (1)" />
         <item itemvalue="Python.tmact_delete" />
       </list>
