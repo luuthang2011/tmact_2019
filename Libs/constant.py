@@ -50,6 +50,8 @@ MATCHING_CASE = ['ID_NhatKy', 'TenTuyen', 'ChieuDaiTuyen', 'KhuVucNC', 'ID_Tuyen
 
 OBJ_CASE = {
   "objectid": "ObjectID",
+  "id_tramtich": "ID_TramTich",
+  "id_magma": "ID_Magma",
   "anh": "Anh",
   "bac_dt": "Bac_DT",
   "bacdithuong": "BacDiThuong",
