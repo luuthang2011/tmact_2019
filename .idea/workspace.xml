@@ -4,11 +4,7 @@
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/SQLServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/SQLServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/constant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/flowProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/flowProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/TramTich.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/TramTich.mdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/TramTich1.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/TramTich1.mxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/prepare.mxd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact">
+  <component name="RunManager" selected="Python.flowProcess">
     <configuration name="PostgresServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -86,6 +82,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="SQLServer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tmact_2019" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Libs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Libs/SQLServer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="SQLServer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,27 +116,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="E:\SourceCode\tmact_2019\Libs\SQLServer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="delete" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tmact_2019" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Libs" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Libs/delete.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -218,16 +214,16 @@
       <item itemvalue="Python.tmact" />
       <item itemvalue="Python.tmact_delete (1)" />
       <item itemvalue="Python.flowProcess" />
-      <item itemvalue="Python.delete" />
       <item itemvalue="Python.PostgresServer" />
+      <item itemvalue="Python.SQLServer (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.flowProcess" />
+        <item itemvalue="Python.SQLServer (1)" />
         <item itemvalue="Python.tmact" />
         <item itemvalue="Python.tmact_delete (1)" />
-        <item itemvalue="Python.flowProcess" />
         <item itemvalue="Python.PostgresServer" />
-        <item itemvalue="Python.delete" />
       </list>
     </recent_temporary>
   </component>

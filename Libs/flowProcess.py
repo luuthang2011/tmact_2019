@@ -1,8 +1,4 @@
-# encoding=utf8
-import sys, os
-# sys.setdefaultencoding() does not exist, here!
-reload(sys)  # Reload does the trick!
-sys.setdefaultencoding('UTF8')
+# -*- coding: utf-8 -*-
 
 import SQLServer
 import PostgresServer
