@@ -99,4 +99,5 @@ if __name__ == '__main__':
     user = 'PhuongHX'
 
     FL.excec(pg_table, ms_table, service, layerid, user, "CREATE")
+    # FL.excec(pg_table, ms_table, service, layerid, user, "DELETE")
 

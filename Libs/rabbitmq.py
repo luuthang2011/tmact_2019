@@ -103,7 +103,7 @@ class Rabbit:
         if action == 'CREATE':
             arr_str = arr_str[:-1]
             arr_str += "]"
-            print "arr_str: ", arr_str
+            # print "arr_str: ", arr_str
             return arr_str
         # Array to string
         strArr = """%s""" % arr_modify
