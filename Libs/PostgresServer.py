@@ -36,26 +36,20 @@ class DB:
         self.cursor = self.connection.cursor()
         print 'Connected PostgreSQL success!'
 
-
     def select(self, query):
-        # q = """SELECT * FROM sde.f_48_66_a_tt_dt_region"""
-        # self.cursor.execute(q)
+        print 'Start select form PostgreSQL: '
         self.init_connect()
-        # print 'Query: %s' % query
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
-
         self.cursor.close()
         self.connection.close()
-
-        # print rows
         # for row in rows:
         #     print "   ", row
         return rows
 
     def select_schema(self, table):
+        print 'Start SELECT table schema form PostgreSQL:'
         self.init_connect()
-        print 'SELECT table schema'
         query = r"""SELECT column_name from information_schema.columns where table_name='%s'""" % table
         # query = r"""SELECT column_name from information_schema.columns where table_name='%s'""" % input_data
         self.cursor.execute(query)
@@ -89,7 +83,6 @@ class DB:
         columns_replace = columns_strip.replace("'", "").replace('"', '')
         now = datetime.datetime.now()
         now_fs = now.strftime(fs)
-
         # query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
 
         query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
@@ -114,8 +107,6 @@ class DB:
         else:
             print 'row: %s' % row
             return 0
-
-
 
     # Replace None Value to empty string
     def replace_none_value(self, tuples):
