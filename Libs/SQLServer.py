@@ -59,7 +59,7 @@ class DB:
         self.cursor.execute(query)
 
     def insert(self, table, columns, values):
-        print 'Start insert'
+        print 'Start insert to SQL Server'
         f = ', '.join(map(str, columns))
         v = str(values).strip('[]')
 
@@ -71,11 +71,10 @@ class DB:
         self.cursor.close()
 
     def multiple_insert(self, table, fields, values):
-        print 'Start multiple_insert'
+        print 'Start multiple_insert to SQL Server:'
         print type(values)
         f = ', '.join(map(str, fields))
         v = str(values).strip('[]')
-        # v = v.replace(", '", ", N'")
 
         insert_str = ''
         for vv in values:
@@ -87,29 +86,12 @@ class DB:
             print '------------------------------'
             encoded = make_unicode_str(vv)
             print encoded
-            # insert_script = "INSERT INTO " + str(table) + " ( " + str(f) + " ) " + " VALUES " + one_row
-            # insert_script = """INSERT INTO %s ( %s ) VALUES %s """ % (table, f, one_row)
-
-            # insert_script = """INSERT INTO %s ( %s ) VALUES %s """ % (table, f, encoded)
-            # insert_script = insert_script.decode('utf8', "ignore")
-            # print insert_script
-            # print type(insert_script)
-            # self.cursor.execute(insert_script)
-            # self.connection.commit()
-
             insert_str += encoded
             insert_str += ','
         insert_str = insert_str[:-1]
 
-        # insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, v)
         insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
-
-        # insert_script = insert_str.decode('utf8')
-        # insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_script)
-        # insert_script = insert_script.decode('utf8')
-        # insert_script = insert_script.decode('utf8')
         insert_script = insert_script.decode('utf8', "ignore")
-        # print 'multiple_insert script: %s' % insert_script
         print '***********************************'
 
         self.init_connect()
@@ -127,6 +109,7 @@ class DB:
         self.cursor.close()
 
     def select_id_dean(self, value):
+        print 'Start select ID Dean'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_QLDA", "MaDeAn", value)
         print script
         self.init_connect()
