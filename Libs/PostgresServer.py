@@ -85,7 +85,7 @@ class DB:
         now_fs = now.strftime(fs)
         # query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
 
-        query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
+        query = r'''SELECT %s, %s AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
         columns_replace, id_dean, now_fs, now_fs, user, user, layername, layerid, table)
 
         # print 'Custom query: %s' % query
