@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/prepare.mxd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact_delete (1)">
+  <component name="RunManager" selected="Python.tmact">
     <configuration name="PostgresServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -218,8 +217,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tmact_delete (1)" />
         <item itemvalue="Python.tmact" />
+        <item itemvalue="Python.tmact_delete (1)" />
         <item itemvalue="Python.flowProcess" />
         <item itemvalue="Python.SQLServer (1)" />
         <item itemvalue="Python.PostgresServer" />
@@ -485,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573716496594</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="mdb change">
+      <created>1574075463293</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1574075463293</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -512,7 +518,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Checkpoint 19/08/21" />
     <MESSAGE value="tft 9.16" />
     <MESSAGE value="add delete" />
     <MESSAGE value="python for handsome man" />
@@ -537,6 +542,7 @@
     <MESSAGE value="Fix field case" />
     <MESSAGE value="bak PhuongHX" />
     <MESSAGE value="try catch tmact_delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="try catch tmact_delete" />
+    <MESSAGE value="mdb change" />
+    <option name="LAST_COMMIT_MESSAGE" value="mdb change" />
   </component>
 </project>
