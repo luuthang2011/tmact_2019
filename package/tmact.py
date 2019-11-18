@@ -92,13 +92,13 @@ if __name__ == '__main__':
     staticAgs = constant.staticAgs
     db = constant.db
 
-    # table = sys.argv[1]
-    # folder = sys.argv[2]
-    # user = sys.argv[3]
+    table = sys.argv[1]
+    folder = sys.argv[2]
+    user = sys.argv[3]
 
-    folder = r"E:/SourceCode/tmact_2019/data/mdb/tramtich/"
-    table = "Tbl_FC_TramTich"
-    user = "from tmact"
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/tramtich/"
+    # table = "Tbl_FC_TramTich"
+    # user = "from tmact"
 
     objectType = table.split("_")[-1]       # magma
 
