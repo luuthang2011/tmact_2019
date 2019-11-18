@@ -73,7 +73,9 @@ class Rabbit:
         indexOfObjectID = pg_columns.index("objectid")
         print 'Start build str for Rabbit'
         for arr in pg_rows:
-            id_insert = service + '_' + str(layerid) + '_' + str(arr[indexOfObjectID])
+            id_index = pg_columns.index('id')
+            # id_insert = service + '_' + str(layerid) + '_' + str(arr[indexOfObjectID])
+            id_insert = arr[id_index]
             tmp = {
                 # 'index': ms_table.lower(),
                 'index': ms_table,

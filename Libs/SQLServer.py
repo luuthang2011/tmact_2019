@@ -108,6 +108,19 @@ class DB:
         self.connection.commit()
         self.cursor.close()
 
+    def select(self, table, columns, service, layerid):
+        print 'Start select ID Dean'
+
+        columns = ', '.join(str(x) for x in columns)
+        script = '''SELECT %s FROM %s WHERE layername='%s' AND layerid='%s' ''' % (columns, table, service, layerid)
+        print script
+        self.init_connect()
+        self.cursor.execute(script)
+        rows = self.cursor.fetchall()
+        self.cursor.close()
+        print rows
+        return rows
+
     def select_id_dean(self, value):
         print 'Start select ID Dean'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_QLDA", "MaDeAn", value)
@@ -159,13 +172,15 @@ if __name__ == '__main__':
     # db.delete_row_service(table, column,  service)
     # db.select_id_dean('DOVEDIACHAT_LTD11')
 
-    query = "INSERT INTO Tbl_FC_TramTich ( objectid, tenhetang, phuhetang, tuoidc, gioi, he, thong, thanhphanth, nhomtobd, tento, danhphap_bd, tyle_bd, hoathach, khlt, chubien, namnoplt, tap_phan, isdean, id_tramtich, ID_DA, CreatedDate, UpdatedDate, CreatedBy, UpdatedBy, LayerName, LayerID ) VALUES (127, N'H\xe1\xbb\x87 t\xe1\xba\xa7ng M\xc6\xb0\xe1\xbb\x9dng Hinh ', N'Ph\xe1\xbb\xa5 h\xe1\xbb\x87 t\xe1\xba\xa7ng d\xc6\xb0\xe1\xbb\x9bi', N'J\xc3\x87\xc3\x82\xc2\xa3', N'Mesozoi', N'Jura', N'Kh\xc3\xb4ng x\xc3\xa1c \xc4\x91\xe1\xbb\x8bnh', N'Tr\xe1\xba\xa7m t\xc3\xadch phun tr\xc3\xa0o v\xc3\xa0 phun tr\xc3\xa0o th\xe1\xbb\xb1c s\xe1\xbb\xb1: Riolit pocfia, fenzitofia xen th\xe1\xba\xa5u k\xc3\xadnh b\xe1\xbb\x99t k\xe1\xba\xbft tufogen c\xc3\xa1t k\xe1\xba\xbft tufogen. Ph\xe1\xba\xa7n \xc4\x91\xc3\xa1y c\xc3\xb3 cu\xe1\xbb\x99i k\xe1\xba\xbft', N'V\xc3\xb9ng T\xc3\xa2y Nam Th\xc6\xb0\xe1\xbb\x9dng Xu\xc3\xa2n', N'T\xe1\xbb\x9d \xc4\x90\xe1\xbb\x93ng Tr\xe1\xba\xa7u', N'E-48-7-D', N'1:50.000', N'Kh\xc3\xb4ng c\xc3\xb3 th\xc3\xb4ng tin', N'B\xc4\x91.153', N'Phan V\xc4\x83n \xc3\x81i', N'1993', N'Kh\xc3\xb4ng c\xc3\xb3 th\xc3\xb4ng tin', N'1', N'B\xc4\x91.153_127', N'1194', N'2019-11-17 14:22:12.2000000', N'2019-11-17 14:22:12.2000000', N'PhuongHX', N'PhuongHX', N'TramTich', N'0')"
+    # query = "INSERT INTO Tbl_FC_TramTich ( objectid, tenhetang, phuhetang, tuoidc, gioi, he, thong, thanhphanth, nhomtobd, tento, danhphap_bd, tyle_bd, hoathach, khlt, chubien, namnoplt, tap_phan, isdean, id_tramtich, ID_DA, CreatedDate, UpdatedDate, CreatedBy, UpdatedBy, LayerName, LayerID ) VALUES (127, N'H\xe1\xbb\x87 t\xe1\xba\xa7ng M\xc6\xb0\xe1\xbb\x9dng Hinh ', N'Ph\xe1\xbb\xa5 h\xe1\xbb\x87 t\xe1\xba\xa7ng d\xc6\xb0\xe1\xbb\x9bi', N'J\xc3\x87\xc3\x82\xc2\xa3', N'Mesozoi', N'Jura', N'Kh\xc3\xb4ng x\xc3\xa1c \xc4\x91\xe1\xbb\x8bnh', N'Tr\xe1\xba\xa7m t\xc3\xadch phun tr\xc3\xa0o v\xc3\xa0 phun tr\xc3\xa0o th\xe1\xbb\xb1c s\xe1\xbb\xb1: Riolit pocfia, fenzitofia xen th\xe1\xba\xa5u k\xc3\xadnh b\xe1\xbb\x99t k\xe1\xba\xbft tufogen c\xc3\xa1t k\xe1\xba\xbft tufogen. Ph\xe1\xba\xa7n \xc4\x91\xc3\xa1y c\xc3\xb3 cu\xe1\xbb\x99i k\xe1\xba\xbft', N'V\xc3\xb9ng T\xc3\xa2y Nam Th\xc6\xb0\xe1\xbb\x9dng Xu\xc3\xa2n', N'T\xe1\xbb\x9d \xc4\x90\xe1\xbb\x93ng Tr\xe1\xba\xa7u', N'E-48-7-D', N'1:50.000', N'Kh\xc3\xb4ng c\xc3\xb3 th\xc3\xb4ng tin', N'B\xc4\x91.153', N'Phan V\xc4\x83n \xc3\x81i', N'1993', N'Kh\xc3\xb4ng c\xc3\xb3 th\xc3\xb4ng tin', N'1', N'B\xc4\x91.153_127', N'1194', N'2019-11-17 14:22:12.2000000', N'2019-11-17 14:22:12.2000000', N'PhuongHX', N'PhuongHX', N'TramTich', N'0')"
+    #
+    # query = query.decode('utf8', "ignore")
+    # print query
+    #
+    # db.init_connect()
+    # db.cursor.execute(query)
+    # db.cursor.execute(query)
+    # db.connection.commit()
+    # db.cursor.close()
 
-    query = query.decode('utf8', "ignore")
-    print query
-
-    db.init_connect()
-    db.cursor.execute(query)
-    db.cursor.execute(query)
-    db.connection.commit()
-    db.cursor.close()
+    db.select('Tbl_FC_TramTich', 'objectid, tenhetang, phuhetang, tuoidc','TramTich',0)

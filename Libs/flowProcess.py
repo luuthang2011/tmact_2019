@@ -58,29 +58,25 @@ class FlowProcess:
             ## MS SQL table name
             # Insert Multiple database to MS SQL
 
-            # msServer.multiple_insert(ms_table, columns, pg_validate_rows)
             msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows)
-            # Add layername and layerid column | ten service khi publish
-            # msServer.update_value_null(ms_table, 'layername', service)
-            # value = 'layer_id_them_o_day' | id cua layer
-            # msServer.update_value_null(ms_table, 'layerid', layerid)
-            # User: [CreatedBy], [UpdatedBy]
-            # msServer.update_value_null(ms_table, 'createdby', user)
-            # msServer.update_value_null(ms_table, 'updatedby', user)
+
+            if 'id' not in columns_custom: columns_custom.append('id')
+            ms_rows = msServer.select(ms_table, columns_custom, service, layerid)
+
             ## Rabbit create json
             print 'Create FLow'
+            # print pg_validate_rows
             # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')
-            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'CREATE')
+            # strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'CREATE')
+            strRabbit = Rabbit.modify_array_pg(columns_custom, ms_rows, ms_table, service, layerid, user, 'CREATE')
             Rabbit.create_json(strRabbit)
         elif action == 'DELETE':
             # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
-            strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'DELETE')
+            # strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'DELETE')
+            if 'id' not in columns_custom: columns_custom.append('id')
+            ms_rows = msServer.select(ms_table, columns_custom, service, layerid)
+            strRabbit = Rabbit.modify_array_pg(columns_custom, ms_rows, ms_table, service, layerid, user, 'DELETE')
             Rabbit.delete_json(strRabbit)
-
-
-    # def delete(self, pg_table, ms_table, service, layerid):
-        # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
-        # Rabbit.delete_json(strRabbit)
 
 
 if __name__ == '__main__':
