@@ -73,11 +73,12 @@ class Rabbit:
         indexOfObjectID = pg_columns.index("objectid")
         print 'Start build str for Rabbit'
         for arr in pg_rows:
+            id_insert = service + '_' + str(layerid) + '_' + str(arr[indexOfObjectID])
             tmp = {
                 # 'index': ms_table.lower(),
                 'index': ms_table,
                 # 'index': 'tbl_magma',
-                   'id': service + '_' + str(layerid) + '_' + str(arr[indexOfObjectID])}
+                   'id': id_insert}
             # Add tuple data if action equal CREATE
             if action == 'CREATE':
                 tupleObject = {}
@@ -96,8 +97,9 @@ class Rabbit:
                 # CreatedBy and UpdatedBy
                 tupleObject['CreatedBy'] = user
                 tupleObject['UpdatedBy'] = user
+                tupleObject['ID'] = id_insert
                 tmp['data'] = tupleObject
-                # print tmp
+                print tmp
                 arr_str += json.dumps(tmp).decode('utf-8') + ","
             arr_modify.append(tmp)
         if action == 'CREATE':
