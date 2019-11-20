@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/TramTich.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/TramTich.mdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/TramTich1.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/TramTich1.mxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/tramtich/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/tramtich/prepare.mxd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/constant.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -524,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574079521686</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="...">
+      <created>1574249368813</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1574249368813</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -551,7 +554,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="python for handsome man" />
     <MESSAGE value="add enable feature layer" />
     <MESSAGE value="add delete ms db" />
     <MESSAGE value="release function delete" />
@@ -576,6 +578,7 @@
     <MESSAGE value="mdb change" />
     <MESSAGE value="release 1.2" />
     <MESSAGE value="update elas" />
-    <option name="LAST_COMMIT_MESSAGE" value="update elas" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
 </project>
