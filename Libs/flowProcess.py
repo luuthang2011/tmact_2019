@@ -15,13 +15,18 @@ class FlowProcess:
 
     def excec(self, pg_table, ms_table, service, layerid, user, action):
         table = pg_table.lower()
+        ms_dean = 0
         # table = pg_table
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
         # Builder Query for PostgreSQL
 
         pg_dean = pgServer.query_get_id_dean(table)
-        ms_dean = msServer.select_id_dean(pg_dean)
+        if pg_dean != 0:
+            if pg_dean[1] == 1:
+                ms_dean = msServer.select_id_dean(pg_dean[0])
+            elif pg_dean[1] == 0:
+                ms_dean = msServer.select_id_luutru(pg_dean[0])
 
         # pq_query = pgServer.query_builder(columns, table)
         # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field

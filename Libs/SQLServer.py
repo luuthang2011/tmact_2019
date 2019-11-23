@@ -137,6 +137,21 @@ class DB:
             print 'ID De An MS: %s' % row
             return row[0]
 
+    def select_id_luutru(self, value):
+        print 'Start select ID Bao Cao Luu Tru'
+        script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
+        print script
+        self.init_connect()
+        self.cursor.execute(script)
+        row = self.cursor.fetchone()
+        self.cursor.close()
+        if None == row:
+            print 'Row is None'
+            return 0
+        else:
+            print 'ID Bao Cao Luu Tru MS: %s' % row
+            return row[0]
+
     def delete_row_service(self, table, column, service):
         print 'Start delete Service'
         script = '''DELETE FROM %s WHERE %s='%s' ''' % (table, column, service)

@@ -90,11 +90,14 @@ class DB:
 
         # print 'Custom query: %s' % query
 
-        self.query_get_id_dean(table)
+        # self.query_get_id_dean(table)
         return query
 
     def query_get_id_dean(self, table):
-        query = r'''SELECT "id_da" FROM sde.%s LIMIT 1''' % ( table )
+        print "##############################################"
+        print "table: %s", [table]
+        print "##############################################"
+        query = r'''SELECT "id_da", "isdean" FROM sde.%s LIMIT 1''' % ( table )
         # print 'Query select: %s' % query
         self.init_connect()
         row = self.select(query)
@@ -103,7 +106,9 @@ class DB:
         if len(row):
             id_da = row[0][0]
             print 'ID De An PG: %s' % id_da
-            return id_da
+            # print 'is dean PG: %s' % [row[0][0], int(row[0][1])]
+            # return id_da
+            return [row[0][0], int(row[0][1])]
         else:
             print 'row: %s' % row
             return 0
@@ -125,24 +130,26 @@ class DB:
 
 # Test Insert
 if __name__ == '__main__':
-    db = DB(r'ks')
+    db = DB('ks')
     # table = 'fc_magma'
     # table = 'f_48_94_c_chu_dt_region'
     # table = 'phuonghx_magma1'
-    table = 'magmaadcsawsfaw'
+    # table = 'magmaadcsawsfaw'
+    table = 'bienchat_daithi_phiakhao_bd132'
     columns = db.select_schema(table)
+    rows = db.query_get_id_dean(table)
     user = ''
     tmp = columns[:]
     # print columns
     tmp.append('isDean')
-    print tmp
+    print rows
     # columns_strip = str(columns).strip('[]')
     # columns_replace = columns_strip.replace("'", "").replace('"', '')
     # query = r'''SELECT %s FROM sde.%s LIMIT 10''' % (columns_replace, table)
     # query = r'''SELECT objectid, id, tenphuche, tuoidc, gioi, he, thong, lop, thanhphanth, nhomtobd FROM sde.%s LIMIT 10''' % table
 
     # query = db.query_builder(columns, table)
-    query = db.query_builder_with_custom_field(1, columns, table, user)
+    # query = db.query_builder_with_custom_field(1, columns, table, user)
     # print query
     # results = db.select(query)
     # print results
