@@ -96,6 +96,10 @@ if __name__ == '__main__':
     folder = sys.argv[2]
     user = sys.argv[3]
 
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/Dutgay/"
+    # table = "Tbl_FC_Dutgay"
+    # user = "from tmact"
+
     # folder = r"E:/SourceCode/tmact_2019/data/mdb/tramtich/"
     # table = "Tbl_FC_TramTich"
     # user = "from tmact"

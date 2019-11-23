@@ -93,6 +93,7 @@ class DB:
         insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
         insert_script = insert_script.decode('utf8', "ignore")
         print '***********************************'
+        print insert_script
 
         self.init_connect()
         self.cursor.execute(insert_script)

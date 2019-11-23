@@ -25,6 +25,10 @@ class FlowProcess:
 
         # pq_query = pgServer.query_builder(columns, table)
         # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field
+        if 'rgb_color' in columns: columns.remove('rgb_color') # Remove rgb_color
+        if 'red' in columns: columns.remove('red')
+        if 'green' in columns: columns.remove('green')
+        if 'blue' in columns: columns.remove('blue')
         pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
@@ -45,10 +49,6 @@ class FlowProcess:
         columns_custom.append('LayerName')
         columns_custom.append('LayerID')
 
-        if 'rgb_color' in columns_custom: columns_custom.remove('rgb_color')
-        if 'red' in columns_custom: columns_custom.remove('red')
-        if 'green' in columns_custom: columns_custom.remove('green')
-        if 'blue' in columns_custom: columns_custom.remove('blue')
         # columns_custom.append('CreatedBy')
         # columns_custom.append('UpdatedBy')
 

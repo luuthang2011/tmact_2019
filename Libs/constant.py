@@ -25,29 +25,6 @@ password = "Mrvm3CVEvr8JGet9"
 staticAgs = r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags"
 db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
 
-MATCHING_CASE = ['ID_NhatKy', 'TenTuyen', 'ChieuDaiTuyen', 'KhuVucNC', 'ID_TuyenLT', 'TenDiem',
-                  'NgayKS', 'NguoiKS', 'Loaida', 'KhuVucKS', 'Loaimau', 'TheNam', 'SoHieuHaoVL',
-                  'TuyenHao', 'PhuongVi', 'CaoDoHao', 'DoSauHao', 'TenGieng', 'Tuyen', 'CaoDoGieng',
-                  'DoSauGieng', 'TietDien', 'Phuongphapdao', 'SoHieuLo', 'ToaDoMiengLoX',
-                  'ToaDoMiengLoY', 'DoCaoLo', 'TietDienLo', 'ChieuRong', 'BanVe', 'Hole_ID', 'TenLK',
-                  'ToaDoX', 'ToaDoY', 'DoCaoH', 'MucDichKhoan', 'BaoMat', 'PhuongphapKhoan',
-                  'GocNghieng', 'NgayKhoiCong', 'NgayKetThuc', 'DonViTH', 'HientrangLK', 'TenBC',
-                  'ThietDoKhoan', 'HeToaDo', 'KinhTuyenTruc', 'MuiChieu', 'TenDienTich',
-                  'MucDoNghienCuu', 'MucDich', 'DoiTuongDieuTra', 'TenBanVeKVDT', 'Anh', 'Nhom',
-                  'TruLuong', 'TaiNguyen', 'QuyMo', 'HienTrang', 'DacDiemDCKS', 'SoDiemKhepGoc',
-                  'DienTich', 'GiayPhep', 'DoanhNghiep', 'ThoiGianHD', 'ID_NhomKS', 'TrienVongKS',
-                  'TenKVCamHDKS', 'DoiTuongCam', 'DienTichCam', 'TenKVDTKhoangsan', 'ID_KS',
-                  'DienTichDT', 'TL_TN', 'LoaiONhiem', 'NamXD', 'DiaDanh', 'MucDo', 'PhamViDongDat',
-                  'CuongDoDongDat', 'Nguon_tailieu', 'TenKV', 'Ten_BV', 'TenDanhPhap', 'NhomDanhPhap',
-                  'TenVung', 'LoaiCongTac', 'ViTriDiaLy', 'TenBV', 'KHLT_BV', 'TenBaoCao',
-                  'File_AnhNan', 'TenDS', 'LoaiDS', 'ViTriHanhChinh', 'QuiMo', 'TenPhucHe', 'HoaThach',
-                  'TenHeTang', 'TuoiDC', 'Gioi', 'He', 'Thong', 'ThanhPhanTH', 'NhomToBD', 'TenTo',
-                  'ID_TyLe', 'MucdoBienChat', 'LoaiDutgay', 'Phuongkeodai', 'ChieuDai', 'ChuBien',
-                  'NamNopLT', 'TenNguyenTo', 'KyHieuNguyenTo', 'BacDiThuong', 'TenKS', 'Ten_nguyento',
-                  'Kh_nguyento', 'SoHieuVanh', 'TenKhoangVat', 'CongThucKhoangVat', 'BacHamLuong',
-                  'TenKhoangSan', 'NhomKhoangSan', 'HamLuong', 'ID_DanhPhap', 'ID', 'ID_DA', 'SH_Diem',
-                  'X', 'Y', 'ViTriDiaLy', 'Ten_kv', 'Kh_kv', 'Bac_DT', 'DanhPhap_BD', 'KHLT']
-
 OBJ_CASE = {
   "objectid": "ObjectID",
   "anh": "Anh",
