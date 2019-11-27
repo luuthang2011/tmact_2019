@@ -139,7 +139,7 @@ class DB:
 
     def select_id_luutru(self, value):
         print 'Start select ID Bao Cao Luu Tru'
-        script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
+        script = '''SELECT TOP 1 id FROM %s WHERE %s = N'%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
         print script
         self.init_connect()
         self.cursor.execute(script)

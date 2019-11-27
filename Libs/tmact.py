@@ -96,8 +96,8 @@ if __name__ == '__main__':
     folder = sys.argv[2]
     user = sys.argv[3]
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/Bienchat/"
-    # table = "Tbl_FC_Bienchat"
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/BienchatTest/"
+    # table = "Tbl_FC_BienChat"
     # user = "from tmact"
 
     # folder = r"E:/SourceCode/tmact_2019/data/mdb/tramtich/"

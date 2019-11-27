@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lib/PostgresServer.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/PostgresServer.pyd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lib/SQLServer.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/SQLServer.pyd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lib/delete.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/delete.pyd" afterDir="false" />
@@ -13,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/Lib/updateDataSource.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/updateDataSource.pyd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/constant.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -557,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574513174401</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Fix arguments">
+      <created>1574516492789</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1574516492789</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -584,7 +593,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add flag all done" />
     <MESSAGE value="fix import db by datasource" />
     <MESSAGE value="change servername format + add params for delete" />
     <MESSAGE value="bak" />
@@ -609,6 +617,7 @@
     <MESSAGE value="Fix config" />
     <MESSAGE value="Fix bug" />
     <MESSAGE value="Added check ID Quan ly luu tru" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added check ID Quan ly luu tru" />
+    <MESSAGE value="Fix arguments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix arguments" />
   </component>
 </project>

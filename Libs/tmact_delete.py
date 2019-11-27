@@ -19,9 +19,9 @@ if __name__ == '__main__':
     # mxd = r'E:/SourceCode/tmact_2019/data/mdb/tramtich/prepare.mxd'
     # ms_table = 'Tbl_FC_TramTich'
 
-    # service = "Bienchat"  # from DB
-    # folder = r'E:/SourceCode/tmact_2019/data/mdb/Bienchat/'
-    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/Bienchat/prepare.mxd'
+    # service = "DutGay"  # from DB
+    # folder = r'E:/SourceCode/tmact_2019/data/mdb/Dutgay/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/Dutgay/prepare.mxd'
     # ms_table = 'Tbl_FC_Bienchat'
 
     service = sys.argv[1]  # from DB
