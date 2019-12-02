@@ -93,6 +93,16 @@ class DB:
         # self.query_get_id_dean(table)
         return query
 
+    def query_builder_with_custom_field_whitout_id_dean(self, columns, table, user, layername, layerid):
+        print "query_builder_with_custom_field"
+        columns_strip = str(columns).strip('[]')
+        columns_replace = columns_strip.replace("'", "").replace('"', '')
+        now = datetime.datetime.now()
+        now_fs = now.strftime(fs)
+        query = r'''SELECT %s, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
+        columns_replace, now_fs, now_fs, user, user, layername, layerid, table)
+        return query
+
     def query_get_id_dean(self, table):
         print "##############################################"
         print "table: %s", [table]

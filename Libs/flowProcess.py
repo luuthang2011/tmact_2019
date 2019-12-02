@@ -16,9 +16,13 @@ class FlowProcess:
     def excec(self, pg_table, ms_table, service, layerid, user, action):
         table = pg_table.lower()
         ms_dean = 0
+        check_da = ['id_da', 'isdean']
         # table = pg_table
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
+
+        check_field = all(elem in columns for elem in check_da)
+
         # Builder Query for PostgreSQL
 
         pg_dean = pgServer.query_get_id_dean(table)
@@ -34,7 +38,11 @@ class FlowProcess:
         if 'red' in columns: columns.remove('red')
         if 'green' in columns: columns.remove('green')
         if 'blue' in columns: columns.remove('blue')
-        pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
+        if check_field:
+            pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
+        else:
+            pq_query = pgServer.query_builder_with_custom_field_whitout_id_dean(columns, table, user, service,
+                                                                layerid)  # Added isDean Field
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
@@ -45,7 +53,9 @@ class FlowProcess:
 
         columns_custom = columns[:]
         # print columns
-        columns_custom.append('ID_DA')
+        if check_field:
+            columns_custom.append('ID_DA')
+
         columns_custom.append('CreatedDate')
         columns_custom.append('UpdatedDate')
 

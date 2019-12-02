@@ -93,7 +93,7 @@ class DB:
         insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
         insert_script = insert_script.decode('utf8', "ignore")
         print '***********************************'
-        print insert_script
+        # print insert_script
 
         self.init_connect()
         self.cursor.execute(insert_script)
@@ -103,7 +103,7 @@ class DB:
     def update_value_null(self, table, field, value):
         print 'Update layerName and layerID'
         script = '''UPDATE %s SET %s = '%s' WHERE %s IS NULL''' % (table, field, value, field)
-        print script
+        # print script
         self.init_connect()
         self.cursor.execute(script)
         self.connection.commit()
@@ -114,18 +114,18 @@ class DB:
 
         columns = ', '.join(str(x) for x in columns)
         script = '''SELECT %s FROM %s WHERE layername='%s' AND layerid='%s' ''' % (columns, table, service, layerid)
-        print script
+        # print script
         self.init_connect()
         self.cursor.execute(script)
         rows = self.cursor.fetchall()
         self.cursor.close()
-        print rows
+        # print rows
         return rows
 
     def select_id_dean(self, value):
         print 'Start select ID Dean'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_QLDA", "MaDeAn", value)
-        print script
+        # print script
         self.init_connect()
         self.cursor.execute(script)
         row = self.cursor.fetchone()
@@ -140,7 +140,10 @@ class DB:
     def select_id_luutru(self, value):
         print 'Start select ID Bao Cao Luu Tru'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = N'%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
+        print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         print script
+        print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+
         self.init_connect()
         self.cursor.execute(script)
         row = self.cursor.fetchone()
@@ -155,7 +158,7 @@ class DB:
     def delete_row_service(self, table, column, service):
         print 'Start delete Service'
         script = '''DELETE FROM %s WHERE %s='%s' ''' % (table, column, service)
-        print script
+        # print script
         self.init_connect()
         self.cursor.execute(script)
         self.connection.commit()
