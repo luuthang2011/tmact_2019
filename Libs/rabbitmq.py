@@ -22,6 +22,9 @@ class Rabbit:
 
     def create_json(self, str):
         print 'Start Create json'
+        print str
+        print '-------------------------'
+
         self.init_connect()
 
         self.channel.queue_declare(queue='CREATE_JSON', durable=True, arguments={
@@ -97,6 +100,7 @@ class Rabbit:
                         value_index = arr[indexTuple]
                         if isinstance(value_index, str):
                             value_index = value_index.replace("'", '')
+                            value_index = value_index.replace('"', '')
                         # tupleObject[column_match_case] = arr[indexTuple]
                         tupleObject[column_match_case] = value_index
 
@@ -105,6 +109,7 @@ class Rabbit:
                 tupleObject['UpdatedBy'] = user
                 tupleObject['ID'] = id_insert
                 tmp['data'] = tupleObject
+                print 'Rabbit string: '
                 print tmp
                 arr_str += json.dumps(tmp).decode('utf-8') + ","
             arr_modify.append(tmp)
