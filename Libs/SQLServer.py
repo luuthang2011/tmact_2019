@@ -29,7 +29,9 @@ def make_unicode_str(values):
     string = "("
     for v in values:
         if isinstance(v, str):
-            string = string + " N'" + str(v) + "', "
+            current_str = str(v)
+            current_str = current_str.replace("'", "")
+            string = string + " N'" + current_str + "', "
         else:
             string += str(v) + ", "
     string = string[:-2]
@@ -83,9 +85,9 @@ class DB:
             # # encoded = [check(t) for t in vv]
             # one_row = one_row.replace('"', "'").replace('[', '(').replace(']', ')').replace(", '", ", N'")
 
-            print '------------------------------'
+            # print '------------------------------'
             encoded = make_unicode_str(vv)
-            print encoded
+            # print encoded
             insert_str += encoded
             insert_str += ','
         insert_str = insert_str[:-1]

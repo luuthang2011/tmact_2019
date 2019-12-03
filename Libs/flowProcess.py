@@ -23,15 +23,6 @@ class FlowProcess:
 
         check_field = all(elem in columns for elem in check_da)
 
-        # Builder Query for PostgreSQL
-
-        pg_dean = pgServer.query_get_id_dean(table)
-        if pg_dean != 0:
-            if pg_dean[1] == 1:
-                ms_dean = msServer.select_id_dean(pg_dean[0])
-            elif pg_dean[1] == 0:
-                ms_dean = msServer.select_id_luutru(pg_dean[0])
-
         # pq_query = pgServer.query_builder(columns, table)
         # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field
         if 'rgb_color' in columns: columns.remove('rgb_color') # Remove rgb_color
@@ -39,17 +30,28 @@ class FlowProcess:
         if 'green' in columns: columns.remove('green')
         if 'blue' in columns: columns.remove('blue')
         if check_field:
+            print '****************************'
+            print 'Contain ID_DA'
+            print '****************************'
+            # Builder Query for PostgreSQL
+            pg_dean = pgServer.query_get_id_dean(table)
+            if pg_dean != 0:
+                if pg_dean[1] == 1:
+                    ms_dean = msServer.select_id_dean(pg_dean[0])
+                elif pg_dean[1] == 0:
+                    ms_dean = msServer.select_id_luutru(pg_dean[0])
+
             pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
         else:
+            print '****************************'
+            print 'Not Contain ID_DA'
+            print '****************************'
             pq_query = pgServer.query_builder_with_custom_field_whitout_id_dean(columns, table, user, service,
                                                                 layerid)  # Added isDean Field
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
         pg_validate_rows = pgServer.validate_data(pg_rows)
-        # disconnect DB
-        # pgServer.cursor.close()
-        # pgServer.connection.close()
 
         columns_custom = columns[:]
         # print columns

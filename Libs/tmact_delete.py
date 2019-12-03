@@ -1,7 +1,7 @@
 import sys, delete, constant
 # sys.setdefaultencoding() does not exist, here!
-# reload(sys)  # Reload does the trick!
-# sys.setdefaultencoding('UTF8')
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 if __name__ == '__main__':
     unitest = delete.Delete()
@@ -19,15 +19,15 @@ if __name__ == '__main__':
     # mxd = r'E:/SourceCode/tmact_2019/data/mdb/tramtich/prepare.mxd'
     # ms_table = 'Tbl_FC_TramTich'
 
-    service = "DutGay"  # from DB
-    folder = r'E:/SourceCode/tmact_2019/data/mdb/Dutgay3/'
-    mxd = r'E:/SourceCode/tmact_2019/data/mdb/Dutgay3/prepare.mxd'
-    ms_table = 'Tbl_FC_DutGay'
+    # service = "DutGay"  # from DB
+    # folder = r'E:/SourceCode/tmact_2019/data/mdb/Dutgay3/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/Dutgay3/prepare.mxd'
+    # ms_table = 'Tbl_FC_DutGay'
 
-    # service = sys.argv[1]  # from DB
-    # folder = sys.argv[2]
-    # mxd = sys.argv[3]
-    # ms_table = sys.argv[4]
+    service = sys.argv[1]  # from DB
+    folder = sys.argv[2]
+    mxd = sys.argv[3]
+    ms_table = sys.argv[4]
 
     try:
         print 'Start delete Rabbit!'
