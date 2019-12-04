@@ -73,11 +73,6 @@ class FlowProcess:
         columns_custom.append('LayerName')
         columns_custom.append('LayerID')
 
-        # columns_custom.append('CreatedBy')
-        # columns_custom.append('UpdatedBy')
-
-        # columns_custom.append('isDean')
-
         if action == 'CREATE':
             ## MS SQL table name
             # Insert Multiple database to MS SQL
@@ -129,7 +124,7 @@ if __name__ == '__main__':
     ms_table = 'Tbl_FC_DutGay'
     service = 'DutGay'
     layerid = 0
-    user = 'PhuongHX'
+    user = 'From TMACT'
 
     FL.excec(pg_table, ms_table, service, layerid, user, "CREATE")
     # FL.excec(pg_table, ms_table, service, layerid, user, "DELETE")

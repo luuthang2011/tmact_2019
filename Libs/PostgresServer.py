@@ -3,8 +3,8 @@ import constant
 import itertools
 import datetime
 
-fs = '%Y-%m-%d %H:%M:%S.%f0'
-
+# fs = '%Y-%m-%d %H:%M:%S.%f0'
+fs = '%Y-%m-%dT%H:%M:%S'
 
 class DB:
     def __init__(self, in_data):

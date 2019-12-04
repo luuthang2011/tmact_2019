@@ -4,6 +4,8 @@ import pika, os, logging
 # import re
 import constant
 import json
+from datetime import datetime
+import time
 
 logging.basicConfig()
 
@@ -108,6 +110,14 @@ class Rabbit:
                 tupleObject['CreatedBy'] = user
                 tupleObject['UpdatedBy'] = user
                 tupleObject['ID'] = id_insert
+
+                # Convert time to UNIX time
+                dt = datetime.strptime(tupleObject['CreatedDate'], '%Y-%m-%d %H:%M:%S.%f0')
+                dt = time.mktime(dt.timetuple()) * 1e3 + dt.microsecond / 1e3
+                utc_time = int(dt)
+                tupleObject['CreatedDate'] = utc_time
+                tupleObject['UpdatedDate'] = utc_time
+
                 tmp['data'] = tupleObject
                 # print 'Rabbit string: '
                 # print tmp
@@ -133,10 +143,10 @@ class Rabbit:
 
         return newStrArr
 
-#
-# if __name__ == '__main__':
-#     print 'Unit test main rabbit'
-#     rb = Rabbit()
+
+if __name__ == '__main__':
+    print 'Unit test main rabbit'
+    rb = Rabbit()
 #
 #     insertStr = '''[{
 #                         "index": "tbl_dean",
@@ -168,19 +178,25 @@ class Rabbit:
 #                         }
 #                     }]'''
 #
-#     deleteStr = '''[{
-#                         "index": "tbl_dean",
-#                         "id": "11"
-#                     },{
-#                         "index": "tbl_dean",
-#                         "id": "12"
-#                     },{
-#                         "index": "tbl_dean",
-#                         "id": "987654"
-#                     }]'''
+    deleteStr = '''[{
+                        "index": "Tbl_FC_DutGay",
+                        "id": 572
+                    },{
+                        "index": "Tbl_FC_DutGay",
+                        "id": 573
+                    },{
+                        "index": "Tbl_FC_DutGay",
+                        "id": 574
+                    },{
+                        "index": "Tbl_FC_DutGay",
+                        "id": 575
+                    },{
+                        "index": "Tbl_FC_DutGay",
+                        "id": 576
+                    }]'''
 #
 #     # rb.create_json(insertStr)
-#     # rb.delete_json(deleteStr)
+    rb.delete_json(deleteStr)
 #     # rb.update_json(updateStr)
 #
 #     testArr = '''[{"index":"tbl_fc_magma","id":"Tbl_FC_Magma_sde_dia_tang_gdb_5_3"}]'''
