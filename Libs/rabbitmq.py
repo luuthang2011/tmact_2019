@@ -109,8 +109,8 @@ class Rabbit:
                 tupleObject['UpdatedBy'] = user
                 tupleObject['ID'] = id_insert
                 tmp['data'] = tupleObject
-                print 'Rabbit string: '
-                print tmp
+                # print 'Rabbit string: '
+                # print tmp
                 arr_str += json.dumps(tmp).decode('utf-8') + ","
             arr_modify.append(tmp)
         if action == 'CREATE':

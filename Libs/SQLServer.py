@@ -74,7 +74,7 @@ class DB:
 
     def multiple_insert(self, table, fields, values):
         print 'Start multiple_insert to SQL Server:'
-        print type(values)
+        # print type(values)
         f = ', '.join(map(str, fields))
         v = str(values).strip('[]')
 
@@ -85,9 +85,9 @@ class DB:
             # # encoded = [check(t) for t in vv]
             # one_row = one_row.replace('"', "'").replace('[', '(').replace(']', ')').replace(", '", ", N'")
 
-            # print '------------------------------'
+            print '------------------------------'
             encoded = make_unicode_str(vv)
-            # print encoded
+            print encoded
             insert_str += encoded
             insert_str += ','
         insert_str = insert_str[:-1]

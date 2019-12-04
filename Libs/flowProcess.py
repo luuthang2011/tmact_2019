@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+# import sys
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
+
 import SQLServer
 import PostgresServer
 import rabbitmq
@@ -16,10 +20,12 @@ class FlowProcess:
     def excec(self, pg_table, ms_table, service, layerid, user, action):
         table = pg_table.lower()
         ms_dean = 0
-        check_da = ['id_da', 'isdean']
+        check_da = ['isdean']
         # table = pg_table
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
+        print 'Columns: '
+        print columns
 
         check_field = all(elem in columns for elem in check_da)
 
@@ -108,6 +114,13 @@ if __name__ == '__main__':
     pg_table = 'Bd153'
     ms_table = 'Tbl_FC_TramTich'
     service = 'TramTich'
+    layerid = 0
+    user = 'PhuongHX'
+
+    # ks.sde.KSnhoLe_region
+    pg_table = 'KSnhoLe_region'
+    ms_table = 'Tbl_FC_Khoangsannhole'
+    service = 'Khoangsannhole'
     layerid = 0
     user = 'PhuongHX'
 
