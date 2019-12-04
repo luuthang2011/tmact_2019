@@ -46,6 +46,7 @@ class FlowProcess:
                     ms_dean = msServer.select_id_dean(pg_dean[0])
                 elif pg_dean[1] == 0:
                     ms_dean = msServer.select_id_luutru(pg_dean[0])
+                    print 'ID luu truu: %s' % ms_dean
 
             pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
         else:
@@ -118,9 +119,15 @@ if __name__ == '__main__':
     user = 'PhuongHX'
 
     # ks.sde.KSnhoLe_region
-    pg_table = 'KSnhoLe_region'
-    ms_table = 'Tbl_FC_Khoangsannhole'
-    service = 'Khoangsannhole'
+    # pg_table = 'KSnhoLe_region'
+    # ms_table = 'Tbl_FC_Khoangsannhole'
+    # service = 'Khoangsannhole'
+    # layerid = 0
+    # user = 'PhuongHX'
+
+    pg_table = 'Dutgay_DaiThi_PhiaKhao_Bd132'
+    ms_table = 'Tbl_FC_DutGay'
+    service = 'DutGay'
     layerid = 0
     user = 'PhuongHX'
 

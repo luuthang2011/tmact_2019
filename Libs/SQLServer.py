@@ -145,7 +145,7 @@ class DB:
         print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         print script
         print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
+        script = script.decode('utf-8')
         self.init_connect()
         self.cursor.execute(script)
         row = self.cursor.fetchone()
