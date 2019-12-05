@@ -3,14 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/flowProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/flowProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/rabbitmq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/rabbitmq_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/rabbitmq_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/KhoangSanNhoLe.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/KhoangSanNhoLe.mdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/KhoangSanNhoLe.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/KhoangSanNhoLe.mxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/prepare.mxd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/BienChatNew/BienChat_Gop.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/BienChatNew/BienChat_Gop.mxd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/BienChatNew/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/BienChatNew/prepare.mxd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/KhoangSanNhoLe.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/KhoangSanNhoLe.mxd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLeTest/prepare.mxd" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tmact">
+  <component name="RunManager" selected="Python.tmact_delete (1)">
     <configuration name="SQLServer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="tmact_2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -225,8 +224,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tmact" />
         <item itemvalue="Python.tmact_delete (1)" />
+        <item itemvalue="Python.tmact" />
         <item itemvalue="Python.rabbitmq_2" />
         <item itemvalue="Python.rabbitmq" />
         <item itemvalue="Python.flowProcess" />
