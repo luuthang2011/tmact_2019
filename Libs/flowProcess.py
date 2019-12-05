@@ -76,22 +76,15 @@ class FlowProcess:
         if action == 'CREATE':
             ## MS SQL table name
             # Insert Multiple database to MS SQL
-
             msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows)
-
             if 'id' not in columns_custom: columns_custom.append('id')
             ms_rows = msServer.select(ms_table, columns_custom, service, layerid)
 
             ## Rabbit create json
             print 'Create FLow'
-            # print pg_validate_rows
-            # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'CREATE')
-            # strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'CREATE')
             strRabbit = Rabbit.modify_array_pg(columns_custom, ms_rows, ms_table, service, layerid, user, 'CREATE')
             Rabbit.create_json(strRabbit)
         elif action == 'DELETE':
-            # strRabbit = Rabbit.modify_array_pg(columns, pg_validate_rows, ms_table, service, layerid, 'DELETE')
-            # strRabbit = Rabbit.modify_array_pg(columns_custom, pg_validate_rows, ms_table, service, layerid, user, 'DELETE')
             if 'id' not in columns_custom: columns_custom.append('id')
             ms_rows = msServer.select(ms_table, columns_custom, service, layerid)
             strRabbit = Rabbit.modify_array_pg(columns_custom, ms_rows, ms_table, service, layerid, user, 'DELETE')

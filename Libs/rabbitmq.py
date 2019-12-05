@@ -112,11 +112,14 @@ class Rabbit:
                 tupleObject['ID'] = id_insert
 
                 # Convert time to UNIX time
-                dt = datetime.strptime(tupleObject['CreatedDate'], '%Y-%m-%d %H:%M:%S.%f0')
-                dt = time.mktime(dt.timetuple()) * 1e3 + dt.microsecond / 1e3
-                utc_time = int(dt)
-                tupleObject['CreatedDate'] = utc_time
-                tupleObject['UpdatedDate'] = utc_time
+                # dt = datetime.strptime(tupleObject['CreatedDate'], '%Y-%m-%d %H:%M:%S.%f0')
+                # dt = time.mktime(dt.timetuple()) * 1e3 + dt.microsecond / 1e3
+                # utc_time = int(dt)
+                dt = tupleObject['CreatedDate'].split(" ")
+                dt_formatted = '%s%s%s' % (dt[0], 'T', dt[1][:8])
+
+                tupleObject['CreatedDate'] = dt_formatted
+                tupleObject['UpdatedDate'] = dt_formatted
 
                 tmp['data'] = tupleObject
                 # print 'Rabbit string: '
