@@ -25,6 +25,10 @@ def check(f):
         return f
 
 
+def tup_gropup(n, lst):
+    return [lst[i:i+n] for i in range(0, len(lst), n)]
+
+
 class DB:
     def __init__(self, database):
         print 'Start connect SQL Server'
@@ -87,29 +91,32 @@ class DB:
     def multiple_insert(self, table, fields, values, isda):
         print 'Start multiple_insert to SQL Server:'
         f = ', '.join(map(str, fields))
-        insert_str = ''
-        for vv in values:
-            is_da = 1
-            if vv[0] == 1:
+
+        tup_arr = tup_gropup(990, values)
+        for tup_sub in tup_arr:
+            insert_str = ''
+            for vv in tup_sub:
                 is_da = 1
-            else:
-                is_da = 0
+                if vv[0] == 1:
+                    is_da = 1
+                else:
+                    is_da = 0
 
-            encoded = self.make_unicode_str(vv, is_da)
-            insert_str += encoded
-            insert_str += ','
+                encoded = self.make_unicode_str(vv, is_da)
+                insert_str += encoded
+                insert_str += ','
 
-        insert_str = insert_str[:-1]
+            insert_str = insert_str[:-1]
 
-        insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
-        insert_script = insert_script.decode('utf8', "ignore")
-        print '***********************************'
-        print insert_script
+            insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
+            insert_script = insert_script.decode('utf8', "ignore")
+            print insert_script
+            print '***********************************'
 
-        self.init_connect()
-        self.cursor.execute(insert_script)
-        self.connection.commit()
-        self.cursor.close()
+            self.init_connect()
+            self.cursor.execute(insert_script)
+            self.connection.commit()
+            self.cursor.close()
 
     def update_value_null(self, table, field, value):
         print 'Update layerName and layerID'

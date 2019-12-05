@@ -106,12 +106,11 @@ if __name__ == '__main__':
     # service = 'fc_magma_1'
     # layerid = 4
 
-    # pg_table = 'fc_magma_bd132'
-    pg_table = 'Bd153'
-    ms_table = 'Tbl_FC_TramTich'
-    service = 'TramTich'
-    layerid = 0
-    user = 'PhuongHX'
+    # pg_table = 'Bd153'
+    # ms_table = 'Tbl_FC_TramTich'
+    # service = 'TramTich'
+    # layerid = 0
+    # user = 'PhuongHX'
 
     # ks.sde.KSnhoLe_region
     # pg_table = 'KSnhoLe_region'
@@ -120,9 +119,9 @@ if __name__ == '__main__':
     # layerid = 0
     # user = 'PhuongHX'
 
-    pg_table = 'TramTich_VanYen_Bd221'
-    ms_table = 'Tbl_FC_TramTich'
-    service = 'TramTich'
+    pg_table = 'MDNC_DienTichChung'
+    ms_table = 'Tbl_FC_DTCChung'
+    service = 'DTCChung'
     layerid = 0
     user = 'From TMACT'
 
