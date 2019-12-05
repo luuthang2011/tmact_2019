@@ -37,7 +37,7 @@ class DB:
         print 'Connected PostgreSQL success!'
 
     def select(self, query):
-        print 'Start select form PostgreSQL: '
+        print 'Start select form PostgreSQL: %s' % query
         self.init_connect()
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
@@ -51,20 +51,27 @@ class DB:
         print 'Start SELECT table schema form PostgreSQL:'
         self.init_connect()
         query = r"""SELECT column_name from information_schema.columns where table_name='%s'""" % table
-        # query = r"""SELECT column_name from information_schema.columns where table_name='%s'""" % input_data
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
+        self.cursor.close()
+        self.connection.close()
 
         # Convert tuple to array
         lists = list(itertools.chain.from_iterable(rows))
 
         # Get subset or list
-        # subset_of_list = {'shape', 'id'}
-        subset_of_list = {'shape', 'id', 'id_da'}
+        subset_of_list = {'shape', 'id', 'rgb_color', 'red', 'green', 'blue'}
+        # subset_of_list = {'shape', 'id', 'id_da'}
         result = [l for l in lists if l not in subset_of_list]
+        if 'id_da' in result:
+            result.remove('id_da')
+            result.insert(0, 'id_da') # Add to first
 
-        self.cursor.close()
-        self.connection.close()
+        if 'isdean' in result:
+            result.remove('isdean')
+            result.insert(0, 'isdean')  # Add to first
+
+        print 'Full columns: %s' % result
 
         return result
 
@@ -77,20 +84,18 @@ class DB:
 
         return query
 
-    def query_builder_with_custom_field(self, id_dean, columns, table, user, layername, layerid):
-        print "Ma De an MS %s" % id_dean
+    # def query_builder_with_custom_field(self, id_dean, columns, table, user, layername, layerid):
+    def query_builder_with_custom_field(self, columns, table, user, layername, layerid):
+        print "query_builder_with_custom_field"
         columns_strip = str(columns).strip('[]')
         columns_replace = columns_strip.replace("'", "").replace('"', '')
         now = datetime.datetime.now()
         now_fs = now.strftime(fs)
-        # query = r'''SELECT %s, '%s' AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate , 1 AS IsDeAn FROM sde.%s''' % (columns_replace, id_dean, now_fs, now_fs, table)
 
-        query = r'''SELECT %s, %s AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
-        columns_replace, id_dean, now_fs, now_fs, user, user, layername, layerid, table)
+        # query = r'''SELECT %s, %s AS ID_DA, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
+        query = r'''SELECT %s, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
+        columns_replace, now_fs, now_fs, user, user, layername, layerid, table)
 
-        # print 'Custom query: %s' % query
-
-        # self.query_get_id_dean(table)
         return query
 
     def query_builder_with_custom_field_whitout_id_dean(self, columns, table, user, layername, layerid):
@@ -104,11 +109,7 @@ class DB:
         return query
 
     def query_get_id_dean(self, table):
-        print "##############################################"
-        print "table: %s", [table]
-        print "##############################################"
         query = r'''SELECT "id_da", "isdean" FROM sde.%s LIMIT 1''' % ( table )
-        # print 'Query select: %s' % query
         self.init_connect()
         row = self.select(query)
         self.cursor.close()
@@ -116,8 +117,6 @@ class DB:
         if len(row):
             id_da = row[0][0]
             print 'ID De An PG: %s' % id_da
-            # print 'is dean PG: %s' % [row[0][0], int(row[0][1])]
-            # return id_da
             return [row[0][0], int(row[0][1])]
         else:
             print 'row: %s' % row

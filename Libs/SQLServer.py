@@ -25,21 +25,6 @@ def check(f):
         return f
 
 
-def make_unicode_str(values):
-    string = "("
-    for v in values:
-        if isinstance(v, str):
-            current_str = str(v)
-            current_str = current_str.replace("'", "")
-            string = string + " N'" + current_str + "', "
-        else:
-            string += str(v) + ", "
-    string = string[:-2]
-    string += ")"
-    # print string
-    return string
-
-
 class DB:
     def __init__(self, database):
         print 'Start connect SQL Server'
@@ -72,24 +57,48 @@ class DB:
         self.connection.commit()
         self.cursor.close()
 
-    def multiple_insert(self, table, fields, values):
-        print 'Start multiple_insert to SQL Server:'
-        # print type(values)
-        f = ', '.join(map(str, fields))
-        v = str(values).strip('[]')
+    def make_unicode_str(self, values, is_da):
+        string = "("
+        index = 0
+        for v in values:
+            if index == 0:
+                v = is_da
 
+            if index == 1:
+                if is_da == 1:
+                    v = self.select_id_dean(v)
+                else:
+                    v = self.select_id_luutru(v)
+
+            if isinstance(v, str):
+                current_str = str(v)
+                current_str = current_str.replace("'", "")
+                string = string + " N'" + current_str + "', "
+            else:
+                string += str(v) + ", "
+
+            index = index + 1
+
+        string = string[:-2]
+        string += ")"
+        # print string
+        return string
+
+    def multiple_insert(self, table, fields, values, isda):
+        print 'Start multiple_insert to SQL Server:'
+        f = ', '.join(map(str, fields))
         insert_str = ''
         for vv in values:
-            # # one_row = json.dumps(vv).decode('utf-8')
-            # one_row = str(vv)
-            # # encoded = [check(t) for t in vv]
-            # one_row = one_row.replace('"', "'").replace('[', '(').replace(']', ')').replace(", '", ", N'")
+            is_da = 1
+            if vv[0] == 1:
+                is_da = 1
+            else:
+                is_da = 0
 
-            print '------------------------------'
-            encoded = make_unicode_str(vv)
-            print encoded
+            encoded = self.make_unicode_str(vv, is_da)
             insert_str += encoded
             insert_str += ','
+
         insert_str = insert_str[:-1]
 
         insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
@@ -142,19 +151,19 @@ class DB:
     def select_id_luutru(self, value):
         print 'Start select ID Bao Cao Luu Tru'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = N'%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
-        print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-        print script
-        print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        # print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        # print script
+        # print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         script = script.decode('utf-8')
         self.init_connect()
         self.cursor.execute(script)
         row = self.cursor.fetchone()
         self.cursor.close()
         if None == row:
-            print 'Row is None'
+            # print 'Row is None'
             return 0
         else:
-            print 'ID Bao Cao Luu Tru MS: %s' % row
+            # print 'ID Bao Cao Luu Tru MS: %s' % row
             return row[0]
 
     def delete_row_service(self, table, column, service):

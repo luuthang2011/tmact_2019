@@ -20,41 +20,47 @@ class FlowProcess:
     def excec(self, pg_table, ms_table, service, layerid, user, action):
         table = pg_table.lower()
         ms_dean = 0
-        check_da = ['isdean']
+        check_da = ['isdean', 'id_da']
+        is_da = 1
         # table = pg_table
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
-        print 'Columns: '
-        print columns
 
         check_field = all(elem in columns for elem in check_da)
 
-        # pq_query = pgServer.query_builder(columns, table)
-        # pq_query = pgServer.query_builder_with_custom_field(columns, table) # Added isDean Field
-        if 'rgb_color' in columns: columns.remove('rgb_color') # Remove rgb_color
-        if 'red' in columns: columns.remove('red')
-        if 'green' in columns: columns.remove('green')
-        if 'blue' in columns: columns.remove('blue')
-        if check_field:
-            print '****************************'
-            print 'Contain ID_DA'
-            print '****************************'
-            # Builder Query for PostgreSQL
-            pg_dean = pgServer.query_get_id_dean(table)
-            if pg_dean != 0:
-                if pg_dean[1] == 1:
-                    ms_dean = msServer.select_id_dean(pg_dean[0])
-                elif pg_dean[1] == 0:
-                    ms_dean = msServer.select_id_luutru(pg_dean[0])
-                    print 'ID luu truu: %s' % ms_dean
+        # if 'rgb_color' in columns: columns.remove('rgb_color') # Remove rgb_color
+        # if 'red' in columns: columns.remove('red')
+        # if 'green' in columns: columns.remove('green')
+        # if 'blue' in columns: columns.remove('blue')
 
-            pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
-        else:
-            print '****************************'
-            print 'Not Contain ID_DA'
-            print '****************************'
-            pq_query = pgServer.query_builder_with_custom_field_whitout_id_dean(columns, table, user, service,
-                                                                layerid)  # Added isDean Field
+        # if check_field:
+        #     print '****************************'
+        #     print 'Contain ID_DA'
+        #     print '****************************'
+        #     # Builder Query for PostgreSQL
+        #     pg_dean = pgServer.query_get_id_dean(table)
+        #     print 'pg_dean: %s' % pg_dean
+        #     if pg_dean != 0:
+        #         if pg_dean[1] == 1:
+        #             is_da = 1
+        #             ms_dean = msServer.select_id_dean(pg_dean[0])
+        #         elif pg_dean[1] == 0:
+        #             is_da = 0
+        #             ms_dean = msServer.select_id_luutru(pg_dean[0])
+        #             print 'ID luu truu: %s' % ms_dean
+        #
+        #     # pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
+        #     # pq_query = pgServer.query_builder_with_custom_field(columns, table, user, service, layerid) # Added isDean Field
+        # else:
+        #     print '****************************'
+        #     print 'Not Contain ID_DA'
+        #     print '****************************'
+        #     pq_query = pgServer.query_builder_with_custom_field_whitout_id_dean(columns, table, user, service,
+        #                                                         layerid)  # Added isDean Field
+
+        pq_query = pgServer.query_builder_with_custom_field(columns, table, user, service,
+                                                            layerid)  # Added isDean Field
+
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
         # Validate null data
@@ -62,8 +68,9 @@ class FlowProcess:
 
         columns_custom = columns[:]
         # print columns
-        if check_field:
-            columns_custom.append('ID_DA')
+
+        # if check_field:
+        #     columns_custom.append('ID_DA')
 
         columns_custom.append('CreatedDate')
         columns_custom.append('UpdatedDate')
@@ -76,7 +83,7 @@ class FlowProcess:
         if action == 'CREATE':
             ## MS SQL table name
             # Insert Multiple database to MS SQL
-            msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows)
+            msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows, is_da)
             if 'id' not in columns_custom: columns_custom.append('id')
             ms_rows = msServer.select(ms_table, columns_custom, service, layerid)
 
@@ -113,9 +120,9 @@ if __name__ == '__main__':
     # layerid = 0
     # user = 'PhuongHX'
 
-    pg_table = 'Dutgay_DaiThi_PhiaKhao_Bd132'
-    ms_table = 'Tbl_FC_DutGay'
-    service = 'DutGay'
+    pg_table = 'TramTich_VanYen_Bd221'
+    ms_table = 'Tbl_FC_TramTich'
+    service = 'TramTich'
     layerid = 0
     user = 'From TMACT'
 
