@@ -189,7 +189,7 @@ OBJ_CASE = {
   "loaimau": "Loaimau",
   "loaionhiem": "LoaiONhiem",
   "mdnc": "MDNC",
-  "mucdo": "Mucdo",
+  "mucdo": "MucDo",
   "mucdobienchat": "MucdoBienChat",
   "nam": "Nam",
   "namxd": "NamXD",
@@ -214,5 +214,6 @@ OBJ_CASE = {
   "tn_tl": "TN_TL",
   "truluong": "TruLuong",
   "tyle": "Tyle",
-  "vitrihanhchinh": "ViTriHanhChinh"
+  "vitrihanhchinh": "ViTriHanhChinh",
+  "diadanh": "DiaDanh"
 }
