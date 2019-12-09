@@ -96,8 +96,8 @@ if __name__ == '__main__':
     # table = "Tbl_FC_Khoangsannhole"
     # user = "from tmact"
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/VungTruotLo/"
-    # table = "Tbl_FC_VungTruotLo"
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/DiemDithuongDH/"
+    # table = "Tbl_FC_DiemDithuongDH"
     # user = "FROM TMACT"
 
     table = sys.argv[1]

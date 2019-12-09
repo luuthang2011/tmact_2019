@@ -109,7 +109,7 @@ class Rabbit:
                 # CreatedBy and UpdatedBy
                 tupleObject['CreatedBy'] = user
                 tupleObject['UpdatedBy'] = user
-                tupleObject['ID'] = id_insert
+                tupleObject['ID'] = str(id_insert)
 
                 # Convert time to UNIX time
                 # dt = datetime.strptime(tupleObject['CreatedDate'], '%Y-%m-%d %H:%M:%S.%f0')
