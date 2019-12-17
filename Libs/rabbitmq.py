@@ -85,7 +85,8 @@ class Rabbit:
                 # 'index': ms_table.lower(),
                 'index': ms_table,
                 # 'index': 'tbl_magma',
-                   'id': id_insert}
+                   'id': id_insert
+            }
             # Add tuple data if action equal CREATE
             if action == 'CREATE':
                 tupleObject = {}
@@ -109,7 +110,7 @@ class Rabbit:
                 # CreatedBy and UpdatedBy
                 tupleObject['CreatedBy'] = user
                 tupleObject['UpdatedBy'] = user
-                tupleObject['ID'] = str(id_insert)
+                tupleObject['ID'] = id_insert
 
                 # Convert time to UNIX time
                 # dt = datetime.strptime(tupleObject['CreatedDate'], '%Y-%m-%d %H:%M:%S.%f0')

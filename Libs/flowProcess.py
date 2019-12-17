@@ -26,38 +26,6 @@ class FlowProcess:
         # Get Columns form PostgreSQL
         columns = pgServer.select_schema(table)
 
-        check_field = all(elem in columns for elem in check_da)
-
-        # if 'rgb_color' in columns: columns.remove('rgb_color') # Remove rgb_color
-        # if 'red' in columns: columns.remove('red')
-        # if 'green' in columns: columns.remove('green')
-        # if 'blue' in columns: columns.remove('blue')
-
-        # if check_field:
-        #     print '****************************'
-        #     print 'Contain ID_DA'
-        #     print '****************************'
-        #     # Builder Query for PostgreSQL
-        #     pg_dean = pgServer.query_get_id_dean(table)
-        #     print 'pg_dean: %s' % pg_dean
-        #     if pg_dean != 0:
-        #         if pg_dean[1] == 1:
-        #             is_da = 1
-        #             ms_dean = msServer.select_id_dean(pg_dean[0])
-        #         elif pg_dean[1] == 0:
-        #             is_da = 0
-        #             ms_dean = msServer.select_id_luutru(pg_dean[0])
-        #             print 'ID luu truu: %s' % ms_dean
-        #
-        #     # pq_query = pgServer.query_builder_with_custom_field(ms_dean, columns, table, user, service, layerid) # Added isDean Field
-        #     # pq_query = pgServer.query_builder_with_custom_field(columns, table, user, service, layerid) # Added isDean Field
-        # else:
-        #     print '****************************'
-        #     print 'Not Contain ID_DA'
-        #     print '****************************'
-        #     pq_query = pgServer.query_builder_with_custom_field_whitout_id_dean(columns, table, user, service,
-        #                                                         layerid)  # Added isDean Field
-
         pq_query = pgServer.query_builder_with_custom_field(columns, table, user, service,
                                                             layerid)  # Added isDean Field
 
@@ -119,9 +87,9 @@ if __name__ == '__main__':
     # layerid = 0
     # user = 'PhuongHX'
 
-    pg_table = 'MDNC_DienTichChung'
-    ms_table = 'Tbl_FC_DTCChung'
-    service = 'DTCChung'
+    pg_table = 'KSnhoLe_region'
+    ms_table = 'Tbl_FC_KhoangSanNhoLe'
+    service = 'VanhPhanTanDH'
     layerid = 0
     user = 'From TMACT'
 

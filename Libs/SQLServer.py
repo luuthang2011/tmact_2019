@@ -61,14 +61,15 @@ class DB:
         self.connection.commit()
         self.cursor.close()
 
-    def make_unicode_str(self, values, is_da):
+    def make_unicode_str(self, values, is_da, check_field):
         string = "("
         index = 0
         for v in values:
             if index == 0:
                 v = is_da
 
-            if index == 1:
+            if index == 1 & check_field:
+                print 'check_field is True'
                 if is_da == 1:
                     v = self.select_id_dean(v)
                 else:
@@ -92,6 +93,11 @@ class DB:
         print 'Start multiple_insert to SQL Server:'
         f = ', '.join(map(str, fields))
 
+        print 'Full Fields: %s ' % fields
+        check_da = ['isdean', 'id_da']
+        check_field = all(elem in fields for elem in check_da)
+        print 'check_field: %s ' % check_field
+
         tup_arr = tup_gropup(990, values)
         for tup_sub in tup_arr:
             insert_str = ''
@@ -102,7 +108,7 @@ class DB:
                 else:
                     is_da = 0
 
-                encoded = self.make_unicode_str(vv, is_da)
+                encoded = self.make_unicode_str(vv, is_da, check_field)
                 insert_str += encoded
                 insert_str += ','
 
@@ -143,7 +149,7 @@ class DB:
     def select_id_dean(self, value):
         print 'Start select ID Dean'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_QLDA", "MaDeAn", value)
-        # print script
+        print script
         self.init_connect()
         self.cursor.execute(script)
         row = self.cursor.fetchone()
@@ -158,9 +164,6 @@ class DB:
     def select_id_luutru(self, value):
         print 'Start select ID Bao Cao Luu Tru'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = N'%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
-        # print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-        # print script
-        # print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         script = script.decode('utf-8')
         self.init_connect()
         self.cursor.execute(script)
