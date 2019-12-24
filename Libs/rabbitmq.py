@@ -112,6 +112,11 @@ class Rabbit:
                 tupleObject['UpdatedBy'] = user
                 tupleObject['ID'] = id_insert
 
+                if 'id_ks' in pg_columns:
+                    index_ID_KS = pg_columns.index('id_ks')
+                    value_ID_KS = arr[index_ID_KS]
+                    tupleObject['ID_KS'] = str(index_ID_KS)
+
                 # Convert time to UNIX time
                 # dt = datetime.strptime(tupleObject['CreatedDate'], '%Y-%m-%d %H:%M:%S.%f0')
                 # dt = time.mktime(dt.timetuple()) * 1e3 + dt.microsecond / 1e3

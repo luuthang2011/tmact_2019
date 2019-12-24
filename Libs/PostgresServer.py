@@ -60,7 +60,7 @@ class DB:
         lists = list(itertools.chain.from_iterable(rows))
 
         # Get subset or list
-        subset_of_list = {'shape', 'id', 'rgb_color', 'red', 'green', 'blue'}
+        subset_of_list = {'shape', 'shape_length', 'shape_area', 'id', 'rgb_color', 'red', 'green', 'blue', 'id_captntl'}
         # subset_of_list = {'shape', 'id', 'id_da'}
         result = [l for l in lists if l not in subset_of_list]
         if 'id_da' in result:
@@ -106,6 +106,7 @@ class DB:
         now_fs = now.strftime(fs)
         query = r'''SELECT %s, '%s' AS CreatedDate, '%s' AS UpdatedDate, '%s' AS CreatedBy, '%s' AS UpdatedBy, '%s' AS LayerName, '%s' AS LayerID FROM sde.%s''' % (
         columns_replace, now_fs, now_fs, user, user, layername, layerid, table)
+        # print 'query: %s ' % query
         return query
 
     def query_get_id_dean(self, table):
@@ -119,7 +120,7 @@ class DB:
             print 'ID De An PG: %s' % id_da
             return [row[0][0], int(row[0][1])]
         else:
-            print 'row: %s' % row
+            # print 'row: %s' % row
             return 0
 
     # Replace None Value to empty string

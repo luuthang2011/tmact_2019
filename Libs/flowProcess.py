@@ -87,9 +87,9 @@ if __name__ == '__main__':
     # layerid = 0
     # user = 'PhuongHX'
 
-    pg_table = 'KSnhoLe_region'
-    ms_table = 'Tbl_FC_KhoangSanNhoLe'
-    service = 'VanhPhanTanDH'
+    pg_table = 'ddtts_trungkhanh_nhomii'
+    ms_table = 'Tbl_FC_DiemDiThuongTS'
+    service = 'DiemDiThuongTS'
     layerid = 0
     user = 'From TMACT'
 

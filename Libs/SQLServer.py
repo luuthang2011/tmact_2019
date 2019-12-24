@@ -44,7 +44,7 @@ class DB:
                                        ''' % (constant.DRIVER_SQL, constant.SERVER_SQL,
                                               self.database, constant.USER_SQL, constant.PASSWORD_SQL))
         self.cursor = self.connection.cursor()
-        print 'Connected SQL success!'
+        # print 'Connected SQL success!'
 
     def execute(self, query):
         self.cursor.execute(query)
@@ -74,7 +74,8 @@ class DB:
                     v = self.select_id_dean(v)
                 else:
                     v = self.select_id_luutru(v)
-
+            if not v:
+                v = 0
             if isinstance(v, str):
                 current_str = str(v)
                 current_str = current_str.replace("'", "")
@@ -93,10 +94,10 @@ class DB:
         print 'Start multiple_insert to SQL Server:'
         f = ', '.join(map(str, fields))
 
-        print 'Full Fields: %s ' % fields
+        # print 'Full Fields: %s ' % fields
         check_da = ['isdean', 'id_da']
         check_field = all(elem in fields for elem in check_da)
-        print 'check_field: %s ' % check_field
+        # print 'check_field: %s ' % check_field
 
         tup_arr = tup_gropup(990, values)
         for tup_sub in tup_arr:
@@ -134,7 +135,7 @@ class DB:
         self.cursor.close()
 
     def select(self, table, columns, service, layerid):
-        print 'Start select ID Dean'
+        # print 'Start select ID Dean'
 
         columns = ', '.join(str(x) for x in columns)
         script = '''SELECT %s FROM %s WHERE layername='%s' AND layerid='%s' ''' % (columns, table, service, layerid)
@@ -147,7 +148,7 @@ class DB:
         return rows
 
     def select_id_dean(self, value):
-        print 'Start select ID Dean'
+        # print 'Start select ID Dean'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_QLDA", "MaDeAn", value)
         print script
         self.init_connect()
@@ -162,7 +163,7 @@ class DB:
             return row[0]
 
     def select_id_luutru(self, value):
-        print 'Start select ID Bao Cao Luu Tru'
+        # print 'Start select ID Bao Cao Luu Tru'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = N'%s' ''' % ("Tbl_BaoCaoDiaChat", "KHLT", value)
         script = script.decode('utf-8')
         self.init_connect()
