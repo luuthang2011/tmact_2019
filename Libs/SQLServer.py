@@ -65,21 +65,26 @@ class DB:
         string = "("
         index = 0
         for v in values:
-            if index == 0:
+            # print 'index: %s , v = %s' % (index, v)
+
+            # if index == 0:
+            if index == 0 and check_field:
                 v = is_da
 
-            if index == 1 & check_field:
-                print 'check_field is True'
+            if index == 1 and check_field:
+                # print 'check_field is True'
                 if is_da == 1:
                     v = self.select_id_dean(v)
                 else:
                     v = self.select_id_luutru(v)
-            if not v:
-                v = 0
+
             if isinstance(v, str):
-                current_str = str(v)
-                current_str = current_str.replace("'", "")
-                string = string + " N'" + current_str + "', "
+                if len(v) == 0:
+                    string += str(0) + ", "
+                else:
+                    current_str = str(v)
+                    current_str = current_str.replace("'", "")
+                    string = string + " N'" + current_str + "', "
             else:
                 string += str(v) + ", "
 
@@ -94,15 +99,18 @@ class DB:
         print 'Start multiple_insert to SQL Server:'
         f = ', '.join(map(str, fields))
 
-        # print 'Full Fields: %s ' % fields
         check_da = ['isdean', 'id_da']
         check_field = all(elem in fields for elem in check_da)
-        # print 'check_field: %s ' % check_field
+        # print '-----------------------------------'
+        # print 'fields: %s ' % f
+        # print '-----------------------------------'
+        # print 'values: %s ' % values
 
-        tup_arr = tup_gropup(990, values)
+        tup_arr = tup_gropup(990, values) # Make tuple size is 990
         for tup_sub in tup_arr:
             insert_str = ''
             for vv in tup_sub:
+                # print vv
                 is_da = 1
                 if vv[0] == 1:
                     is_da = 1
@@ -117,7 +125,7 @@ class DB:
 
             insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
             insert_script = insert_script.decode('utf8', "ignore")
-            print insert_script
+            # print 'insert_script %s ' % insert_script
             print '***********************************'
 
             self.init_connect()
@@ -139,12 +147,11 @@ class DB:
 
         columns = ', '.join(str(x) for x in columns)
         script = '''SELECT %s FROM %s WHERE layername='%s' AND layerid='%s' ''' % (columns, table, service, layerid)
-        # print script
+        # print 'script: %s ' % script
         self.init_connect()
         self.cursor.execute(script)
         rows = self.cursor.fetchall()
         self.cursor.close()
-        # print rows
         return rows
 
     def select_id_dean(self, value):

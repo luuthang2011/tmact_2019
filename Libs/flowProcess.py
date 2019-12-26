@@ -87,9 +87,16 @@ if __name__ == '__main__':
     # layerid = 0
     # user = 'PhuongHX'
 
-    pg_table = 'ddtts_trungkhanh_nhomii'
-    ms_table = 'Tbl_FC_DiemDiThuongTS'
-    service = 'DiemDiThuongTS'
+    pg_table = 'KSnhoLe_region'
+    pg_table = 'KSnhoLe_region'
+    ms_table = 'Tbl_FC_Khoangsannhole'
+    service = 'Khoangsannhole'
+
+    # pg_table = 'TramTich_DaiThi_PhiaKhao_Bd132'
+    # ms_table = 'Tbl_FC_TramTich'
+    # service = 'TramTich'
+
+
     layerid = 0
     user = 'From TMACT'
 

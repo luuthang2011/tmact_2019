@@ -24,7 +24,7 @@ class Rabbit:
 
     def create_json(self, str):
         print 'Start Create json'
-        print str
+        # print str
         print '-------------------------'
 
         self.init_connect()
