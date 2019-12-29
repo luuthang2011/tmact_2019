@@ -14,10 +14,10 @@ if __name__ == '__main__':
 
     print 'Argument List:', str(sys.argv)
 
-    # service = "TramTich"  # from DB
-    # folder = r'E:/SourceCode/tmact_2019/data/mdb/TramTich/'
-    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/TramTich/prepare.mxd'
-    # ms_table = 'Tbl_FC_TramTich'
+    # service = "Khoangsannhole"  # from DB
+    # folder = r'E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole/prepare.mxd'
+    # ms_table = 'Tbl_FC_Khoangsannhole'
 
     service = sys.argv[1]  # from DB
     folder = sys.argv[2]
