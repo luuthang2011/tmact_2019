@@ -20,6 +20,8 @@ class layer2DB:
     def execute(self, indata, mdb):
         # Set the current workspace
         arcpy.env.workspace = indb
+        arcpy.env.outputZFlag = 'Disabled'
+        arcpy.env.outputMFlag = 'Disabled'
 
         # read mxd
         # input: mxd path
@@ -62,7 +64,7 @@ class layer2DB:
 
 
 if __name__ == '__main__':
-    data = r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated.mxd"
-    mdb = r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132.mdb"
+    data = r"E:\SourceCode\tmact_2019\data\mdb\Khoangsannhole2\KhoangSanNhoLe.mxd"
+    mdb = r"E:\SourceCode\tmact_2019\data\mdb\Khoangsannhole2\KhoangSanNhoLe.mdb"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
     layer2DB(db).execute(data, mdb)

@@ -96,7 +96,7 @@ if __name__ == '__main__':
     # table = "Tbl_FC_Khoangsannhole"
     # user = "from tmact"
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole/"
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole2/"
     # table = "Tbl_FC_Khoangsannhole"
     # user = "FROM TMACT"
 

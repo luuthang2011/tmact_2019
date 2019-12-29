@@ -15,8 +15,8 @@ if __name__ == '__main__':
     print 'Argument List:', str(sys.argv)
 
     # service = "Khoangsannhole"  # from DB
-    # folder = r'E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole/'
-    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole/prepare.mxd'
+    # folder = r'E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole2/'
+    # mxd = r'E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole2/prepare.mxd'
     # ms_table = 'Tbl_FC_Khoangsannhole'
 
     service = sys.argv[1]  # from DB
