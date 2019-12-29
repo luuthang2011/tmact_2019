@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/constant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/Magma/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/Magma/prepare.mxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/VanhPhanTanDH/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/VanhPhanTanDH/prepare.mxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mdb/VanhPhanTanTS/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/VanhPhanTanTS/prepare.mxd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLe/KhoangSanNhoLe.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLe/KhoangSanNhoLe.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLe/KhoangSanNhoLe.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLe/KhoangSanNhoLe.mxd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLe/prepare.mxd" beforeDir="false" afterPath="$PROJECT_DIR$/data/mdb/KhoangSanNhoLe/prepare.mxd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -560,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574516492789</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Updated config constant">
+      <created>1577591615731</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1577591615731</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -587,7 +591,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix import db by datasource" />
     <MESSAGE value="change servername format + add params for delete" />
     <MESSAGE value="bak" />
     <MESSAGE value="release feature2geodatabase" />
@@ -612,6 +615,7 @@
     <MESSAGE value="Fix bug" />
     <MESSAGE value="Added check ID Quan ly luu tru" />
     <MESSAGE value="Fix arguments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix arguments" />
+    <MESSAGE value="Updated config constant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated config constant" />
   </component>
 </project>

@@ -60,7 +60,7 @@ class DB:
         lists = list(itertools.chain.from_iterable(rows))
 
         # Get subset or list
-        subset_of_list = {'shape', 'shape_length', 'shape_area', 'id', 'rgb_color', 'red', 'green', 'blue'}
+        subset_of_list = {'shape', 'shape_length', 'shape_area', 'id', 'rgb_color', 'red', 'green', 'blue', 'pen_type', 'pen_width'}
         # subset_of_list = {'shape', 'id', 'id_da'}
         result = [l for l in lists if l not in subset_of_list]
         if 'id_da' in result:
