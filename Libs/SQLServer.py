@@ -125,13 +125,13 @@ class DB:
 
             insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
             insert_script = insert_script.decode('utf8', "ignore")
-            # print 'insert_script %s ' % insert_script
+            print 'insert_script %s ' % insert_script
             print '***********************************'
 
-            self.init_connect()
-            self.cursor.execute(insert_script)
-            self.connection.commit()
-            self.cursor.close()
+            # self.init_connect()
+            # self.cursor.execute(insert_script)
+            # self.connection.commit()
+            # self.cursor.close()
 
     def update_value_null(self, table, field, value):
         print 'Update layerName and layerID'

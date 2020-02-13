@@ -96,13 +96,13 @@ if __name__ == '__main__':
     # table = "Tbl_FC_Khoangsannhole"
     # user = "from tmact"
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/Khoangsannhole2/"
-    # table = "Tbl_FC_Khoangsannhole"
-    # user = "FROM TMACT"
+    folder = r"E:/SourceCode/tmact_2019/data/mdb/VanhPhanTanTS/"
+    table = "Tbl_FC_VanhPhanTanTS"
+    user = "FROM TMACT"
 
-    table = sys.argv[1]
-    folder = sys.argv[2]
-    user = sys.argv[3]
+    # table = sys.argv[1]
+    # folder = sys.argv[2]
+    # user = sys.argv[3]
 
     objectType = table.split("_")[-1]       # magma
 
