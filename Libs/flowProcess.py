@@ -57,8 +57,8 @@ class FlowProcess:
 
             ## Rabbit create json
             print 'Create FLow'
-            # strRabbit = Rabbit.modify_array_pg(columns_custom, ms_rows, ms_table, service, layerid, user, 'CREATE')
-            # Rabbit.create_json(strRabbit)
+            strRabbit = Rabbit.modify_array_pg(columns_custom, ms_rows, ms_table, service, layerid, user, 'CREATE')
+            Rabbit.create_json(strRabbit)
         elif action == 'DELETE':
             if 'id' not in columns_custom: columns_custom.append('id')
             ms_rows = msServer.select(ms_table, columns_custom, service, layerid)

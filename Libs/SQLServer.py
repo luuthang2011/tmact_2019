@@ -128,10 +128,10 @@ class DB:
             print 'insert_script %s ' % insert_script
             print '***********************************'
 
-            # self.init_connect()
-            # self.cursor.execute(insert_script)
-            # self.connection.commit()
-            # self.cursor.close()
+            self.init_connect()
+            self.cursor.execute(insert_script)
+            self.connection.commit()
+            self.cursor.close()
 
     def update_value_null(self, table, field, value):
         print 'Update layerName and layerID'
