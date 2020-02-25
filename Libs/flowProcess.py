@@ -31,6 +31,7 @@ class FlowProcess:
 
         # Select Data with pg_query
         pg_rows = pgServer.select(pq_query)
+        # print pg_rows
         # Validate null data
         pg_validate_rows = pgServer.validate_data(pg_rows)
 
@@ -87,9 +88,9 @@ if __name__ == '__main__':
     # layerid = 0
     # user = 'PhuongHX'
 
-    pg_table = 'vptts_trungkhanh_nhomii'
-    ms_table = 'Tbl_FC_VanhPhanTanTS'
-    service = 'VanhPhanTanTS'
+    pg_table = 'TramTich_DaiThi_PhiaKhao_Bd132'
+    ms_table = 'Tbl_FC_TramTich'
+    service = 'TramTich'
 
     # pg_table = 'TramTich_DaiThi_PhiaKhao_Bd132'
     # ms_table = 'Tbl_FC_TramTich'

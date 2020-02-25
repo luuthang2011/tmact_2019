@@ -8,6 +8,10 @@ import json
 import codecs
 import constant
 # import sys
+# if sys.stdout.encoding != 'cp850':
+#   sys.stdout = codecs.getwriter('cp850')(sys.stdout, 'strict')
+# if sys.stderr.encoding != 'cp850':
+#   sys.stderr = codecs.getwriter('cp850')(sys.stderr, 'strict')
 # reload(sys)
 # sys.setdefaultencoding('utf-8')
 
@@ -124,8 +128,9 @@ class DB:
             insert_str = insert_str[:-1]
 
             insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
-            insert_script = insert_script.decode('utf8', "ignore")
-            print 'insert_script %s ' % insert_script
+            # print 'insert_script %s ' % insert_script
+            insert_script = insert_script.decode('utf-8', "ignore")
+            # print 'insert_script %s ' % insert_script
             print '***********************************'
 
             self.init_connect()

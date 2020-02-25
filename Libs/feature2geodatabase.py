@@ -64,7 +64,7 @@ class layer2DB:
 
 
 if __name__ == '__main__':
-    data = r"E:\SourceCode\tmact_2019\data\mdb\Khoangsannhole2\KhoangSanNhoLe.mxd"
-    mdb = r"E:\SourceCode\tmact_2019\data\mdb\Khoangsannhole2\KhoangSanNhoLe.mdb"
+    data = r"E:\SourceCode\tmact_2019\data\mdb\TramTich_Gop.mxd"
+    mdb = r"E:\SourceCode\tmact_2019\data\mdb\TramTich_Gop.mdb"
     db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
     layer2DB(db).execute(data, mdb)
