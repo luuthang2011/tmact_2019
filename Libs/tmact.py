@@ -45,6 +45,7 @@ class Ks:
             "de_an": de_an,
             "folder": folder,
             "mxd": mxd,
+            "display": constant.LIST_SERVICE[ms_table],
             "visible": 0,
             "opacity": 0.7
         }
@@ -96,15 +97,19 @@ if __name__ == '__main__':
     # table = "Tbl_FC_Khoangsannhole"
     # user = "from tmact"
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/"
-    # table = "Tbl_FC_TramTich"
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/Magma/"
+    # table = "Tbl_FC_Magma"
     # user = "FROM TMACT"
 
     table = sys.argv[1]
     folder = sys.argv[2]
     user = sys.argv[3]
 
-    objectType = table.split("_")[-1]       # magma
+    # objectType = table.split("_")[-1]       # magma
+
+    objectType = constant.LIST_SERVICE[table]
+
+    # print objectType
 
     try:
         unitest = Ks()

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # DRIVER_SQL = '{SQL Server Native Client 11.0};'
 DRIVER_SQL = '{SQL Server};'
 
@@ -217,3 +219,47 @@ OBJ_CASE = {
         "vitrihanhchinh": "ViTriHanhChinh",
         "id_khoangsannhole": "ID_khoangsannhole"
       }
+
+LIST_SERVICE = {
+  "Tbl_FC_BanDoDiaMao": "Lớp bản đồ địa mạo",
+  "Tbl_FC_TaiLieuDoTu": "Tài liệu đo từ",
+  "Tbl_FC_TaiLieuDoTrongLuong": "Tài liệu đo trọng lượng",
+  "Tbl_FC_TaiLieuDoDien": "Tài liệu đo điện",
+  "Tbl_FC_TaiLieuDoXa": "Tài liệu đo xạ",
+  "Tbl_FC_DiSanDC": "Lớp di sản địa chất",
+  "Tbl_FC_Magma": "Lớp thành tạo magma",
+  "Tbl_FC_TramTich": "Lớp Trầm tích",
+  "Tbl_FC_BienChat": "Lớp biến chất",
+  "Tbl_FC_DutGay": "Lớp đứt gãy",
+  "Tbl_FC_VanhPhanTanDH": "Lớp vành phân tán địa hoá",
+  "Tbl_FC_DiemDiThuongDH": "Lớp điểm dị thường địa hoá",
+  "Tbl_FC_VanhPhanTanTS": "Lớp vành phân tán trọng sa",
+  "Tbl_FC_DiemDiThuongTS": "Lớp điểm dị thường trọng sa",
+  "Tbl_FC_DCTV_DCCT": "Lớp Địa chất thủy văn - công trình",
+  "Tbl_FC_VungONhiem": "Lớp Vùng ô nhiễm",
+  "Tbl_FC_VungTruotLo": "Lớp Vùng trượt lở",
+  "Tbl_FC_VungDongDat": "Lớp Vùng tiềm năng động đất",
+  "Tbl_FC_Khoangsannhole": "Lớp Khoáng sản nhỏ lẻ",
+  "Tbl_FC_VungTrienVongKhoangSan": "Lớp vùng triển vọng khoáng sản",
+  "Tbl_FC_KVCamHDKS": "Lớp Khu vực cấm hoạt động khoáng sản",
+  "Tbl_FC_KVDTKhoangSan": "Lớp Khu vực dự trữ khoáng sản",
+  "Tbl_FC_DTChiTiet": "Lớp Diện tích chi tiết",
+  "Tbl_FC_LoTrinhDC": "Lộ trình địa chất",
+  "Tbl_FC_DiemKS": "Điểm khảo sát",
+  "Tbl_FC_CTHaoVL": "Công trình hào (vết lộ)",
+  "Tbl_FC_CTGieng": "Công trình giếng",
+  "Tbl_FC_CTLo": "Công trình lò",
+  "Tbl_FC_LoKhoan": "Bảng lỗ khoan",
+  "Tbl_FC_DanhPhapBD": "Danh pháp bản đồ",
+  "Tbl_FC_KhuDGKS": "Lớp khu đánh giá khoáng sản",
+  "Tbl_FC_TQDienTichDG": "Thân quặng diện tích đánh giá",
+  "Tbl_FC_KhuTDKS": "Lớp khu thăm dò khoáng sản",
+  "Tbl_FC_TQDienTichTD": "Thân quặng diện tích thăm dò",
+  "Tbl_FC_VungTrienVongKhoangSanDG": "Khu vực triển vọng đã đánh giá",
+  "Tbl_FC_KhuVucTDKhoangSan": "Khu vực hoạt động thăm dò khoáng sản",
+  "Tbl_FC_KhuVucKTKhoangSan": "Khu vực hoạt động khai thác khoáng sản",
+  "Tbl_FC_DTCChung": "Diện tích chung",
+  "Tbl_Tinh": "Ranh giới tỉnh",
+  "Tbl_Huyen": "Ranh giới huyện",
+  "Tbl_Xa": "Ranh giới xã"
+}

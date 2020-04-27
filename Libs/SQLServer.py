@@ -122,24 +122,49 @@ class DB:
                     is_da = 0
 
                 encoded = self.make_unicode_str(vv, is_da, check_field)
-                insert_str += encoded
-                insert_str += ','
+                # insert_str += encoded
+                insert_str = encoded
 
-            insert_str = insert_str[:-1]
+                insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
+                insert_script = insert_script.decode('utf-8', "ignore")
 
-            insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
+                try:
+                    self.init_connect()
+                    self.cursor.execute(insert_script)
+                    self.connection.commit()
+                    self.cursor.close()
+                except (pyodbc.Error, pyodbc.OperationalError) as ex:
+                    print 'insert_script %s ' % insert_script
+                    print ex
+                # insert_str += ','
+
+            # insert_str = insert_str[:-1]
+
+            # insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
             # print 'insert_script %s ' % insert_script
-            insert_script = insert_script.decode('utf-8', "ignore")
-            # print 'insert_script %s ' % insert_script
+            # insert_script = insert_script.decode('utf-8', "ignore")
+
+            # try:
+            #     insert_script = insert_script.decode('utf8', "replace")
+            #     print 'insert_script %s ' % insert_script
+            # except:
+            #     insert_script = insert_script.decode('utf-8', "ignore")
+            #     print 'insert_script %s ' % insert_script
+            # finally:
+            #     print("decode utf8 not completed")
+
             print '***********************************'
 
-            self.init_connect()
-            self.cursor.execute(insert_script)
-            self.connection.commit()
-            self.cursor.close()
+            # try:
+            #     self.init_connect()
+            #     self.cursor.execute(insert_script)
+            #     self.connection.commit()
+            #     self.cursor.close()
+            # except (pyodbc.Error, pyodbc.OperationalError) as ex:
+            #     print ex
 
     def update_value_null(self, table, field, value):
-        print 'Update layerName and layerID'
+        # print 'Update layerName and layerID'
         script = '''UPDATE %s SET %s = '%s' WHERE %s IS NULL''' % (table, field, value, field)
         # print script
         self.init_connect()
@@ -162,16 +187,16 @@ class DB:
     def select_id_dean(self, value):
         # print 'Start select ID Dean'
         script = '''SELECT TOP 1 id FROM %s WHERE %s = '%s' ''' % ("Tbl_QLDA", "MaDeAn", value)
-        print script
+        # print script
         self.init_connect()
         self.cursor.execute(script)
         row = self.cursor.fetchone()
         self.cursor.close()
         if None == row:
-            print 'Row is None'
+            # print 'Row is None'
             return 0
         else:
-            print 'ID De An MS: %s' % row
+            # print 'ID De An MS: %s' % row
             return row[0]
 
     def select_id_luutru(self, value):

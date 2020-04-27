@@ -2,6 +2,10 @@
 __pycache__/
 *$py.class
 
+# IDE and Text Editor
+.vscode/
+.idea/
+
 # C extensions
 *.so
 

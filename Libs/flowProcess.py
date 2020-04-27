@@ -52,6 +52,7 @@ class FlowProcess:
         if action == 'CREATE':
             ## MS SQL table name
             # Insert Multiple database to MS SQL
+            print 'pg_table: %s' % table
             msServer.multiple_insert(ms_table, columns_custom, pg_validate_rows, is_da)
             if 'id' not in columns_custom: columns_custom.append('id')
             ms_rows = msServer.select(ms_table, columns_custom, service, layerid)
