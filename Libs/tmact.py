@@ -80,6 +80,7 @@ class Ks:
         # true: done
         # false: delete geodatabase
         serviceName = objectType
+        # serviceName = constant.LIST_SERVICE[objectType]
         publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
             folder,
             newMxdPath,
@@ -105,15 +106,14 @@ if __name__ == '__main__':
     folder = sys.argv[2]
     user = sys.argv[3]
 
-    # objectType = table.split("_")[-1]       # magma
-
-    objectType = constant.LIST_SERVICE[table]
+    objectType = table.split("_")[-1]       # magma
 
     # print objectType
 
     try:
         unitest = Ks()
         result = unitest.publish(folder, db, staticAgs, objectType)
+        # result = unitest.publish(folder, db, staticAgs, table)
         if result:
             print "Published map service!!!!"
             unitest.importMongo(objectType, table, "de_an", folder, folder + 'prepare.mxd')
