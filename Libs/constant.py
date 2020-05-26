@@ -30,6 +30,10 @@ db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
 
 OBJ_CASE = {
         "id_cthao": "ID_CTHao",
+        "id_khudgks": "ID_KhuDGKS",
+        "id_khutdks": "ID_KhuTDKS",
+        "id_tqdientichdg": "ID_TQDienTichDG",
+        "id_tqdientichtd": "ID_TQDienTichTD",
         "khoiluonglo": "KhoiLuongLo",
         "id_ctlo": "ID_CTLo",
         "khoiluonghaovl": "KhoiLuongHaoVL",
