@@ -39,15 +39,26 @@ class Ks:
     def importMongo(self, url, ms_table, de_an, folder, mxd):
         client = MongoClient(constant.Mongo)
         db = client['ks']
+        LIST_SERVICE = constant.LIST_SERVICE
+        display = ""
+        table_name = ms_table.lower()
+        if table_name in LIST_SERVICE.keys():
+            display = constant.LIST_SERVICE[table_name]
+        else:
+            display = "Bảng chưa được insert vào CSDL"
+
         post = {
             "url": url,
             "ms_table": ms_table,
             "de_an": de_an,
             "folder": folder,
             "mxd": mxd,
+            "display": display,
             "visible": 0,
             "opacity": 0.7
         }
+
+        print "Post insert MongoDB %s" % post
 
         posts = db.map_services  # map_services: collection in database
         post_id = posts.insert_one(post).inserted_id
@@ -79,6 +90,7 @@ class Ks:
         # true: done
         # false: delete geodatabase
         serviceName = objectType
+        # serviceName = constant.LIST_SERVICE[objectType]
         publisher = publish_mapService_from_mapDocument.publish_mapService_from_mapDocument(
             folder,
             newMxdPath,
@@ -92,22 +104,26 @@ if __name__ == '__main__':
     staticAgs = constant.staticAgs
     db = constant.db
 
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/1590662786921/"
+    # table = "Tbl_FC_DTCchung"
+    # user = "from tmact"
+
     table = sys.argv[1]
     folder = sys.argv[2]
     user = sys.argv[3]
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/tramtich/"
-    # table = "Tbl_FC_TramTich"
-    # user = "from tmact"
-
     objectType = table.split("_")[-1]       # magma
 
+    # print objectType
+    #
     try:
         unitest = Ks()
         result = unitest.publish(folder, db, staticAgs, objectType)
+        # result = unitest.publish(folder, db, staticAgs, table)
         if result:
             print "Published map service!!!!"
             unitest.importMongo(objectType, table, "de_an", folder, folder + 'prepare.mxd')
+            print "add to mongodb"
 
             # insert db to MS SQL
             # listing layer from sde mxd file
