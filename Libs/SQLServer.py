@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pyodbc
+import datetime
 # import psycopg2.extensions
 # psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
 # psycopg2.extensions.register_type(psycopg2.extensions.UNICODEARRAY)
@@ -20,6 +21,8 @@ import constant
 # sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 #
 # sys.stdin = codecs.getreader('utf_8')(sys.stdin)
+
+REF_TABLE = constant.REF_TABLE
 
 
 def check(f):
@@ -65,23 +68,36 @@ class DB:
         self.connection.commit()
         self.cursor.close()
 
-    def make_unicode_str(self, values, is_da, check_field):
+    def make_unicode_str(self, values, is_da, check_field, table, fields):
+        ref_index = 0
+        ref_table = ''
+        field_select = ''
+        is_ref = False
+        if table.lower() in REF_TABLE:
+            ref_data = REF_TABLE[table.lower()]
+            ref_index = fields.index(ref_data['id'])
+            ref_table = ref_data['ref_table']
+            field_select = ref_data['field']
+            is_ref = True
+
         string = "("
         index = 0
         for v in values:
-            # print 'index: %s , v = %s' % (index, v)
-
-            # if index == 0:
             if index == 0 and check_field:
                 v = is_da
 
             if index == 1 and check_field:
-                # print 'check_field is True'
                 if is_da == 1:
                     v = self.select_id_dean(v)
                 else:
                     v = self.select_id_luutru(v)
 
+            # print 'Check ref table: '
+            if is_ref and index == ref_index:
+                # v = self.select_ref_id(ref_table, 'id', v)
+                v = self.select_ref_id(ref_table, field_select, v)
+
+            # print(v, " is of type: ", type(v))
             if isinstance(v, str):
                 if len(v) == 0:
                     string += str(0) + ", "
@@ -89,6 +105,10 @@ class DB:
                     current_str = str(v)
                     current_str = current_str.replace("'", "")
                     string = string + " N'" + current_str + "', "
+            elif isinstance(v, datetime.datetime):
+                current_str = str(v)
+                current_str = current_str.replace("'", "")
+                string = string + " N'" + current_str + "', "
             else:
                 string += str(v) + ", "
 
@@ -102,13 +122,8 @@ class DB:
     def multiple_insert(self, table, fields, values, isda):
         print 'Start multiple_insert to SQL Server:'
         f = ', '.join(map(str, fields))
-
         check_da = ['isdean', 'id_da']
         check_field = all(elem in fields for elem in check_da)
-        # print '-----------------------------------'
-        # print 'fields: %s ' % f
-        # print '-----------------------------------'
-        # print 'values: %s ' % values
 
         tup_arr = tup_gropup(990, values) # Make tuple size is 990
         for tup_sub in tup_arr:
@@ -121,10 +136,9 @@ class DB:
                 else:
                     is_da = 0
 
-                encoded = self.make_unicode_str(vv, is_da, check_field)
+                encoded = self.make_unicode_str(vv, is_da, check_field, table, fields)
                 # insert_str += encoded
                 insert_str = encoded
-
                 insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
                 insert_script = insert_script.decode('utf-8', "ignore")
 
@@ -174,7 +188,6 @@ class DB:
 
     def select(self, table, columns, service, layerid):
         # print 'Start select ID Dean'
-
         columns = ', '.join(str(x) for x in columns)
         script = '''SELECT %s FROM %s WHERE layername='%s' AND layerid='%s' ''' % (columns, table, service, layerid)
         # print 'script: %s ' % script
@@ -213,6 +226,24 @@ class DB:
         else:
             # print 'ID Bao Cao Luu Tru MS: %s' % row
             return row[0]
+
+    def select_ref_id(self, ref_table, ref_id, id):
+        script = '''SELECT TOP 1 id FROM %s WHERE %s = N'%s' ''' % (ref_table, ref_id, id)
+        # print 'script: %s' % script
+        script = script.decode('utf-8', "ignore")
+        try:
+            self.init_connect()
+            self.cursor.execute(script)
+            row = self.cursor.fetchone()
+            self.cursor.close()
+            # print 'row: %s' % row
+            if row is None or None == row:
+                return 0
+            else:
+                return row[0]
+        except (pyodbc.Error, pyodbc.OperationalError) as ex:
+            print 'ref script error: %s ' % script
+            print ex
 
     def delete_row_service(self, table, column, service):
         print 'Start delete Service'

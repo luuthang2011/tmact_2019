@@ -28,6 +28,23 @@ password = "Mrvm3CVEvr8JGet9"
 staticAgs = r"E:\SourceCode\tmact_2019\data\connect_information\ArcgisPublishServer.ags"
 db = r'E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde'
 
+REF_TABLE = {
+    "tbl_fc_lotrinhdc": {
+        "table": "tbl_fc_lotrinhdc",
+        "id": "id_nhatky",
+        "ref_table": "tbl_nhatkydc",
+        "ref_id": "id",
+        "field": "MaNhatKyDC"
+    },
+    "tbl_fc_diemks": {
+        "table": "tbl_fc_diemks",
+        "id": "id_tuyenlt",
+        "ref_table": "tbl_fc_lotrinhdc",
+        "ref_id": "id",
+        "field": "MaLoTrinh"
+    }
+}
+
 OBJ_CASE = {
     "anh": "Anh",
     "bacdithuong": "BacDiThuong",
@@ -291,6 +308,7 @@ LIST_SERVICE = {
   "tbl_fc_dtchitiet": "Lớp Diện tích chi tiết",
   "tbl_fc_lotrinhdc": "Lộ trình địa chất",
   "tbl_fc_diemks": "Điểm khảo sát",
+  "tbl_fc_nhatkydc": "Nhật ký địa chất",
   "tbl_fc_cthaovl": "Công trình hào (vết lộ)",
   "tbl_fc_ctgieng": "Công trình giếng",
   "tbl_fc_ctlo": "Công trình lò",
