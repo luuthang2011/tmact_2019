@@ -2,36 +2,20 @@
 
 import pyodbc
 import datetime
-# import psycopg2.extensions
-# psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)
-# psycopg2.extensions.register_type(psycopg2.extensions.UNICODEARRAY)
 import json
 import codecs
 import constant
-# import sys
-# if sys.stdout.encoding != 'cp850':
-#   sys.stdout = codecs.getwriter('cp850')(sys.stdout, 'strict')
-# if sys.stderr.encoding != 'cp850':
-#   sys.stderr = codecs.getwriter('cp850')(sys.stderr, 'strict')
-# reload(sys)
-# sys.setdefaultencoding('utf-8')
-
-# import sys
-#
-# sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
-#
-# sys.stdin = codecs.getreader('utf_8')(sys.stdin)
 
 REF_TABLE = constant.REF_TABLE
 
-
+# Check type value
 def check(f):
     if isinstance(f, str):
         return str(f)
     else:
         return f
 
-
+# Split tuple by size
 def tup_gropup(n, lst):
     return [lst[i:i+n] for i in range(0, len(lst), n)]
 
@@ -94,10 +78,8 @@ class DB:
 
             # print 'Check ref table: '
             if is_ref and index == ref_index:
-                # v = self.select_ref_id(ref_table, 'id', v)
                 v = self.select_ref_id(ref_table, field_select, v)
 
-            # print(v, " is of type: ", type(v))
             if isinstance(v, str):
                 if len(v) == 0:
                     string += str(0) + ", "
@@ -116,7 +98,6 @@ class DB:
 
         string = string[:-2]
         string += ")"
-        # print string
         return string
 
     def multiple_insert(self, table, fields, values, isda):
@@ -129,7 +110,6 @@ class DB:
         for tup_sub in tup_arr:
             insert_str = ''
             for vv in tup_sub:
-                # print vv
                 is_da = 1
                 if vv[0] == 1:
                     is_da = 1
@@ -137,7 +117,6 @@ class DB:
                     is_da = 0
 
                 encoded = self.make_unicode_str(vv, is_da, check_field, table, fields)
-                # insert_str += encoded
                 insert_str = encoded
                 insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
                 insert_script = insert_script.decode('utf-8', "ignore")
@@ -150,32 +129,6 @@ class DB:
                 except (pyodbc.Error, pyodbc.OperationalError) as ex:
                     print 'insert_script %s ' % insert_script
                     print ex
-                # insert_str += ','
-
-            # insert_str = insert_str[:-1]
-
-            # insert_script = '''INSERT INTO %s ( %s ) VALUES %s ''' % (table, f, insert_str)
-            # print 'insert_script %s ' % insert_script
-            # insert_script = insert_script.decode('utf-8', "ignore")
-
-            # try:
-            #     insert_script = insert_script.decode('utf8', "replace")
-            #     print 'insert_script %s ' % insert_script
-            # except:
-            #     insert_script = insert_script.decode('utf-8', "ignore")
-            #     print 'insert_script %s ' % insert_script
-            # finally:
-            #     print("decode utf8 not completed")
-
-            print '***********************************'
-
-            # try:
-            #     self.init_connect()
-            #     self.cursor.execute(insert_script)
-            #     self.connection.commit()
-            #     self.cursor.close()
-            # except (pyodbc.Error, pyodbc.OperationalError) as ex:
-            #     print ex
 
     def update_value_null(self, table, field, value):
         # print 'Update layerName and layerID'
