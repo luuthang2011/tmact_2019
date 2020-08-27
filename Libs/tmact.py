@@ -82,6 +82,7 @@ class Ks:
         # output: new mxd
         newMxdPath = folder + 'prepare.mxd'
         updateSource = updateDataSource.updateDataSource(mxdPath)
+        updateSource.mdb2sdeLocal(mdbPath)
         newMxdData = updateSource.mdb2sde(sde)
         newMxdData.saveACopy(newMxdPath)
 
@@ -104,7 +105,7 @@ if __name__ == '__main__':
     staticAgs = constant.staticAgs
     db = constant.db
 
-    # folder = r"E:/SourceCode/tmact_2019/data/mdb/1590662786921/"
+    # folder = r"E:/SourceCode/tmact_2019/data/mdb/"
     # table = "Tbl_FC_DTCchung"
     # user = "from tmact"
 

@@ -47,6 +47,24 @@ REF_TABLE = {
 }
 
 OBJ_CASE = {
+    "makvdtks": "MaKVDTKS",
+    "mavanhphantan": "MaVanhPhanTan",
+    "maksnhole": "MaKSNhoLe",
+    "makhuvucktks": "MaKhuVucKTKS",
+    "id_kvhdkskt": "ID_KVHDKSKT",
+    "mavungtrienvongks": "MaVungTrienVongKS",
+    "madtct": "MaDTCT",
+    "id_tyle": "ID_TyLe",
+    "makhutdks": "MaKhuTDKS",
+    "idnhomks": "IdNhomKS",
+    "idks_chinh": "IdKS_Chinh",
+    "iddanhphap": "IdDanhPhap",
+    "id_khlt": "ID_KHLT",
+    "makhudgks": "MaKhuDGKS",
+    "idks_dikem": "IdKS_DiKem",
+    "macongtrinhlo": "MaCongTrinhLo",
+
+
     "id_cthaovl": "ID_CTHaoVL",
     "id_kvcamks": "ID_KVCamKS",
     "id_khudtks": "ID_KhuDTKS",

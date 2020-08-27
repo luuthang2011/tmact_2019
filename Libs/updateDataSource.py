@@ -33,14 +33,20 @@ class updateDataSource:
         print 'update source completed'
         return mxd
 
+    def mdb2sdeLocal(self, outGDB):
+        mxd.replaceWorkspaces ("", "", outGDB, "ACCESS_WORKSPACE", False)
+        print 'update source completed'
+        return mxd
+
 
 if __name__ == '__main__':
-    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated.mxd")
+    unitest = updateDataSource(r"E:\SourceCode\tmact_2019\data\mdb\DutGay.10.3.mxd")
     # result = unitest.execute(
     #     r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132.mdb",
     #     r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde"
     # )
 
+    unitest.mdb2sdeLocal(r"E:\SourceCode\tmact_2019\data\mdb\DutGay_Gop.mdb")
     result = unitest.mdb2sde(r"E:\SourceCode\tmact_2019\data\connect_information\ks_connection.sde")
-    result.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\magma-2019-10-22\FC_Magma_Bd132_final_formated_new.mxd")
+    result.saveACopy(r"E:\SourceCode\tmact_2019\data\mdb\DutGay.10.3.new.mxd")
     print "done"
