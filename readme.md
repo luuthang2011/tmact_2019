@@ -112,10 +112,12 @@ delete.py
 - install arcgis desktop: oki
 - install arcgis server: oki
 - install postgre + dll: oki
+    - config postgresql max connection: 300
 - create db + config db connect with server: oki
 - make db authen file: oki
 - make server authen file: oki
 - install mongodb
+    - config mongo delay start + restart 3rd
 - compile + install tmact client
 ```buildoutcfg
 npm install pm2 -g
