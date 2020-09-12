@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="" />
+    <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/tmact_delete.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,13 +247,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561952719167</updated>
-    </task>
-    <task id="LOCAL-00007" summary="all done v1 TMACT 2019">
-      <created>1566269654096</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1566269654096</updated>
     </task>
     <task id="LOCAL-00008" summary="Checkpoint 19/08/21">
       <created>1566360332867</created>
@@ -588,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599937263723</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="add sleep after delete map service">
+      <created>1599937532523</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1599937532524</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -615,7 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add utf8" />
     <MESSAGE value="release 1.1" />
     <MESSAGE value="change delete mongodb" />
     <MESSAGE value="release v1.1" />
@@ -640,6 +642,7 @@
     <MESSAGE value="update delete try all main" />
     <MESSAGE value="update tmact_delete try all main" />
     <MESSAGE value="update installation guide" />
-    <option name="LAST_COMMIT_MESSAGE" value="update installation guide" />
+    <MESSAGE value="add sleep after delete map service" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sleep after delete map service" />
   </component>
 </project>

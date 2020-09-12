@@ -1,4 +1,4 @@
-import sys, delete, constant
+import sys, delete, constant, time
 # sys.setdefaultencoding() does not exist, here!
 reload(sys)  # Reload does the trick!
 sys.setdefaultencoding('UTF8')
@@ -28,9 +28,9 @@ if __name__ == '__main__':
         try:
             print 'Start delete Rabbit!'
             unitest.deleteRabbit(mxd, ms_table, service)
+            time.sleep(1)
 
             # if you need a token, execute this line:
-
             print 'Start delete MSSQL!'
             unitest.deleteMSSQL(ms_table, service)
         except Exception, e:
@@ -39,8 +39,11 @@ if __name__ == '__main__':
 
         print 'Start delete Service!'
         unitest.deleteservice(server, service + ".MapServer", admin, password)
+        time.sleep(4)
+
         print 'Start delete PostgreDB!'
         unitest.deleteDB(mxd)
+
         # print 'Start delete Directory!'
         # unitest.deleteDir(folder)
         print 'Start delete MongoDB!'
