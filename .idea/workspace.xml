@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Libs/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/tmact_delete.py" afterDir="false" />
-    </list>
+    <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,20 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561952719167</updated>
-    </task>
-    <task id="LOCAL-00005" summary="release version 0.3 - all passed">
-      <created>1564481111009</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1564481111009</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added flow process - PhuongHX">
-      <created>1566204240760</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1566204240761</updated>
     </task>
     <task id="LOCAL-00007" summary="all done v1 TMACT 2019">
       <created>1566269654096</created>
@@ -590,7 +574,21 @@
       <option name="project" value="LOCAL" />
       <updated>1599936741076</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="update tmact_delete try all main">
+      <created>1599937007564</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1599937007564</updated>
+    </task>
+    <task id="LOCAL-00059" summary="update installation guide">
+      <created>1599937263723</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1599937263723</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -617,8 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="release with cmd call" />
-    <MESSAGE value="add fixed error server timeout" />
     <MESSAGE value="add utf8" />
     <MESSAGE value="release 1.1" />
     <MESSAGE value="change delete mongodb" />
@@ -642,6 +638,8 @@
     <MESSAGE value="Added ref table" />
     <MESSAGE value="Update sensitive case" />
     <MESSAGE value="update delete try all main" />
-    <option name="LAST_COMMIT_MESSAGE" value="update delete try all main" />
+    <MESSAGE value="update tmact_delete try all main" />
+    <MESSAGE value="update installation guide" />
+    <option name="LAST_COMMIT_MESSAGE" value="update installation guide" />
   </component>
 </project>
