@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="eec62c69-eee0-47e8-8d59-306f7316c939" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package/tmact_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/package/tmact_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/PostgresServer.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/PostgresServer.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/SQLServer.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/SQLServer.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/delete.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/delete.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/feature2geodatabase.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/feature2geodatabase.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/flowProcess.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/flowProcess.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/listing_layer.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/listing_layer.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/publish_mapService_from_mapDocument.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/publish_mapService_from_mapDocument.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/rabbitmq.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/rabbitmq.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lib/updateDataSource.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/updateDataSource.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/constant.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -247,13 +256,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561952719167</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Checkpoint 19/08/21">
-      <created>1566360332867</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1566360332867</updated>
     </task>
     <task id="LOCAL-00009" summary="tft 9.16">
       <created>1566546851380</created>
@@ -591,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599937532524</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="add sleep after delete map service">
+      <created>1599937881024</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1599937881024</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
