@@ -1,35 +1,25 @@
 # project: tmact 2019 - "khoang san" - auto publish map service from geodatabase with any geodata
 ## extented from tmact2017
 ### flow design 
-#### Arcpy
-- Tool:
-http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-to-geodatabase.htm
 #### LYR
 - Chức năng lưu 1 layer
     - Link đến Dữ liệu (shp / db) 
     - Hiển thị
 - Import to db
     - Cần: connect_information\wh_connection.sde
-    - F:\Code\Arcpy\TMACS\excel&Database\feature2geodatabase.py
+    - F:\Code\Arcpy\TMACS\excel&Database\feature2geodatabase
 - Import symbology
-    - https://pro.arcgis.com/en/pro-app/tool-reference/data-management/apply-symbology-from-layer.htm
 - Make feature layer from db
-    - https://pro.arcgis.com/en/pro-app/tool-reference/data-management/make-feature-layer.htm
 - Read lyr from mxd
-    - https://community.esri.com/thread/66389
 #### Mxd
 - Chức năng lưu nhiều layer
     - Link tới dữ liệu (shp / db)
     - Hiển thị (import được từ lyr / avl)
 - Publish
-    - https://enterprise.arcgis.com/en/server/10.4/administer/windows/example-publish-a-map-service-from-a-map-document-mxd-.htm
 - Set data source
-    - http://desktop.arcgis.com/en/arcmap/10.3/tools/defense-mapping-toolbox/set-data-source.htm
 #### SHP
 - To db
-    - http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-to-geodatabase.htm
 - Project
-    - https://pro.arcgis.com/en/pro-app/tool-reference/data-management/project.htm
 - transform_method
 
 #### imput
@@ -40,15 +30,15 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 - 1 gdb with layers feature có link giống mô tả
 #### Xử lý
 - Đọc cấu trúc mxd
-    - E:\SourceCode\tmact_2019\Libs\listing_layer.py
+    - E:\SourceCode\tmact_2019\Libs\listing_layer
         - get all layers isnot group layer
 - loop
     - Convert wgs84
         - delay
     - Save to db
-        - Libs/feature2geodatabase.py
+        - Libs/feature2geodatabase
     - Đổi link source db
-        - Libs/updateDataSource.py
+        - Libs/updateDataSource
 - publish
 
 #### Delete
@@ -56,13 +46,13 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 
 ### run code
 #### prepare
-- Libs/connectSDE.py
+- Libs/connectSDE
     - make register database with Arcmap 
-- Libs/createGISServerConnectionFile.py
+- Libs/createGISServerConnectionFile
 #### execute
-- Libs/feature2geodatabase.py
-- Libs/updateDataSource.py
-- Libs/publish_mapService_from_mapDocument.py
+- Libs/feature2geodatabase
+- Libs/updateDataSource
+- Libs/publish_mapService_from_mapDocument
 #### publish
 - test
     - server mamager
@@ -81,13 +71,13 @@ http://desktop.arcgis.com/en/arcmap/10.4/tools/conversion-toolbox/feature-class-
 - pika: `python -m pip install pika`
 
 
-### compile code
-link: https://vinasupport.com/su-dung-cython-de-bao-ve-compile-source-code-python/
-install Microsoft Visual Studio 2008 Express edition
-set path windows: C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin
-run cmd
-    "vcvarsall.bat" x86 & set
-    C:\Python27\ArcGIS10.5\python.exe E:/SourceCode/tmact_2019/Libs/compile.py build_ext --inplace
+### Compile code
+* link: ` https://vinasupport.com/su-dung-cython-de-bao-ve-compile-source-code-python/ `
+* install Microsoft Visual Studio 2008 Express edition
+set path windows: ` C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin `
+* run cmd
+    ` "vcvarsall.bat" x86 & set
+    C:\Python27\ArcGIS10.5\python.exe E:/SourceCode/tmact_2019/Libs/compile.py build_ext --inplace `
 
 ```
 python -m pip install cython
